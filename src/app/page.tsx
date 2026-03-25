@@ -221,8 +221,8 @@ function About({ c }: { c: SectionContent }) {
   );
 }
 
-/* ─── ForWhom — tabs (restored from original Figma design) ─── */
-function ForWhom() {
+/* ─── ForWhom — uses content variant for heading + bullets ─── */
+function ForWhom({ c }: { c: SectionContent }) {
   const [active, setActive] = useState(0);
   const tabs = [
     { label: "HR", emoji: "👔", text: "Rekruterzy i specjaliści HR codziennie komunikują się pisemnie z kandydatami. Ton wiadomości wpływa na doświadczenie rekrutacyjne i wizerunek firmy. Nauczymy jak pisać z empatią." },
@@ -237,7 +237,7 @@ function ForWhom() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
           <h2 className="font-display font-800 text-4xl md:text-5xl mb-4">
-            Dla kogo <span className="text-yellow">działamy</span>?
+            {c.forWhom.heading}
           </h2>
         </div>
         <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -531,7 +531,7 @@ export default function Home() {
         <Hero c={c} />
         <Problem c={c} />
         <About c={c} />
-        <ForWhom />
+        <ForWhom c={c} />
         <EmojiShowcase c={c} />
         <DigitalComm c={c} />
         <Solution c={c} />
