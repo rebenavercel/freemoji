@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   return (
     <footer className="bg-yellow py-6 px-6">
       <div className="max-w-7xl mx-auto">
@@ -19,13 +24,13 @@ export default function Footer() {
           {/* Links and Contact */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-gray-900 font-500">
             <a href="#" className="hover:underline transition-all">
-              Polityka Prywatności
+              {t("footer.privacy")}
             </a>
             <a href="#" className="hover:underline transition-all">
-              Regulamin
+              {t("footer.terms")}
             </a>
             <a href="/kontakt" className="hover:underline transition-all">
-              Kontakt
+              {t("footer.contact")}
             </a>
             <a href="tel:+48654456546" className="hover:underline transition-all font-600">
               +48 654 456 546

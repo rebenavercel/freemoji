@@ -6,44 +6,12 @@ import type React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
-import { content, type VariantKey } from "@/data/content";
 import { useCart } from "@/context/CartContext";
-
-/* ─── Pricing Data ─── */
-const pricingPlans = [
-  {
-    variant: "WARIANT 1",
-    name: "Personal",
-    price: "$89",
-    period: "/ jednorazowo",
-    description:
-      "Przeanalizujemy dla Ciebie konwersacje z klientem lub rozmówcą. Ułatwimy Ci kontakt oraz przygotujemy analizę rozmowy i powtórnie. Ci jak komunikacja dzieki czemu przepływ informacji będzie bardziej efektywny. Narzędzia dla Ciebie i Twojego rozmówcy.",
-    ctaText: "WYBIERZ WARIANT 1",
-  },
-  {
-    variant: "WARIANT 2",
-    name: "Business",
-    price: "$129",
-    period: "/ miesięcznie",
-    description:
-      "Przeanalizujemy dla Twojej firmy konwersację najlepszą z Twoimi klientami. Będziemy na bieżąco monitorować jakość i skuteczność prowadzonych rozmów oraz zajmiemy się aktualizacją analizą prowadzonych rozmów wraz z przygotowaniem planu co możesz zmienić w sposobie komunikacji aby poprawiać swoją biznes rozmowy dawały skuteczne rezultaty biznesowe.",
-    ctaText: "WYBIERZ WARIANT 2",
-    highlighted: true,
-  },
-  {
-    variant: "WARIANT 3",
-    name: "Enterprice",
-    price: "$689",
-    period: "/ miesięcznie",
-    description:
-      "Przeanalizujemy konwersację ze wszystkich komunikatorów, których używasz do kontaktu z klientem. Dokonamy odpowiednie narzędzia dla Twojego zespołu i przeprowadzimy indywidualną konsultację z Cyfrową Mową Ciała, a zmierzcha podniesiemy jakość komunikacji biznesowej w Twojej firmie.",
-    ctaText: "WYBIERZ WARIANT 3",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ─── Hero Section ─── */
-function HeroSection({ variant }: { variant: VariantKey }) {
-  const c = content[variant].betterMessage;
+function HeroSection() {
+  const { t } = useLanguage();
   
   return (
     <section className="pt-32 pb-20 px-6">
@@ -65,23 +33,21 @@ function HeroSection({ variant }: { variant: VariantKey }) {
           {/* Right: Content */}
           <div className="flex-1 w-full text-center lg:text-left">
             <h1 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-6">
-              {c.heroHeading}
+              {t("betterMessage.hero.heading")}
             </h1>
             <p className="text-xl md:text-2xl font-600 text-gray-800 mb-4">
-              {c.heroSubtitle}
+              {t("betterMessage.hero.subtitle")}
             </p>
             <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
-              Popraw jakość cyfrowych rozmów pomiędzy Tobą a kontrahentami.
-              Zwiększ płynność komunikacji i popraw sprawność konwersacji za
-              pomocą trafnych wiadomości.
+              {t("betterMessage.hero.description")}
             </p>
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
               <button className="bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg px-8 py-3 rounded-full transition-all hover:scale-105 shadow-lg">
-                {c.heroCta}
+                {t("betterMessage.hero.cta")}
               </button>
             </div>
             <div className="flex items-center justify-center lg:justify-start gap-3">
-              <span className="text-gray-500 text-sm">By</span>
+              <span className="text-gray-500 text-sm">{t("betterMessage.hero.by")}</span>
               <Image
                 src="/logo.svg"
                 alt="freemoji"
@@ -99,21 +65,20 @@ function HeroSection({ variant }: { variant: VariantKey }) {
 
 /* ─── Benefits Section ─── */
 function BenefitsSection() {
+  const { t } = useLanguage();
+  
   const benefits = [
     {
-      title: "Komunikuj świadomie.",
-      description:
-        "Zrozum prawdziwy wydźwięk swoich wiadomości zanim je wyślesz. Analizujemy ton, kontekst i emocje w twoich rozmowach biznesowych, pomagając unikać niefortunnych sformułowań i budować profesjonalne relacje z klientami.",
+      title: t("betterMessage.benefits.title1"),
+      description: t("betterMessage.benefits.desc1"),
     },
     {
-      title: "Wyrażaj emocje.",
-      description:
-        "Naucz się skutecznie przekazywać intencje i emocje w cyfrowej komunikacji. Dowiedz się, które emoji są odpowiednie w kontekście biznesowym, a które mogą być źle odebrane przez twoich rozmówców.",
+      title: t("betterMessage.benefits.title2"),
+      description: t("betterMessage.benefits.desc2"),
     },
     {
-      title: "Uniknij nieporozumień.",
-      description:
-        "Przykłady pokazują, jak łatwo o wpadkę. Niewłaściwe emoji mogą całkowicie zmienić wydźwięk wiadomości. Pomagamy ci rozpoznawać ryzykowne sytuacje i dobierać odpowiednie środki wyrazu w komunikacji z klientami.",
+      title: t("betterMessage.benefits.title3"),
+      description: t("betterMessage.benefits.desc3"),
     },
   ];
 
@@ -204,7 +169,38 @@ function BenefitsSection() {
 /* ─── Pricing Section ─── */
 function PricingSection() {
   const { addItem } = useCart();
+  const { t } = useLanguage();
   const [addedPlan, setAddedPlan] = useState<string | null>(null);
+
+  const pricingPlans = [
+    {
+      variant: t("betterMessage.pricing.variant1.variant"),
+      name: t("betterMessage.pricing.variant1.name"),
+      price: t("betterMessage.pricing.variant1.price"),
+      period: t("betterMessage.pricing.variant1.period"),
+      description: t("betterMessage.pricing.variant1.description"),
+      ctaText: t("betterMessage.pricing.variant1.cta"),
+      highlighted: false,
+    },
+    {
+      variant: t("betterMessage.pricing.variant2.variant"),
+      name: t("betterMessage.pricing.variant2.name"),
+      price: t("betterMessage.pricing.variant2.price"),
+      period: t("betterMessage.pricing.variant2.period"),
+      description: t("betterMessage.pricing.variant2.description"),
+      ctaText: t("betterMessage.pricing.variant2.cta"),
+      highlighted: true,
+    },
+    {
+      variant: t("betterMessage.pricing.variant3.variant"),
+      name: t("betterMessage.pricing.variant3.name"),
+      price: t("betterMessage.pricing.variant3.price"),
+      period: t("betterMessage.pricing.variant3.period"),
+      description: t("betterMessage.pricing.variant3.description"),
+      ctaText: t("betterMessage.pricing.variant3.cta"),
+      highlighted: false,
+    },
+  ];
 
   const handleAddToCart = (plan: typeof pricingPlans[0]) => {
     const priceNum = parseFloat(plan.price.replace("$", ""));
@@ -225,10 +221,10 @@ function PricingSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-4">
-            Wybierz plan dla siebie 💼
+            {t("betterMessage.pricing.header")}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Analiza komunikacji biznesowej dostosowana do Twoich potrzeb. Dodaj do koszyka i zapłać bezpiecznie.
+            {t("betterMessage.pricing.subtitle")}
           </p>
         </div>
 
@@ -245,7 +241,7 @@ function PricingSection() {
               {/* Best Value Badge */}
               {plan.highlighted && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow text-gray-900 px-6 py-2 rounded-full font-700 text-sm shadow-lg">
-                  ⭐ Najlepszy wybór
+                  {t("betterMessage.pricing.bestChoice")}
                 </div>
               )}
 
@@ -284,12 +280,12 @@ function PricingSection() {
                     : "bg-yellow hover:bg-yellow-dark text-gray-900 hover:scale-105"
                 }`}
               >
-                {addedPlan === plan.name ? "✓ Dodano do koszyka!" : `${plan.ctaText} 🛒`}
+                {addedPlan === plan.name ? t("betterMessage.pricing.addedToCart") : `${plan.ctaText} 🛒`}
               </button>
 
               {/* Stripe Badge */}
               <div className="mt-6 text-center text-sm text-gray-500 flex items-center justify-center gap-2">
-                <span>Bezpieczne płatności z</span>
+                <span>{t("betterMessage.pricing.securePayments")}</span>
                 <svg
                   className="h-4"
                   viewBox="0 0 60 25"
@@ -312,6 +308,8 @@ function PricingSection() {
 
 /* ─── Emoji Warning Section ─── */
 function EmojiWarningSection() {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-5xl mx-auto text-center">
@@ -325,14 +323,12 @@ function EmojiWarningSection() {
 
         {/* Main Message */}
         <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-700 text-gray-900 mb-6 leading-tight">
-          Łzy <span className="font-[900]" style={{ fontWeight: 900 }}>nie zawsze</span> są spowodowane smutkiem.
-          <br />
-          Emoji to też <span className="font-[900]" style={{ fontWeight: 900 }}>nie rada na wszystko.</span>
+          {t("betterMessage.emojiWarning.title")} <span className="font-[900]" style={{ fontWeight: 900 }}>{t("betterMessage.emojiWarning.title2")}</span>
         </h2>
 
         {/* Description */}
         <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
-          Współczesna komunikacja wymaga świadomości kontekstu. To samo emoji może wyrażać radość, smutek lub ironię – wszystko zależy od sytuacji. BetterMessage pomaga rozpoznać, kiedy Twoja wiadomość może być źle zrozumiana i sugeruje lepsze sposoby wyrażenia intencji.
+          {t("betterMessage.emojiWarning.description")}
         </p>
       </div>
     </section>
@@ -341,6 +337,7 @@ function EmojiWarningSection() {
 
 /* ─── Video Section ─── */
 function VideoSection() {
+  const { t } = useLanguage();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
@@ -363,22 +360,22 @@ function VideoSection() {
             {/* Left: Content */}
             <div>
               <h2 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-8 leading-tight">
-                Uniknij nieporozumień.
+                {t("betterMessage.video.title")}
                 <br />
-                Zobacz wideo.
+                {t("betterMessage.video.title2")}
               </h2>
 
               {/* Yellow badge */}
               <div className="bg-yellow inline-block px-8 py-4 rounded-2xl mb-6">
                 <div className="flex items-center gap-4">
                   <span className="font-display text-4xl font-[900] text-gray-900" style={{ fontWeight: 900 }}>
-                    #!?.
+                    {t("betterMessage.video.badge1")}
                   </span>
                   <div>
                     <p className="font-display text-lg font-700 text-gray-900">
-                      Interpunkcja w erze
+                      {t("betterMessage.video.badge2")}
                       <br />
-                      komunikatorów.
+                      {t("betterMessage.video.badge3")}
                     </p>
                   </div>
                 </div>
@@ -389,7 +386,7 @@ function VideoSection() {
                 onClick={() => setIsPopupOpen(true)}
                 className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-700 text-lg transition-all border-4 border-gray-900 hover:border-yellow"
               >
-                Kliknij i zobacz jak to wygląda w praktyce :)
+                {t("betterMessage.video.cta")}
               </button>
             </div>
 
@@ -423,7 +420,7 @@ function VideoSection() {
                 {/* Text overlay */}
                 <div className="absolute top-4 right-4 bg-white/90 px-4 py-2 rounded-full">
                   <p className="text-sm font-600 text-gray-900">
-                    Co robicie, dzieci?
+                    {t("betterMessage.video.previewText")}
                   </p>
                 </div>
               </button>
@@ -479,32 +476,12 @@ function VideoSection() {
 
 /* ─── PSST Section ─── */
 function PSSTSection() {
-  const benefits = [
-    {
-      number: "01.",
-      title: "Naucz się rozpoznawać sygnały emocjonalne online",
-      description:
-        "Zrozum, jak odbiorcy interpretują Twoje wiadomości. Dowiedz się, które sformułowania mogą być odebrane negatywnie i jak je poprawić, aby budować lepsze relacje biznesowe.",
-    },
-    {
-      number: "02.",
-      title: "Zwiększ efektywność zespołu",
-      description:
-        "Lepsze zrozumienie prowadzi do szybszej współpracy. Zredukuj ilość wyjaśnień i powtórzeń dzięki precyzyjnej komunikacji dostosowanej do odbiorcy.",
-    },
-    {
-      number: "03.",
-      title: "Unikaj kosztownych wpadek",
-      description:
-        "Jedno źle odebrane emoji może zepsuć relację z ważnym klientem. Nasz system ostrzega przed potencjalnymi nieporozumieniami zanim wyślesz wiadomość.",
-    },
-    {
-      number: "04.",
-      title: "Buduj profesjonalny wizerunek",
-      description:
-        "Spójna i świadoma komunikacja w całej firmie przekłada się na lepszy odbiór marki. Stwórz standardy komunikacji, które wzmocnią Twój profesjonalizm.",
-    },
-  ];
+  const { t } = useLanguage();
+  const benefits = t("betterMessage.psst.benefits") as Array<{
+    number: string;
+    title: string;
+    description: string;
+  }>;
 
   return (
     <section className="py-20 px-6 bg-white">
@@ -512,13 +489,10 @@ function PSSTSection() {
         {/* PSST Header */}
         <div className="mb-16">
           <h2 className="font-display text-7xl md:text-9xl font-[900] text-gray-900 mb-4" style={{ fontWeight: 900 }}>
-            PSST...
+            {t("betterMessage.psst.heading")}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl leading-relaxed">
-            Warto obejrzeć wideo, poza ciekawą treścią na nagraniu usłyszysz{" "}
-            <strong>jak brzmi kod rabatowy</strong>. Zastawialiśmy go w nagraniu
-            abyś odebrał swój ebook taniej znając już podstawy cyfrowej
-            interpunkcji.
+            {t("betterMessage.psst.intro")}
           </p>
         </div>
 
@@ -527,7 +501,7 @@ function PSSTSection() {
           {/* Left: Benefits List */}
           <div>
             <h3 className="font-display text-4xl md:text-5xl font-700 text-gray-900 mb-12">
-              Dlaczego warto?
+              {t("betterMessage.psst.whyTitle")}
             </h3>
             <div className="space-y-8">
               {benefits.map((benefit, index) => (
@@ -589,34 +563,15 @@ function PSSTSection() {
 
 /* ─── Testimonials Section ─── */
 function TestimonialsSection() {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonials = [
-    {
-      emoji: "🥰",
-      quote: "BetterMessage całkowicie zmienił sposób, w jaki komunikuję się z moim zespołem. Wcześniej miałem problem z interpretacją tonu wiadomości. Teraz rozumiem kontekst i unikam nieporozumień.",
-      name: "Karol Chrapkiewicz",
-      title: "Re Bena Gesta",
-    },
-    {
-      emoji: "😊",
-      quote: "Jako HR Manager codziennie wysyłam dziesiątki wiadomości do kandydatów. BetterMessage pomógł mi zbudować cieplejszy, bardziej profesjonalny ton komunikacji, co przełożyło się na lepszy employer branding.",
-      name: "Anna Kowalska",
-      title: "HR Manager, TechCorp",
-    },
-    {
-      emoji: "🎯",
-      quote: "W sprzedaży relacja to wszystko. Dzięki BetterMessage nauczyłem się wyrażać empatię w wiadomościach tekstowych, co znacząco poprawiło konwersję i zadowolenie klientów.",
-      name: "Marcin Nowak",
-      title: "Sales Director, SalesPro",
-    },
-    {
-      emoji: "💡",
-      quote: "Jako coach prowadzę sesje online i korespondencję mailową. BetterMessage pokazał mi, jak ważny jest kontekst w komunikacji pisemnej. To kompletnie zmieniło moją praktykę.",
-      name: "Joanna Wiśniewska",
-      title: "Business Coach",
-    },
-  ];
+  const testimonials = t("betterMessage.testimonials.items") as Array<{
+    emoji: string;
+    quote: string;
+    name: string;
+    title: string;
+  }>;
 
   const floatingEmojis = [
     { emoji: "😀", delay: "0s" },
@@ -656,10 +611,10 @@ function TestimonialsSection() {
             {/* Header */}
             <div className="mb-12">
               <h2 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-4">
-                Opinie
+                {t("betterMessage.testimonials.title")}
               </h2>
               <p className="text-xl text-gray-600">
-                Zobacz co mówią o Nas Nasi klienci
+                {t("betterMessage.testimonials.subtitle")}
               </p>
             </div>
 
@@ -781,8 +736,8 @@ function TestimonialsSection() {
 }
 
 /* ─── Contact Form Section ─── */
-function ContactFormSection({ variant }: { variant: VariantKey }) {
-  const c = content[variant].betterMessage;
+function ContactFormSection() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     subject: "",
@@ -805,9 +760,9 @@ function ContactFormSection({ variant }: { variant: VariantKey }) {
           {/* Header */}
           <div className="mb-12">
             <h2 className="font-display text-4xl md:text-5xl font-800 text-gray-900 mb-3">
-              {c.contactHeading}
+              {t("betterMessage.contact.heading")}
             </h2>
-            <p className="text-gray-500 text-sm">(Nie zapomnij dodać emoji!)</p>
+            <p className="text-gray-500 text-sm">{t("betterMessage.contact.reminder")}</p>
           </div>
 
           {/* Form */}
@@ -815,21 +770,21 @@ function ContactFormSection({ variant }: { variant: VariantKey }) {
             {/* Name and Subject */}
             <div className="text-lg text-gray-700 leading-relaxed space-y-4">
               <p className="flex flex-wrap items-center gap-2">
-                <span>Cześć, nazywam się</span>
+                <span>{t("betterMessage.contact.hello")}</span>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder={c.contactPlaceholder1}
+                  placeholder={t("betterMessage.contact.namePlaceholder")}
                   className="inline-block border-b-2 border-gray-300 focus:border-yellow outline-none px-2 py-1 min-w-[200px] bg-transparent transition-colors"
                   required
                 />
-                <span>i mam pytanie w temacie</span>
+                <span>{t("betterMessage.contact.andIHave")}</span>
                 <input
                   type="text"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  placeholder={c.contactPlaceholder2}
+                  placeholder={t("betterMessage.contact.subjectPlaceholder")}
                   className="inline-block border-b-2 border-gray-300 focus:border-yellow outline-none px-2 py-1 min-w-[250px] bg-transparent transition-colors"
                   required
                 />
@@ -837,7 +792,7 @@ function ContactFormSection({ variant }: { variant: VariantKey }) {
               </p>
 
               <p className="flex flex-wrap items-start gap-2">
-                <span>mianowicie:</span>
+                <span>{t("betterMessage.contact.namely")}</span>
               </p>
 
               {/* Message Area */}
@@ -845,7 +800,7 @@ function ContactFormSection({ variant }: { variant: VariantKey }) {
                 <textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder={c.contactPlaceholder3}
+                  placeholder={t("betterMessage.contact.messagePlaceholder")}
                   rows={4}
                   className="w-full border-b-2 border-gray-300 focus:border-yellow outline-none px-2 py-2 bg-transparent resize-none transition-colors"
                   required
@@ -856,12 +811,12 @@ function ContactFormSection({ variant }: { variant: VariantKey }) {
             {/* Email */}
             <div className="text-lg text-gray-700 pt-4">
               <p className="flex flex-wrap items-center gap-2">
-                <span>Odpowiedź chciałbym otrzymać na mojego maila:</span>
+                <span>{t("betterMessage.contact.replyTo")}</span>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="Twój adres email*"
+                  placeholder={t("betterMessage.contact.emailPlaceholder")}
                   className="inline-block border-b-2 border-gray-300 focus:border-yellow outline-none px-2 py-1 min-w-[280px] bg-transparent transition-colors"
                   required
                 />
@@ -879,7 +834,7 @@ function ContactFormSection({ variant }: { variant: VariantKey }) {
                 required
               />
               <label htmlFor="consent" className="text-sm text-gray-600 cursor-pointer">
-                Zapoznałem się z Regulaminem strony i Polityką prywatności
+                {t("betterMessage.contact.consent")}
               </label>
             </div>
 
@@ -889,7 +844,7 @@ function ContactFormSection({ variant }: { variant: VariantKey }) {
                 type="submit"
                 className="bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                {c.contactSubmit}
+                {t("betterMessage.contact.submit")}
               </button>
             </div>
           </form>
@@ -901,21 +856,19 @@ function ContactFormSection({ variant }: { variant: VariantKey }) {
 
 /* ─── Main Page ─── */
 export default function BetterMessagePage() {
-  const [variant, setVariant] = useState<VariantKey>("genz");
+  const { t } = useLanguage();
   
-  // FAQ data z formatem kompatybilnym z FAQSection - te same pytania co na home
-  const faqs = [
-    { emoji: "🤔", question: "Czym dokładnie jest cyfrowa mowa ciała?", answer: "To sposób wyrażania emocji, intencji i tonu w komunikacji pisemnej — za pomocą emoji, interpunkcji, formatowania tekstu, czasu odpowiedzi i innych elementów, które zastępują mimikę i gesty w rozmowie twarzą w twarz." },
-    { emoji: "👥", question: "Dla kogo jest freemoji?", answer: "Dla każdego, kto komunikuje się pisemnie w pracy lub życiu prywatnym. Szczególnie polecamy osobom z działów HR, sprzedaży, liderom zespołów, coachom i trenerom." },
-    { emoji: "📚", question: "Jak wygląda szkolenie?", answer: "Oferujemy webinary na żywo, materiały edukacyjne do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji." },
-    { emoji: "💰", question: "Ile kosztuje dostęp?", answer: "Dostęp do platformy zaczyna się od 199 zł. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com." },
-    { emoji: "✨", question: "Czy mogę przetestować platformę?", answer: "Tak! Zapisz się na bezpłatny webinar, aby poznać nasze podejście i zobaczyć fragment platformy w akcji." },
-  ];
+  // FAQ data - używamy tych samych pytań co na home page
+  const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
+  const faqs = faqQuestions.map((faq, index) => ({
+    emoji: ["🤔", "👥", "📚", "💰", "✨"][index % 5],
+    ...faq
+  }));
   
   return (
     <main className="min-h-screen bg-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
-      <HeroSection variant={variant} />
+      <Navbar />
+      <HeroSection />
       <PricingSection />
       <BenefitsSection />
       <FAQSection faqs={faqs} />
@@ -923,7 +876,7 @@ export default function BetterMessagePage() {
       <VideoSection />
       <EmojiWarningSection />
       <TestimonialsSection />
-      <ContactFormSection variant={variant} />
+      <ContactFormSection />
       <Footer />
     </main>
   );

@@ -7,70 +7,24 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import FAQSection from "@/components/FAQSection";
-import { content, type VariantKey } from "@/data/content";
-
-/* ─── Game Data ─── */
-const questions = [
-  {
-    emoji: "😅",
-    question: "To emoji (sweat smile) w kontekście komunikacji online najczęściej oznacza:",
-    options: [
-      { text: "Gdy coś jest bardzo śmieszne", correct: false },
-      { text: "W niezręcznej sytuacji lub z ulgą po stresie", correct: true },
-      { text: "Gdy jesteśmy zmęczeni", correct: false },
-      { text: "Gdy jesteśmy zdenerwowani", correct: false },
-    ],
-  },
-  {
-    emoji: "🙃",
-    question: "Co oznacza to emoji w kontekście komunikacji online?",
-    options: [
-      { text: "Szczerą radość", correct: false },
-      { text: "Ironię, sarkasm lub pasywną agresję", correct: true },
-      { text: "Zawstydzenie", correct: false },
-      { text: "Zaskoczenie", correct: false },
-    ],
-  },
-  {
-    emoji: "💀",
-    question: "W młodzieżowym slangu internetowym to emoji oznacza:",
-    options: [
-      { text: "Strach lub zagrożenie", correct: false },
-      { text: "Śmiertelne znudzenie", correct: false },
-      { text: "Ekstremalną zabawę, 'umieram ze śmiechu'", correct: true },
-      { text: "Smutek i żałobę", correct: false },
-    ],
-  },
-  {
-    emoji: "👁️👄👁️",
-    question: "Ta kombinacja emoji w komunikacji online najczęściej wyraża:",
-    options: [
-      { text: "Aprobatę i podziw", correct: false },
-      { text: "Niepokoją obserwację lub dyskomfort", correct: true },
-      { text: "Zaskoczenie pozytywne", correct: false },
-      { text: "Neutralność", correct: false },
-    ],
-  },
-  {
-    emoji: "🥺",
-    question: "To emoji ('pleading face') w profesjonalnej komunikacji może być odebrane jako:",
-    options: [
-      { text: "Profesjonalna prośba", correct: false },
-      { text: "Manipulacyjne, infantylne lub nieprofesjonalne", correct: true },
-      { text: "Znak szacunku", correct: false },
-      { text: "Neutralne potwierdzenie", correct: false },
-    ],
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { type VariantKey } from "@/data/content";
 
 /* ─── Game Section ─── */
-function EmojiGame({ variant }: { variant: VariantKey }) {
-  const c = content[variant].emojiGame;
+function EmojiGame() {
+  const { t } = useLanguage();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
+
+  // Get questions from translations
+  const questions = (t("emojiGame.questions") || []) as Array<{
+    emoji: string;
+    question: string;
+    options: Array<{ text: string; correct: boolean }>;
+  }>;
 
   const handleAnswer = (index: number) => {
     if (selectedAnswer !== null) return; // Prevent multiple selections
@@ -111,11 +65,11 @@ function EmojiGame({ variant }: { variant: VariantKey }) {
             {/* Header */}
             <div className="text-center mb-12">
               <h1 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-4">
-                {c.quizHeading}
+                {t("emojiGame.quizHeading")}
               </h1>
               <div className="inline-block bg-yellow/20 border-2 border-yellow rounded-2xl px-6 py-3">
                 <p className="text-gray-900 font-700 text-lg">
-                  {c.bannerText}
+                  {t("emojiGame.bannerText")}
                 </p>
               </div>
             </div>
@@ -123,8 +77,8 @@ function EmojiGame({ variant }: { variant: VariantKey }) {
             {/* Progress Bar */}
             <div className="mb-8">
               <div className="flex justify-between text-sm text-gray-600 mb-2">
-                <span>{c.questionLabel} {currentQuestion + 1}/{questions.length}</span>
-                <span>{c.scoreLabel}: {score}/{questions.length}</span>
+                <span>{t("emojiGame.questionLabel")} {currentQuestion + 1}/{questions.length}</span>
+                <span>{t("emojiGame.scoreLabel")}: {score}/{questions.length}</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                 <div
@@ -200,24 +154,24 @@ function EmojiGame({ variant }: { variant: VariantKey }) {
             </div>
             
             <h2 className="font-display text-4xl md:text-5xl font-800 text-gray-900 mb-6">
-              {isPerfectScore ? c.perfectScoreHeading : score >= questions.length * 0.7 ? c.correctFeedback : c.incorrectFeedback}
+              {isPerfectScore ? t("emojiGame.results.perfect") : score >= questions.length * 0.7 ? t("emojiGame.results.good") : t("emojiGame.results.low")}
             </h2>
             
             <p className="text-2xl text-gray-700 mb-8">
-              {c.scoreLabel}: <span className="font-700 text-yellow">{score}/{questions.length}</span>
+              {t("emojiGame.scoreLabel")}: <span className="font-700 text-yellow">{score}/{questions.length}</span>
             </p>
 
             {/* Discount Code */}
             {isPerfectScore && (
               <div className="bg-yellow rounded-2xl p-8 mb-8 border-2 border-gray-900">
                 <p className="text-sm text-gray-700 mb-2 font-600">
-                  {c.perfectScoreText}
+                  {t("emojiGame.results.perfectScoreText")}
                 </p>
                 <p className="font-display text-4xl font-900 text-gray-900 mb-2 tracking-wider">
                   EMOJI5
                 </p>
                 <p className="text-sm text-gray-600">
-                  5% rabatu na wszystkie produkty BetterMessage
+                  {t("emojiGame.results.discountText")}
                 </p>
               </div>
             )}
@@ -225,10 +179,10 @@ function EmojiGame({ variant }: { variant: VariantKey }) {
             {!isPerfectScore && score >= questions.length * 0.7 && (
               <div className="bg-gray-100 rounded-2xl p-6 mb-8">
                 <p className="text-gray-700 font-600">
-                  Prawie idealnie! Potrzebujesz <span className="text-yellow bg-gray-900 px-2 py-1 rounded font-700">5/5</span>, aby zdobyć kod rabatowy 🎁
+                  {t("emojiGame.results.almostPerfect")} <span className="text-yellow bg-gray-900 px-2 py-1 rounded font-700">5/5</span>{t("emojiGame.results.toGetCode")}
                 </p>
                 <p className="text-gray-600 text-sm mt-2">
-                  Spróbuj jeszcze raz - pytania są losowe!
+                  {t("emojiGame.results.tryAgainHint")}
                 </p>
               </div>
             )}
@@ -236,10 +190,10 @@ function EmojiGame({ variant }: { variant: VariantKey }) {
             {score < questions.length * 0.7 && (
               <div className="bg-gray-100 rounded-2xl p-6 mb-8">
                 <p className="text-gray-700 font-600">
-                  Nie poddawaj się! Potrzebujesz <span className="text-yellow bg-gray-900 px-2 py-1 rounded font-700">5/5</span>, aby zdobyć kod na 5% rabatu 💪
+                  {t("emojiGame.results.dontGiveUp")} <span className="text-yellow bg-gray-900 px-2 py-1 rounded font-700">5/5</span>{t("emojiGame.results.toGetDiscount")}
                 </p>
                 <p className="text-gray-600 text-sm mt-2">
-                  Zbierz {questions.length - score} więcej prawidłowych odpowiedzi!
+                  {t("emojiGame.results.collectMore")} {questions.length - score} {t("emojiGame.results.moreCorrect")}
                 </p>
               </div>
             )}
@@ -249,13 +203,13 @@ function EmojiGame({ variant }: { variant: VariantKey }) {
                 onClick={resetGame}
                 className="bg-yellow hover:bg-yellow-dark text-gray-900 font-700 px-8 py-4 rounded-full transition-all hover:scale-105"
               >
-                {c.tryAgain}
+                {t("emojiGame.results.restartQuiz")}
               </button>
               <Link
                 href="/"
                 className="bg-gray-900 hover:bg-gray-800 text-white font-700 px-8 py-4 rounded-full transition-all hover:scale-105 inline-block"
               >
-                {c.backToHome}
+                {t("emojiGame.results.exploreProducts")}
               </Link>
             </div>
           </div>
@@ -267,21 +221,23 @@ function EmojiGame({ variant }: { variant: VariantKey }) {
 
 /* ─── Main Page ─── */
 export default function GamePage() {
+  const { t } = useLanguage();
   const [variant, setVariant] = useState<VariantKey>("genz");
   
-  // FAQ data z formatem kompatybilnym z FAQSection - te same pytania co na home
+  // FAQ data - get from translations
+  const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
   const faqs = [
-    { emoji: "🤔", question: "Czym dokładnie jest cyfrowa mowa ciała?", answer: "To sposób wyrażania emocji, intencji i tonu w komunikacji pisemnej — za pomocą emoji, interpunkcji, formatowania tekstu, czasu odpowiedzi i innych elementów, które zastępują mimikę i gesty w rozmowie twarzą w twarz." },
-    { emoji: "👥", question: "Dla kogo jest freemoji?", answer: "Dla każdego, kto komunikuje się pisemnie w pracy lub życiu prywatnym. Szczególnie polecamy osobom z działów HR, sprzedaży, liderom zespołów, coachom i trenerom." },
-    { emoji: "📚", question: "Jak wygląda szkolenie?", answer: "Oferujemy webinary na żywo, materiały edukacyjne do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji." },
-    { emoji: "💰", question: "Ile kosztuje dostęp?", answer: "Dostęp do platformy zaczyna się od 199 zł. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com." },
-    { emoji: "✨", question: "Czy mogę przetestować platformę?", answer: "Tak! Zapisz się na bezpłatny webinar, aby poznać nasze podejście i zobaczyć fragment platformy w akcji." },
+    { emoji: "🤔", ...faqQuestions[0] },
+    { emoji: "👥", ...faqQuestions[1] },
+    { emoji: "📚", ...faqQuestions[2] },
+    { emoji: "💰", ...faqQuestions[3] },
+    { emoji: "✨", ...faqQuestions[4] },
   ];
   
   return (
     <main className="min-h-screen bg-white">
       <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
-      <EmojiGame variant={variant} />
+      <EmojiGame />
       <FAQSection faqs={faqs} />
       <ContactForm />
       <Footer />

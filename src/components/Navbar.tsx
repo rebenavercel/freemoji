@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { VariantKey } from "@/data/content";
 import { variantLabels } from "@/data/content";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface NavbarProps {
   variant?: VariantKey;
@@ -16,6 +17,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
   const [open, setOpen] = useState(false);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { language, setLanguage, t } = useLanguage();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -44,10 +46,37 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
             <Image src="/logo.svg" alt="freemoji" width={160} height={49} className="h-8 w-auto" priority />
           </Link>
           <div className="flex items-center gap-4">
-            {/* Language Selector - Desktop */}
-            {showLanguageSelector && variant && setVariant ? (
+            {/* Language Switcher PL/EN */}
+            <div className="hidden md:flex items-center gap-2">
+              <span className="text-sm text-gray-600">{t("nav.language")}:</span>
+              <div className="flex items-center gap-1 bg-gray-100 rounded-full p-1">
+                <button
+                  onClick={() => setLanguage("pl")}
+                  className={`px-3 py-1 text-xs font-600 rounded-full transition-all ${
+                    language === "pl"
+                      ? "bg-yellow text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  PL
+                </button>
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`px-3 py-1 text-xs font-600 rounded-full transition-all ${
+                    language === "en"
+                      ? "bg-yellow text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
+            
+            {/* Variant Language Selector (only for Polish) */}
+            {showLanguageSelector && variant && setVariant && language === "pl" && (
               <div className="hidden md:flex items-center gap-2 relative" ref={dropdownRef}>
-                <span className="text-sm text-gray-600">Język strony:</span>
+                <span className="text-sm text-gray-600">Styl:</span>
                 <button
                   onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
                   className="bg-transparent border-none text-sm font-600 text-gray-900 focus:outline-none cursor-pointer flex items-center gap-1 hover:text-yellow transition-colors"
@@ -82,10 +111,6 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="hidden md:block">
-                <span className="text-sm text-gray-600">Język strony: <span className="font-600 text-gray-900">Milenials</span></span>
-              </div>
             )}
             {/* Hamburger Button */}
             <button 
@@ -118,7 +143,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: open ? '100ms' : '0ms' }}
             >
-              <span className="relative z-10">Strona główna</span>
+              <span className="relative z-10">{t("nav.home")}</span>
             </Link>
             <Link 
               href="/o-nas" 
@@ -126,7 +151,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: open ? '150ms' : '0ms' }}
             >
-              <span className="relative z-10">O nas</span>
+              <span className="relative z-10">{t("nav.about")}</span>
             </Link>
             <Link 
               href="/produkty" 
@@ -134,7 +159,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: open ? '200ms' : '0ms' }}
             >
-              <span className="relative z-10">Produkty</span>
+              <span className="relative z-10">{t("nav.products")}</span>
             </Link>
             <Link 
               href="/blog" 
@@ -142,7 +167,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: open ? '250ms' : '0ms' }}
             >
-              <span className="relative z-10">Blog</span>
+              <span className="relative z-10">{t("nav.blog")}</span>
             </Link>
             <Link 
               href="/gra-emoji" 
@@ -150,7 +175,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: open ? '300ms' : '0ms' }}
             >
-              <span className="relative z-10">🎮 Gra Emoji</span>
+              <span className="relative z-10">{t("nav.game")}</span>
             </Link>
             <Link 
               href="/kontakt" 
@@ -158,8 +183,38 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: open ? '350ms' : '0ms' }}
             >
-              <span className="relative z-10">Kontakt</span>
+              <span className="relative z-10">{t("nav.contact")}</span>
             </Link>
+            
+            {/* Language Switcher Mobile */}
+            <div 
+              className={`flex items-center justify-center gap-2 bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 transition-all duration-300 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ transitionDelay: open ? '400ms' : '0ms' }}
+            >
+              <span className="text-sm font-600 text-gray-700">{t("nav.language")}:</span>
+              <div className="flex items-center gap-1 bg-gray-100 rounded-full p-1">
+                <button
+                  onClick={() => setLanguage("pl")}
+                  className={`px-4 py-2 text-sm font-600 rounded-full transition-all ${
+                    language === "pl"
+                      ? "bg-yellow text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  PL
+                </button>
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`px-4 py-2 text-sm font-600 rounded-full transition-all ${
+                    language === "en"
+                      ? "bg-yellow text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Decorative Emojis */}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface FAQItem {
   emoji: string;
@@ -14,6 +15,7 @@ interface FAQSectionProps {
 }
 
 export default function FAQSection({ faqs }: FAQSectionProps) {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -56,10 +58,10 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
             {/* Title on left side */}
             <div className="absolute top-8 left-0">
               <h2 className="font-display text-7xl font-800 text-gray-900 mb-2">
-                FAQ
+                {t("home.faq.title")}
               </h2>
               <p className="text-xl text-gray-800">
-                Najczęściej zadawane pytania
+                {t("home.faq.subtitle")}
               </p>
               <div className="mt-4">
                 <Image
@@ -78,10 +80,10 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
             {/* Mobile title */}
             <div className="lg:hidden mb-8">
               <h2 className="font-display text-5xl font-800 text-gray-900 mb-2">
-                FAQ
+                {t("home.faq.title")}
               </h2>
               <p className="text-xl text-gray-800">
-                Najczęściej zadawane pytania
+                {t("home.faq.subtitle")}
               </p>
               <div className="mt-4">
                 <Image

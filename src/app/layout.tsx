@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Sora } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import Cart from "@/components/Cart";
 
 const outfit = Outfit({
@@ -32,10 +33,12 @@ export default function RootLayout({
       className={`${outfit.variable} ${sora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <CartProvider>
-          {children}
-          <Cart />
-        </CartProvider>
+        <LanguageProvider>
+          <CartProvider>
+            {children}
+            <Cart />
+          </CartProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

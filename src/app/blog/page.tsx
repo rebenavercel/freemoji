@@ -5,70 +5,23 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-// Przykładowe dane artykułów
-const ARTICLES = [
-  {
-    id: 1,
-    date: "15 GRUDZIEŃ 2025",
-    title: "Jak skutecznie komunikować się z klientami przy transakcjach nieruchomości online? Cyfrowa mowa ciała w sektorze nieruchomości.",
-    excerpt: "W dobie cyfrowej komunikacji, prowadzenie transakcji nieruchomości wymaga nowych umiejętności. Dowiedz się, jak wykorzystać emoji i cyfrową mowę ciała do budowania zaufania z klientami online. Poznaj sprawdzone strategie komunikacji, które zwiększą Twoją skuteczność w sprzedaży...",
-    image: "/blog.jpg",
-    category: "Nieruchomości",
-    tag: "komunikacja",
-    categories: ["Nieruchomości", "Prawo"],
-    tags: ["komunikacja", "sprzedaż", "emoji"]
-  },
-  {
-    id: 2,
-    date: "10 GRUDZIEŃ 2025",
-    title: "Emoji w komunikacji biznesowej - profesjonalizm czy przesada?",
-    excerpt: "Czy emoji mają miejsce w profesjonalnej komunikacji? Jak balansować między autentycznością a profesjonalizmem? Poznaj zasady używania emoji w różnych kontekstach biznesowych i dowiedz się, kiedy ich użycie jest wskazane, a kiedy lepiej zachować formalizm...",
-    image: "/blog.jpg",
-    category: "Komunikacja",
-    tag: "poradnik",
-    categories: ["Komunikacja", "Biznes"],
-    tags: ["emoji", "biznes", "poradnik"]
-  },
-  {
-    id: 3,
-    date: "5 GRUDZIEŃ 2025",
-    title: "Jak różne pokolenia używają emoji? Gen Z vs Millenials vs Boomerzy",
-    excerpt: "Każde pokolenie ma swój unikalny sposób komunikacji cyfrowej. Poznaj różnice w używaniu emoji między pokoleniami i dowiedz się, jak dostosować komunikację do swojej grupy docelowej. Zrozumienie tych różnic jest kluczem do skutecznej komunikacji międzypokoleniowej...",
-    image: "/blog.jpg",
-    category: "Trendy",
-    tag: "społeczeństwo",
-    categories: ["Trendy", "Społeczeństwo"],
-    tags: ["pokolenia", "emoji", "komunikacja"]
-  }
-];
-
-const CATEGORIES = [
-  "Komunikacja",
-  "Nieruchomości", 
-  "Biznes",
-  "Trendy",
-  "Społeczeństwo",
-  "Prawo",
-  "Poradniki",
-  "Inne"
-];
-
-const TAGS = [
-  "komunikacja",
-  "emoji",
-  "biznes",
-  "sprzedaż",
-  "poradnik",
-  "pokolenia",
-  "społeczeństwo",
-  "nieruchomości"
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const { t } = useLanguage();
+
+  // Get articles, categories, and tags from translations
+  const ARTICLES = (t("blog.articles") as any[]).map((article, index) => ({
+    id: index + 1,
+    image: "/blog.jpg",
+    ...article
+  }));
+  
+  const CATEGORIES = t("blog.categoryList") as string[];
+  const TAGS = t("blog.tagList") as string[];
 
   // Filtrowanie artykułów
   const filteredArticles = ARTICLES.filter((article) => {
@@ -139,11 +92,10 @@ export default function BlogPage() {
             {/* Tekst */}
             <div className="animate-fade-up stagger-1">
               <h1 className="font-display font-800 text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 text-gray-900">
-                Blog freemoji
+                {t("blog.hero.title")}
               </h1>
               <p className="text-lg md:text-xl text-gray-900 mb-8 leading-relaxed">
-                Odkryj świat cyfrowej mowy ciała. Dowiedz się, jak skutecznie 
-                komunikować emocje w erze tekstów i emoji.
+                {t("blog.hero.subtitle")}
               </p>
             </div>
 
@@ -153,7 +105,7 @@ export default function BlogPage() {
                 href="/produkty"
                 className="inline-block bg-yellow hover:bg-yellow-dark text-gray-900 font-600 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
-                Zobacz nasze produkty
+                {t("blog.hero.cta")}
               </Link>
             </div>
           </div>
@@ -167,7 +119,7 @@ export default function BlogPage() {
           {/* Aktywne filtry */}
           {(selectedCategory || selectedTag || searchQuery) && (
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="text-sm font-600 text-gray-700">Aktywne filtry:</span>
+              <span className="text-sm font-600 text-gray-700">{t("blog.activeFilters")}</span>
               {selectedCategory && (
                 <button
                   onClick={() => setSelectedCategory(null)}
@@ -196,7 +148,7 @@ export default function BlogPage() {
                 onClick={clearFilters}
                 className="text-sm text-gray-600 hover:text-gray-900 underline"
               >
-                Wyczyść wszystkie
+                {t("blog.clearAll")}
               </button>
             </div>
           )}
@@ -208,13 +160,13 @@ export default function BlogPage() {
               {filteredArticles.length === 0 ? (
                 <div className="bg-white rounded-3xl p-12 text-center">
                   <p className="text-xl text-gray-600">
-                    Nie znaleziono artykułów spełniających kryteria wyszukiwania.
+                    {t("blog.noResults")}
                   </p>
                   <button
                     onClick={clearFilters}
                     className="mt-4 inline-block bg-yellow hover:bg-yellow-dark text-gray-900 font-600 px-6 py-3 rounded-full transition-colors"
                   >
-                    Wyczyść filtry
+                    {t("blog.clearFilters")}
                   </button>
                 </div>
               ) : (
@@ -266,7 +218,7 @@ export default function BlogPage() {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="Szukaj..."
+                    placeholder={t("blog.search")}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:border-yellow transition-colors"
@@ -285,7 +237,7 @@ export default function BlogPage() {
               {/* Najnowsze artykuły */}
               <div className="bg-white rounded-2xl p-6 shadow-sm">
                 <h3 className="font-display font-700 text-xl mb-6 pb-3 border-b-4 border-yellow">
-                  Najnowsze artykuły
+                  {t("blog.latestArticles")}
                 </h3>
                 <div className="space-y-4">
                   {ARTICLES.slice(0, 3).map((article) => (
@@ -309,7 +261,7 @@ export default function BlogPage() {
                           {article.title}
                         </h4>
                         <div className="text-xs text-gray-600 mt-1">
-                          DOWIEDZ SIĘ WIĘCEJ →
+                          {t("blog.readMore")}
                         </div>
                       </div>
                     </div>
@@ -320,7 +272,7 @@ export default function BlogPage() {
               {/* Kategorie */}
               <div className="bg-white rounded-2xl p-6 shadow-sm">
                 <h3 className="font-display font-700 text-xl mb-6 pb-3 border-b-4 border-yellow">
-                  Kategorie
+                  {t("blog.categories")}
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
                   {CATEGORIES.map((category) => (
@@ -342,7 +294,7 @@ export default function BlogPage() {
               {/* Tagi */}
               <div className="bg-white rounded-2xl p-6 shadow-sm">
                 <h3 className="font-display font-700 text-xl mb-6 pb-3 border-b-4 border-yellow">
-                  Tagi
+                  {t("blog.tags")}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {TAGS.map((tag) => (

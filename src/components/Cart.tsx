@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
+import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Cart() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const { items, removeItem, total, itemCount } = useCart();
 
@@ -58,12 +60,12 @@ export default function Cart() {
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-yellow">
             <h2 className="font-display text-3xl font-800 text-gray-900">
-              Koszyk 🛒
+              {t("cart.title")} 🛒
             </h2>
             <button
               onClick={() => setIsOpen(false)}
               className="w-10 h-10 rounded-full bg-gray-900 hover:bg-gray-800 text-white flex items-center justify-center transition-colors"
-              aria-label="Zamknij"
+              aria-label={t("cart.close")}
             >
               <svg
                 className="w-6 h-6"
@@ -87,10 +89,10 @@ export default function Cart() {
               <div className="flex flex-col items-center justify-center h-full text-center">
                 <div className="text-8xl mb-4">🛍️</div>
                 <p className="text-xl font-600 text-gray-900 mb-2">
-                  Koszyk jest pusty
+                  {t("cart.empty")}
                 </p>
                 <p className="text-gray-600">
-                  Dodaj produkty, aby kontynuować
+                  {t("cart.emptyDesc")}
                 </p>
               </div>
             ) : (
@@ -112,7 +114,7 @@ export default function Cart() {
                       <button
                         onClick={() => removeItem(item.id)}
                         className="text-gray-400 hover:text-red-500 transition-colors"
-                        aria-label="Usuń"
+                        aria-label={t("cart.remove")}
                       >
                         <svg
                           className="w-5 h-5"
@@ -145,7 +147,7 @@ export default function Cart() {
           {items.length > 0 && (
             <div className="border-t border-gray-200 p-6 bg-gray-50">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-lg font-600 text-gray-700">Suma:</span>
+                <span className="text-lg font-600 text-gray-700">{t("cart.total")}</span>
                 <span className="font-display text-3xl font-800 text-gray-900">
                   ${total}
                 </span>
@@ -155,14 +157,14 @@ export default function Cart() {
                 onClick={() => setIsOpen(false)}
                 className="block w-full bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg py-4 rounded-full text-center transition-all hover:scale-105 shadow-lg mb-3"
               >
-                Przejdź do płatności 💳
+                {t("cart.checkout")}
               </Link>
               <Link
                 href="/bettermessage"
                 onClick={() => setIsOpen(false)}
                 className="block w-full bg-white hover:bg-gray-50 text-gray-900 font-600 text-base py-3 rounded-full text-center transition-all border-2 border-gray-200"
               >
-                Kontynuuj zakupy
+                {t("cart.continueShopping")}
               </Link>
             </div>
           )}

@@ -6,10 +6,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import FAQSection from "@/components/FAQSection";
+import { useLanguage } from "@/context/LanguageContext";
 import { type VariantKey } from "@/data/content";
 
 /* ─── Hero Section with People ─── */
 function ProductsHero() {
+  const { t } = useLanguage();
   return (
     <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-gray-50">
       {/* Noise texture overlay */}
@@ -30,13 +32,13 @@ function ProductsHero() {
           {/* Text Content */}
           <div className="relative z-20 mb-6 animate-fade-up">
             <p className="text-sm md:text-base text-gray-600 mb-4 font-500 max-w-2xl mx-auto">
-              Odkryj komunikację na nowo. Zobaczysz ile zmienia odpowiednia mowa ciała w internecie.
+              {t("products.hero.subtitle")}
             </p>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-900 text-gray-900 leading-tight tracking-tight mb-4">
-              ZOBACZ WSZYSTKIE
+              {t("products.hero.title1")}
               <br />
               <span className="relative inline-block">
-                PRODUKTY
+                {t("products.hero.title2")}
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 400 12" fill="none">
                   <path d="M2 8c60-6 120-6 180-2s120 2 175-4" stroke="#FFD600" strokeWidth="6" strokeLinecap="round" />
                 </svg>
@@ -63,7 +65,7 @@ function ProductsHero() {
               href="#products" 
               className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-700 text-base transition-all hover:scale-105 hover:shadow-xl"
             >
-              Poznaj produkty
+              {t("products.hero.cta")}
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="ml-1">
                 <path d="M10 4v12m0 0l4-4m-4 4l-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -77,12 +79,13 @@ function ProductsHero() {
 
 /* ─── Products List Section ─── */
 function ProductsList() {
+  const { t } = useLanguage();
   const products = [
     {
       emoji: "😎",
       fruit: "🍊🍊",
-      title: "Better Message",
-      description: "Emocje, kontekst, odbiór tonu w swoich szczegółowych wiadomości, które można lepiej dopasować do typu odbiorcy. Stwórz właściwą komunikację. Nie musimy widzieć się na żywo, żeby dobrze zrozumieć.",
+      title: t("products.list.betterMessage.title"),
+      description: t("products.list.betterMessage.description"),
       price: "89",
       available: true,
       link: "/bettermessage",
@@ -90,24 +93,24 @@ function ProductsList() {
     {
       emoji: "😏",
       fruit: "🍇🍇",
-      title: "Smart Communication",
-      description: "Inteligentna analiza emocji i kontekstu w komunikacji zespołowej. Zaawansowane statystyki i AI-powered rekomendacje dla wymagających profesjonalistów.",
+      title: t("products.list.smartComm.title"),
+      description: t("products.list.smartComm.description"),
       price: "129",
       available: false,
     },
     {
       emoji: "🤣",
       fruit: "🍉🍉",
-      title: "Fun Communication",
-      description: "Komunikacja z humorem i stylem. Humor detection AI, custom emoji rekomendacje i miesięczne warsztaty dla zespołów, które chcą komunikować się z lekkością.",
+      title: t("products.list.funComm.title"),
+      description: t("products.list.funComm.description"),
       price: "199",
       available: false,
     },
     {
       emoji: "🎯",
       fruit: "🍎🍎",
-      title: "Direct Communication",
-      description: "Precyzyjna i bezpośrednia komunikacja dla liderów. Narzędzia do jasnego przekazywania intencji i budowania autorytetu w zespole.",
+      title: t("products.list.directComm.title"),
+      description: t("products.list.directComm.description"),
       price: "179",
       available: false,
     },
@@ -160,13 +163,13 @@ function ProductsList() {
                     href={product.link}
                     className="bg-yellow hover:bg-yellow-dark text-gray-900 px-8 py-4 rounded-full font-800 text-base transition-all hover:scale-105 shadow-lg hover:shadow-xl"
                   >
-                    Zobacz produkt →
+                    {t("products.seeProduct")}
                   </a>
                 </div>
               ) : (
                 <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-400 rounded-full font-700 text-sm">
-                  <span>Wkrótce</span>
-                  <span className="text-xs">({product.price} zł)</span>
+                  <span>{t("products.comingSoon")}</span>
+                  <span className="text-xs">({product.price} {t("products.currency")})</span>
                 </div>
               )}
             </div>
@@ -180,14 +183,16 @@ function ProductsList() {
 /* ─── Main Page ─── */
 export default function ProductsPage() {
   const [variant, setVariant] = useState<VariantKey>("normalne");
+  const { t } = useLanguage();
 
-  // FAQ data
+  // FAQ data - get from translations
+  const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
   const faqs = [
-    { emoji: "🤔", question: "Czym dokładnie jest cyfrowa mowa ciała?", answer: "To sposób wyrażania emocji, intencji i tonu w komunikacji pisemnej — za pomocą emoji, interpunkcji, formatowania tekstu, czasu odpowiedzi i innych elementów, które zastępują mimikę i gesty w rozmowie twarzą w twarz." },
-    { emoji: "👥", question: "Dla kogo jest freemoji?", answer: "Dla każdego, kto komunikuje się pisemnie w pracy lub życiu prywatnym. Szczególnie polecamy osobom z działów HR, sprzedaży, liderom zespołów, coachom i trenerom." },
-    { emoji: "📚", question: "Jak wygląda szkolenie?", answer: "Oferujemy webinary na żywo, materiały edukacyjne do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji." },
-    { emoji: "💰", question: "Ile kosztuje dostęp?", answer: "Dostęp do platformy zaczyna się od 199 zł. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com." },
-    { emoji: "✨", question: "Czy mogę przetestować platformę?", answer: "Tak! Zapisz się na bezpłatny webinar, aby poznać nasze podejście i zobaczyć fragment platformy w akcji." },
+    { emoji: "🤔", ...faqQuestions[0] },
+    { emoji: "👥", ...faqQuestions[1] },
+    { emoji: "📚", ...faqQuestions[2] },
+    { emoji: "💰", ...faqQuestions[3] },
+    { emoji: "✨", ...faqQuestions[4] },
   ];
 
   return (

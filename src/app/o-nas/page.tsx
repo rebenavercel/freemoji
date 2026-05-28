@@ -5,10 +5,12 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
-import { type VariantKey } from "@/data/content";
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ─── Hero Section ─── */
 function AboutHero() {
+  const { t } = useLanguage();
+  
   return (
     <section className="relative pt-32 pb-32 px-6 overflow-hidden min-h-[60vh] flex items-center">
       {/* Background Image */}
@@ -29,7 +31,7 @@ function AboutHero() {
           {/* Left: Title */}
           <div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-800 text-gray-900 leading-tight">
-              Zyskaj nową przewagę w komunikacji zdalnej.
+              {t("about.hero.title")}
             </h1>
           </div>
 
@@ -39,31 +41,31 @@ function AboutHero() {
               <li className="flex items-start gap-3">
                 <span className="text-2xl flex-shrink-0 mt-1">👀</span>
                 <p className="text-base md:text-lg text-gray-700">
-                  <strong className="font-700">Lepsze odczytywanie emocji</strong> – rozpoznawaj ukryte emocje u rozmówców
+                  <strong className="font-700">{t("about.hero.benefits.emotions")}</strong> – {t("about.hero.benefits.emotionsDesc")}
                 </p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-2xl flex-shrink-0 mt-1">🧠</span>
                 <p className="text-base md:text-lg text-gray-700">
-                  <strong className="font-700">Inteligencja emocjonalna 2.0</strong> – rozwijaj empatię w środowisku cyfrowym
+                  <strong className="font-700">{t("about.hero.benefits.intelligence")}</strong> – {t("about.hero.benefits.intelligenceDesc")}
                 </p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-2xl flex-shrink-0 mt-1">🗣️</span>
                 <p className="text-base md:text-lg text-gray-700">
-                  <strong className="font-700">Skuteczniejsze spotkania</strong> – lepsze decyzje, mniej nieporozumień
+                  <strong className="font-700">{t("about.hero.benefits.meetings")}</strong> – {t("about.hero.benefits.meetingsDesc")}
                 </p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-2xl flex-shrink-0 mt-1">💬</span>
                 <p className="text-base md:text-lg text-gray-700">
-                  <strong className="font-700">Pewność w rozmowie</strong> – mniej stresu w negocjacjach i prezentacjach online
+                  <strong className="font-700">{t("about.hero.benefits.confidence")}</strong> – {t("about.hero.benefits.confidenceDesc")}
                 </p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-2xl flex-shrink-0 mt-1">⚡</span>
                 <p className="text-base md:text-lg text-gray-700">
-                  <strong className="font-700">Wiarygodność lidera</strong> – buduj autorytet i zaufanie w zespole
+                  <strong className="font-700">{t("about.hero.benefits.credibility")}</strong> – {t("about.hero.benefits.credibilityDesc")}
                 </p>
               </li>
             </ul>
@@ -76,11 +78,13 @@ function AboutHero() {
 
 /* ─── Team Section ─── */
 function TeamSection() {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-white to-yellow/10">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-display text-4xl md:text-5xl font-800 text-center mb-16">
-          Poznajmy się lepiej!
+          {t("about.team.title")}
         </h2>
 
         <div className="relative">
@@ -92,7 +96,7 @@ function TeamSection() {
                 <div className="flex-1 relative">
                   <Image
                     src="/jakub-left.png"
-                    alt="Jakub Sciosek CEO"
+                    alt="Jakub Szlosek CEO"
                     width={400}
                     height={500}
                     className="w-full h-auto"
@@ -102,7 +106,7 @@ function TeamSection() {
                 <div className="flex-1 relative">
                   <Image
                     src="/jakub-left.png"
-                    alt="Jakub Sciosek CEO"
+                    alt="Jakub Szlosek CEO"
                     width={400}
                     height={500}
                     className="w-full h-auto scale-x-[-1]"
@@ -116,7 +120,7 @@ function TeamSection() {
                   href="/kontakt"
                   className="bg-yellow hover:bg-yellow-dark text-gray-900 px-8 py-3 rounded-full font-800 text-base shadow-xl hover:scale-105 transition-all inline-block whitespace-nowrap"
                 >
-                  Napisz do nas!
+                  {t("about.team.contactUs")}
                 </a>
               </div>
             </div>
@@ -127,7 +131,7 @@ function TeamSection() {
             {/* Left box */}
             <div className="text-center">
               <div className="inline-block bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-600 text-sm mb-4">
-                Jakub Sciosek, CEO
+                Jakub Szlosek, {t("about.team.ceo")}
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Lorem ipsum dolor sit amet consectetur. Dis suspendisse nunc et. Dictum enim amet non justo eget vulputate ornare sollicitudin sed integer.
@@ -137,7 +141,7 @@ function TeamSection() {
             {/* Right box */}
             <div className="text-center">
               <div className="inline-block bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-600 text-sm mb-4">
-                Jakub Sciosek, CEO
+                Jakub Szlosek, {t("about.team.ceo")}
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Lorem ipsum dolor sit amet consectetur. Dis suspendisse nunc et. Dictum enim amet non justo eget vulputate ornare sollicitudin sed integer.
@@ -581,20 +585,18 @@ function TestimonialsSection() {
 
 /* ─── Main Page ─── */
 export default function AboutPage() {
-  const [variant, setVariant] = useState<VariantKey>("normalne");
-
-  // FAQ data
-  const faqs = [
-    { emoji: "🤔", question: "Czym dokładnie jest cyfrowa mowa ciała?", answer: "To sposób wyrażania emocji, intencji i tonu w komunikacji pisemnej — za pomocą emoji, interpunkcji, formatowania tekstu, czasu odpowiedzi i innych elementów, które zastępują mimikę i gesty w rozmowie twarzą w twarz." },
-    { emoji: "👥", question: "Dla kogo jest freemoji?", answer: "Dla każdego, kto komunikuje się pisemnie w pracy lub życiu prywatnym. Szczególnie polecamy osobom z działów HR, sprzedaży, liderom zespołów, coachom i trenerom." },
-    { emoji: "📚", question: "Jak wygląda szkolenie?", answer: "Oferujemy webinary na żywo, materiały edukacyjne do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji." },
-    { emoji: "💰", question: "Ile kosztuje dostęp?", answer: "Dostęp do platformy zaczyna się od 199 zł. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com." },
-    { emoji: "✨", question: "Czy mogę przetestować platformę?", answer: "Tak! Zapisz się na bezpłatny webinar, aby poznać nasze podejście i zobaczyć fragment platformy w akcji." },
-  ];
+  const { t } = useLanguage();
+  
+  // FAQ data - używamy tych samych pytań co na home page
+  const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
+  const faqs = faqQuestions.map((faq, index) => ({
+    emoji: ["🤔", "👥", "📚", "💰", "✨"][index % 5],
+    ...faq
+  }));
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar />
       <AboutHero />
       <TeamSection />
       <PSSTSection />
