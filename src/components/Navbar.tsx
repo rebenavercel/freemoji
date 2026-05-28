@@ -137,18 +137,18 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
               <span className="relative z-10">Produkty</span>
             </Link>
             <Link 
-              href="/bettermessage#pricing" 
+              href="/blog" 
               onClick={() => setOpen(false)} 
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-              style={{ transitionDelay: open ? '300ms' : '0ms' }}
+              style={{ transitionDelay: open ? '250ms' : '0ms' }}
             >
-              <span className="relative z-10">Cennik</span>
+              <span className="relative z-10">Blog</span>
             </Link>
             <Link 
               href="/gra-emoji" 
               onClick={() => setOpen(false)} 
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-              style={{ transitionDelay: open ? '400ms' : '0ms' }}
+              style={{ transitionDelay: open ? '300ms' : '0ms' }}
             >
               <span className="relative z-10">🎮 Gra Emoji</span>
             </Link>
@@ -156,7 +156,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
               href="/kontakt" 
               onClick={() => setOpen(false)} 
               className={`group relative overflow-hidden bg-white/80 backdrop-blur-sm border-2 border-gray-900 rounded-2xl px-8 py-6 text-center font-display text-2xl font-700 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-              style={{ transitionDelay: open ? '450ms' : '0ms' }}
+              style={{ transitionDelay: open ? '350ms' : '0ms' }}
             >
               <span className="relative z-10">Kontakt</span>
             </Link>
