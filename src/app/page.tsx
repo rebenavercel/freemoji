@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import FAQSection from "@/components/FAQSection";
 import { useLanguage } from "@/context/LanguageContext";
-import { type VariantKey } from "@/data/content";
 
 const EMOJIS = ["😀", "😂", "🥹", "😍", "🤔", "😎", "🥳", "😤", "🤗", "😭"];
 
@@ -33,16 +32,20 @@ function StickyCTA() {
 
 /* ─── Hero ─── */
 function Hero() {
-  const { t } = useLanguage();
+  const { t, variant } = useLanguage();
+  
+  console.log("🎨 Hero rendering with variant:", variant);
+  console.log("🎨 Hero home.hero.headline1:", t("home.hero.headline1"));
+  console.log("🎨 Hero hero.headline1:", t("hero.headline1"));
   
   return (
-    <section className="relative pt-16 overflow-hidden">
-      <div className="absolute top-0 right-0 w-[60%] h-full bg-yellow rounded-bl-[120px] -z-10" />
-      <div className="absolute top-[20%] right-[10%] w-80 h-80 bg-yellow/30 rounded-full blur-3xl -z-10" />
+    <section className="relative pt-16 overflow-hidden overflow-x-clip">
+      <div className="absolute top-0 right-0 w-[60%] h-full bg-yellow rounded-bl-[80px] md:rounded-bl-[120px] -z-10" />
+      <div className="absolute top-[20%] right-[10%] w-60 h-60 md:w-80 md:h-80 bg-yellow/30 rounded-full blur-3xl -z-10" />
 
-      <div className="max-w-7xl mx-auto px-6 py-20 md:py-32 grid md:grid-cols-2 gap-12 items-center min-h-[85vh]">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-32 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         <div className="animate-fade-up">
-          <h1 className="font-display font-800 text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6">
+          <h1 className="font-display font-800 text-3xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-4 md:mb-6">
             {t("home.hero.headline1")}<br />
             {t("home.hero.headline2")}<br />
             <span className="relative inline-block">
@@ -53,7 +56,7 @@ function Hero() {
             </span>
             .
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-md leading-relaxed">
+          <p className="text-base md:text-xl text-gray-600 mb-6 md:mb-8 max-w-md leading-relaxed">
             {t("home.hero.subtitle")}
           </p>
           <a href="#contact" className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-600 text-lg transition-all hover:scale-105 hover:shadow-xl">
@@ -72,12 +75,12 @@ function Hero() {
             <p className="text-sm text-gray-500">{t("home.hero.socialProof")} <strong className="text-gray-700">500+ {t("home.hero.professionals")}</strong></p>
           </div>
         </div>
-        <div className="relative flex justify-center animate-scale-in">
-          <span className="absolute -top-6 right-8 text-5xl animate-float">{"😀"}</span>
-          <span className="absolute top-1/4 -right-4 text-4xl animate-float-delayed">{"😍"}</span>
-          <span className="absolute bottom-12 right-0 text-6xl animate-float stagger-2">{"🤗"}</span>
-          <span className="absolute top-1/3 -left-4 text-3xl animate-float-delayed stagger-3">{"😎"}</span>
-          <span className="absolute -bottom-2 left-12 text-4xl animate-float stagger-4">{"🥳"}</span>
+        <div className="relative flex justify-center animate-scale-in overflow-hidden">
+          <span className="absolute -top-6 right-8 text-3xl md:text-5xl animate-float hidden sm:inline">{"😀"}</span>
+          <span className="absolute top-1/4 -right-4 text-2xl md:text-4xl animate-float-delayed hidden sm:inline">{"😍"}</span>
+          <span className="absolute bottom-12 right-0 text-4xl md:text-6xl animate-float stagger-2">{"🤗"}</span>
+          <span className="absolute top-1/3 -left-4 text-2xl md:text-3xl animate-float-delayed stagger-3 hidden sm:inline">{"😎"}</span>
+          <span className="absolute -bottom-2 left-12 text-3xl md:text-4xl animate-float stagger-4 hidden sm:inline">{"🥳"}</span>
           <Image src="/media/hero-image.png" alt="Hero illustration with emojis" width={615} height={640} className="w-72 md:w-96 h-auto object-contain" />
         </div>
       </div>
@@ -94,10 +97,10 @@ function Problem() {
     { icon: "⚡" },
   ];
   return (
-    <section className="py-20 md:py-28 bg-gray-50">
+    <section className="py-12 md:py-28 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-14">
-          <h2 className="font-display font-800 text-3xl md:text-5xl mb-4 leading-tight">
+          <h2 className="font-display font-800 text-2xl md:text-5xl mb-3 md:mb-4 leading-tight">
             {t("home.problem.heading")}
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">{t("home.problem.desc")}</p>
@@ -122,8 +125,8 @@ function Problem() {
 function About() {
   const { t } = useLanguage();
   return (
-    <section id="about" className="py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+    <section id="about" className="py-12 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-start">
         <div className="relative">
           <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-yellow/30 to-yellow/10 overflow-hidden flex items-end justify-center">
             <span className="text-[8rem] mb-8">{"👩‍💼"}</span>
@@ -132,7 +135,7 @@ function About() {
         </div>
         <div>
           <p className="text-yellow font-600 text-sm uppercase tracking-widest mb-3">{t("home.about.label")}</p>
-          <h2 className="font-display font-800 text-4xl md:text-5xl mb-12 leading-tight">
+          <h2 className="font-display font-800 text-2xl md:text-5xl mb-6 md:mb-12 leading-tight">
             {t("home.about.heading").split("freemoji").map((part: string, i: number, arr: string[]) =>
               i < arr.length - 1 ? (
                 <span key={i}>{part}<span className="text-yellow">freemoji</span></span>
@@ -171,7 +174,7 @@ function ForWhom() {
   ];
 
   return (
-    <section id="for-whom" className="py-24 md:py-32 bg-gray-50">
+    <section id="for-whom" className="py-12 md:py-32 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
           <h2 className="font-display font-800 text-4xl md:text-5xl mb-4">
@@ -212,7 +215,7 @@ function EmojiShowcase() {
   const { t } = useLanguage();
   return (
     <section className="py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 text-center mb-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 text-center mb-8 md:mb-16">
         <h2 className="font-display font-800 text-4xl md:text-5xl mb-4">
           {t("home.emojiShowcase.heading").split("emocji").map((part: string, i: number, arr: string[]) =>
             i < arr.length - 1 ? (
@@ -242,13 +245,13 @@ function EmojiShowcase() {
 function DigitalComm() {
   const { t } = useLanguage();
   return (
-    <section className="py-24 md:py-32 bg-gray-900 text-white relative overflow-hidden">
+    <section className="py-12 md:py-32 bg-gray-900 text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-yellow/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow/5 rounded-full blur-[80px]" />
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-center relative z-10">
         <div>
           <p className="text-yellow font-600 text-sm uppercase tracking-widest mb-3">{t("home.digitalComm.label")}</p>
-          <h2 className="font-display font-800 text-4xl md:text-5xl mb-6 leading-tight">{t("home.digitalComm.heading")}</h2>
+          <h2 className="font-display font-800 text-2xl md:text-5xl mb-4 md:mb-6 leading-tight">{t("home.digitalComm.heading")}</h2>
           {[0, 1].map((i) => (
             <p key={i} className="text-gray-400 leading-relaxed mb-6">{t(`home.digitalComm.paragraphs.${i}`)}</p>
           ))}
@@ -271,8 +274,8 @@ function DigitalComm() {
 function Solution() {
   const { t } = useLanguage();
   return (
-    <section className="py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+    <section className="py-12 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-center">
         {/* Left: visual */}
         <div className="relative">
           <div className="bg-yellow rounded-3xl p-12 md:p-16 relative overflow-hidden">
@@ -346,10 +349,10 @@ function HowItWorks() {
 function WebinarPricing() {
   const { t } = useLanguage();
   return (
-    <section id="offer" className="py-24 md:py-32">
+    <section id="offer" className="py-12 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="font-display font-800 text-4xl md:text-5xl mb-4">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="font-display font-800 text-2xl md:text-5xl mb-3 md:mb-4">
             {t("home.webinar.heading")}
           </h2>
         </div>
@@ -372,7 +375,7 @@ function WebinarPricing() {
               <p className="text-yellow font-600 text-sm uppercase tracking-widest mb-4">Webinar</p>
               <div className="bg-yellow rounded-2xl p-6 mb-6">
                 <p className="text-gray-900/60 text-xs mb-1">Dostęp do platformy od</p>
-                <p className="font-display font-800 text-5xl text-gray-900">199<span className="text-2xl">,00 zł</span></p>
+                <p className="font-display font-800 text-4xl md:text-5xl text-gray-900">199<span className="text-lg md:text-2xl">,00 zł</span></p>
               </div>
               <ul className="text-left space-y-3 mb-8 text-sm">
                 {[0, 1, 2, 3].map((i) => (
@@ -396,8 +399,7 @@ function WebinarPricing() {
 
 /* ─── Main Page (new conversion-optimized order) ─── */
 export default function Home() {
-  const [variant, setVariant] = useState<VariantKey>("normalne");
-  const { t } = useLanguage();
+  const { t, variant, setVariant } = useLanguage();
   
   // FAQ data - get from translations
   const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
@@ -413,7 +415,7 @@ export default function Home() {
     <>
       <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
       <StickyCTA />
-      <main>
+      <main suppressHydrationWarning>
         <Hero />
         <Problem />
         <About />

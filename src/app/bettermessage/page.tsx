@@ -14,12 +14,12 @@ function HeroSection() {
   const { t } = useLanguage();
   
   return (
-    <section className="pt-32 pb-20 px-6">
+    <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left: Image */}
           <div className="flex-1 w-full">
-            <div className="relative aspect-[4/3] w-full max-w-lg mx-auto">
+            <div className="relative aspect-[4/3] w-full max-w-sm md:max-w-lg mx-auto">
               <Image
                 src="/media/hero-image.png"
                 alt="BetterMessage Dashboard"
@@ -32,10 +32,10 @@ function HeroSection() {
 
           {/* Right: Content */}
           <div className="flex-1 w-full text-center lg:text-left">
-            <h1 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-6">
+            <h1 className="font-display text-3xl md:text-6xl font-800 text-gray-900 mb-4 md:mb-6">
               {t("betterMessage.hero.heading")}
             </h1>
-            <p className="text-xl md:text-2xl font-600 text-gray-800 mb-4">
+            <p className="text-lg md:text-2xl font-600 text-gray-800 mb-3 md:mb-4">
               {t("betterMessage.hero.subtitle")}
             </p>
             <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
@@ -87,7 +87,7 @@ function BenefitsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Chat Examples */}
-          <div className="relative bg-yellow rounded-3xl p-8 lg:p-12 min-h-[600px] flex flex-col justify-center gap-8">
+          <div className="relative bg-yellow rounded-3xl p-8 lg:p-12 flex flex-col justify-center gap-8">
             {/* Chat 1 */}
             <div className="bg-white rounded-2xl p-4 shadow-md">
               <div className="text-sm text-gray-500 mb-2">
@@ -216,11 +216,11 @@ function PricingSection() {
   };
 
   return (
-    <section id="pricing" className="py-20 px-6 bg-gradient-to-b from-white to-gray-50">
+    <section id="pricing" className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-4">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-3 md:mb-4">
             {t("betterMessage.pricing.header")}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -251,14 +251,14 @@ function PricingSection() {
               </div>
 
               {/* Plan Name */}
-              <h3 className="font-display text-4xl font-800 text-gray-900 mb-6">
+              <h3 className="font-display text-2xl md:text-4xl font-800 text-gray-900 mb-4 md:mb-6">
                 {plan.name}
               </h3>
 
               {/* Price */}
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-6xl font-800 text-gray-900">
+                  <span className="font-display text-4xl md:text-6xl font-800 text-gray-900">
                     {plan.price}
                   </span>
                   <span className="text-gray-600 text-lg">{plan.period}</span>
@@ -311,18 +311,18 @@ function EmojiWarningSection() {
   const { t } = useLanguage();
   
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-5xl mx-auto text-center">
         {/* Large Emojis */}
-        <div className="flex justify-center gap-8 mb-12">
-          <div className="text-8xl md:text-9xl animate-float">🤣</div>
-          <div className="text-8xl md:text-9xl animate-float-delayed">😭</div>
-          <div className="text-8xl md:text-9xl animate-float">😂</div>
-          <div className="text-8xl md:text-9xl animate-float-delayed">🥺</div>
+        <div className="flex justify-center gap-4 md:gap-8 mb-8 md:mb-12">
+          <div className="text-6xl md:text-9xl animate-float">🤣</div>
+          <div className="text-6xl md:text-9xl animate-float-delayed">😭</div>
+          <div className="text-6xl md:text-9xl animate-float">😂</div>
+          <div className="text-6xl md:text-9xl animate-float-delayed">🥺</div>
         </div>
 
         {/* Main Message */}
-        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-700 text-gray-900 mb-6 leading-tight">
+        <h2 className="font-display text-2xl md:text-5xl lg:text-6xl font-700 text-gray-900 mb-4 md:mb-6 leading-tight">
           {t("betterMessage.emojiWarning.title")} <span className="font-[900]" style={{ fontWeight: 900 }}>{t("betterMessage.emojiWarning.title2")}</span>
         </h2>
 
@@ -342,7 +342,7 @@ function VideoSection() {
 
   return (
     <>
-      <section className="relative py-40 px-6 overflow-hidden">
+      <section className="relative py-20 md:py-40 px-6 overflow-hidden">
         {/* Full screen background image */}
         <div className="absolute inset-0">
           <Image
@@ -359,7 +359,7 @@ function VideoSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Content */}
             <div>
-              <h2 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-8 leading-tight">
+              <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-8 leading-tight">
                 {t("betterMessage.video.title")}
                 <br />
                 {t("betterMessage.video.title2")}
@@ -368,7 +368,7 @@ function VideoSection() {
               {/* Yellow badge */}
               <div className="bg-yellow inline-block px-8 py-4 rounded-2xl mb-6">
                 <div className="flex items-center gap-4">
-                  <span className="font-display text-4xl font-[900] text-gray-900" style={{ fontWeight: 900 }}>
+                  <span className="font-display text-2xl md:text-4xl font-[900] text-gray-900" style={{ fontWeight: 900 }}>
                     {t("betterMessage.video.badge1")}
                   </span>
                   <div>
@@ -488,7 +488,7 @@ function PSSTSection() {
       <div className="max-w-7xl mx-auto">
         {/* PSST Header */}
         <div className="mb-16">
-          <h2 className="font-display text-7xl md:text-9xl font-[900] text-gray-900 mb-4" style={{ fontWeight: 900 }}>
+          <h2 className="font-display text-4xl md:text-9xl font-[900] text-gray-900 mb-4" style={{ fontWeight: 900 }}>
             {t("betterMessage.psst.heading")}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl leading-relaxed">
@@ -497,10 +497,10 @@ function PSSTSection() {
         </div>
 
         {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left: Benefits List */}
           <div>
-            <h3 className="font-display text-4xl md:text-5xl font-700 text-gray-900 mb-12">
+            <h3 className="font-display text-2xl md:text-5xl font-700 text-gray-900 mb-12">
               {t("betterMessage.psst.whyTitle")}
             </h3>
             <div className="space-y-8">
@@ -508,7 +508,7 @@ function PSSTSection() {
                 <div key={index} className="flex gap-6 items-start">
                   <div className="flex-shrink-0 -mt-2">
                     <div className="bg-yellow px-4 py-2 rounded-lg">
-                      <span className="font-display text-5xl font-[900] text-gray-900" style={{ fontWeight: 900 }}>
+                      <span className="font-display text-3xl md:text-5xl font-[900] text-gray-900" style={{ fontWeight: 900 }}>
                         {benefit.number}
                       </span>
                     </div>
@@ -610,7 +610,7 @@ function TestimonialsSection() {
           <div className="lg:col-span-8">
             {/* Header */}
             <div className="mb-12">
-              <h2 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-4">
+              <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-4">
                 {t("betterMessage.testimonials.title")}
               </h2>
               <p className="text-xl text-gray-600">
@@ -622,7 +622,7 @@ function TestimonialsSection() {
             <div className="relative">
               <div className="bg-white rounded-3xl p-10 md:p-12 shadow-2xl border-2 border-gray-100 max-w-2xl">
                 {/* Emoji */}
-                <div className="text-6xl mb-6">
+                <div className="text-4xl md:text-6xl mb-6">
                   {testimonials[currentIndex].emoji}
                 </div>
 
@@ -709,7 +709,7 @@ function TestimonialsSection() {
             {floatingEmojis.map((item, index) => (
               <div
                 key={index}
-                className="absolute text-7xl animate-float opacity-80"
+                className="absolute text-4xl md:text-7xl animate-float opacity-80"
                 style={{
                   top: `${(index * 15) % 80}%`,
                   left: `${(index * 25) % 60}%`,
@@ -759,7 +759,7 @@ function ContactFormSection() {
         <div className="bg-white rounded-3xl border-4 border-yellow p-10 md:p-16 shadow-xl">
           {/* Header */}
           <div className="mb-12">
-            <h2 className="font-display text-4xl md:text-5xl font-800 text-gray-900 mb-3">
+            <h2 className="font-display text-2xl md:text-5xl font-800 text-gray-900 mb-3">
               {t("betterMessage.contact.heading")}
             </h2>
             <p className="text-gray-500 text-sm">{t("betterMessage.contact.reminder")}</p>

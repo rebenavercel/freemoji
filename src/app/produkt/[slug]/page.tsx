@@ -73,19 +73,19 @@ const products = {
 /* ─── Hero Section ─── */
 function ProductHero({ product }: { product: typeof products[keyof typeof products] }) {
   return (
-    <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-yellow/10 to-white">
+    <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-6 bg-gradient-to-b from-yellow/10 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left: Emoji & Phone */}
           <div className="flex-1 w-full flex flex-col items-center">
-            <div className="text-9xl mb-8 animate-scale-in">{product.emoji}</div>
+            <div className="text-6xl md:text-9xl mb-8 animate-scale-in">{product.emoji}</div>
             
             {/* Phone mockup */}
             <div className="relative">
               <div className="absolute inset-0 bg-yellow/30 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] blur-3xl scale-110" />
-              <div className="relative z-10 w-64 h-96 bg-gray-900 rounded-[3rem] p-4 shadow-2xl">
+              <div className="relative z-10 w-48 h-72 md:w-64 md:h-96 bg-gray-900 rounded-[3rem] p-4 shadow-2xl">
                 <div className="w-full h-full bg-white rounded-[2.5rem] flex items-center justify-center overflow-hidden">
-                  <div className="text-8xl rotate-12">🍌🍌</div>
+                  <div className="text-6xl md:text-8xl rotate-12">🍌🍌</div>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ function ProductHero({ product }: { product: typeof products[keyof typeof produc
 
           {/* Right: Content */}
           <div className="flex-1 w-full text-center lg:text-left">
-            <h1 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-6">
+            <h1 className="font-display text-3xl md:text-6xl font-800 text-gray-900 mb-6">
               {product.name}
             </h1>
             <p className="text-xl md:text-2xl font-600 text-gray-800 mb-4">

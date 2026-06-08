@@ -19,9 +19,9 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 px-6 bg-yellow overflow-hidden">
+    <section className="py-12 md:py-20 px-4 md:px-6 bg-yellow overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left: Animated Emojis */}
           <div className="relative h-[500px] hidden lg:block">
             <div className="absolute inset-0 flex items-center justify-center">
@@ -79,10 +79,10 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
           <div className="flex flex-col gap-4">
             {/* Mobile title */}
             <div className="lg:hidden mb-8">
-              <h2 className="font-display text-5xl font-800 text-gray-900 mb-2">
+              <h2 className="font-display text-2xl md:text-4xl font-800 text-gray-900 mb-2">
                 {t("home.faq.title")}
               </h2>
-              <p className="text-xl text-gray-800">
+              <p className="text-base md:text-xl text-gray-800">
                 {t("home.faq.subtitle")}
               </p>
               <div className="mt-4">

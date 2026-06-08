@@ -21,13 +21,13 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-gray-50">
+    <section id="contact" className="py-12 md:py-24 px-4 md:px-6 bg-gray-50">
       <div className="max-w-4xl mx-auto">
         {/* Card Container */}
         <div className="bg-white rounded-3xl border-4 border-yellow p-10 md:p-16 shadow-xl">
           {/* Header */}
           <div className="mb-12">
-            <h2 className="font-display text-4xl md:text-5xl font-800 text-gray-900 mb-3">
+            <h2 className="font-display text-2xl md:text-5xl font-800 text-gray-900 mb-3">
               {t("contact.heading")}
             </h2>
             <p className="text-gray-500 text-sm">{t("contact.emojiReminder")}</p>

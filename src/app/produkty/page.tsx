@@ -13,7 +13,7 @@ import { type VariantKey } from "@/data/content";
 function ProductsHero() {
   const { t } = useLanguage();
   return (
-    <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-gray-50">
+    <section className="relative flex items-center justify-center overflow-hidden bg-gray-50 py-12 md:py-20">
       {/* Noise texture overlay */}
       <div 
         className="absolute inset-0 opacity-[0.4] mix-blend-overlay"
@@ -47,7 +47,7 @@ function ProductsHero() {
           </div>
 
           {/* People Image - overlays the text */}
-          <div className="relative z-10 w-full max-w-5xl -mt-16 animate-scale-in">
+          <div className="relative z-10 w-full max-w-3xl md:max-w-5xl -mt-16 animate-scale-in">
             <div className="relative aspect-[2.2/1] w-full">
               <Image
                 src="/people.png"
@@ -117,7 +117,7 @@ function ProductsList() {
   ];
 
   return (
-    <section id="products" className="py-20 px-6 bg-white">
+    <section id="products" className="py-12 md:py-20 px-4 md:px-6 bg-white">
       <div className="max-w-6xl mx-auto space-y-12">
         {products.map((product, index) => (
           <div
@@ -128,7 +128,7 @@ function ProductsList() {
           >
             {/* Left: Big Emoji */}
             <div className="lg:col-span-2 flex justify-center lg:justify-start">
-              <div className="text-8xl lg:text-9xl">{product.emoji}</div>
+              <div className="text-4xl md:text-9xl">{product.emoji}</div>
             </div>
 
             {/* Center: Phone with Bananas */}
@@ -138,10 +138,10 @@ function ProductsList() {
                 <div className="absolute inset-0 bg-yellow/30 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] blur-2xl scale-110" />
                 
                 {/* Phone mockup placeholder */}
-                <div className="relative z-10 w-48 h-80 bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
+                <div className="relative z-10 w-32 h-64 md:w-48 md:h-80 bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
                   <div className="w-full h-full bg-white rounded-[2rem] flex items-center justify-center overflow-hidden">
                     {/* Fruit illustration */}
-                    <div className="text-7xl rotate-12">{product.fruit}</div>
+                    <div className="text-4xl md:text-7xl rotate-12">{product.fruit}</div>
                   </div>
                 </div>
               </div>

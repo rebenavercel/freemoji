@@ -20,13 +20,33 @@
   --font-display: var(--font-sora);
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
+  position: relative;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);
+  overflow-x: clip;
+  max-width: 100%;
+  position: relative;
 }
 
-html {
-  scroll-behavior: smooth;
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  min-width: 0;
+}
+
+section {
+  position: relative;
+  overflow-x: clip;
 }
 
 @keyframes float {

@@ -32,6 +32,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
   }, []);
 
   const handleLanguageChange = (key: VariantKey) => {
+    console.log("🚀 Navbar: Changing variant from", variant, "to", key);
     if (setVariant) {
       setVariant(key);
       setLanguageDropdownOpen(false);
@@ -47,7 +48,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
           </Link>
           <div className="flex items-center gap-4">
             {/* Language Switcher PL/EN */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2" suppressHydrationWarning>
               <span className="text-sm text-gray-600">{t("nav.language")}:</span>
               <div className="flex items-center gap-1 bg-gray-100 rounded-full p-1">
                 <button
@@ -80,6 +81,7 @@ export default function Navbar({ variant, setVariant, showLanguageSelector = fal
                 <button
                   onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
                   className="bg-transparent border-none text-sm font-600 text-gray-900 focus:outline-none cursor-pointer flex items-center gap-1 hover:text-yellow transition-colors"
+                  suppressHydrationWarning
                 >
                   {variantLabels[variant]}
                   <svg 

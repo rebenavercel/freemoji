@@ -12,7 +12,7 @@ function AboutHero() {
   const { t } = useLanguage();
   
   return (
-    <section className="relative pt-32 pb-32 px-6 overflow-hidden min-h-[60vh] flex items-center">
+    <section className="relative pt-20 md:pt-32 pb-16 md:pb-32 px-4 md:px-6 overflow-hidden flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -30,7 +30,7 @@ function AboutHero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Title */}
           <div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-800 text-gray-900 leading-tight">
+            <h1 className="font-display text-2xl md:text-5xl lg:text-6xl font-800 text-gray-900 leading-tight">
               {t("about.hero.title")}
             </h1>
           </div>
@@ -83,7 +83,7 @@ function TeamSection() {
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-white to-yellow/10">
       <div className="max-w-6xl mx-auto">
-        <h2 className="font-display text-4xl md:text-5xl font-800 text-center mb-16">
+        <h2 className="font-display text-2xl md:text-5xl font-800 text-center mb-16">
           {t("about.team.title")}
         </h2>
 
@@ -184,11 +184,11 @@ function PSSTSection() {
   ];
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-12 md:py-20 px-4 md:px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* PSST Header */}
         <div className="mb-16">
-          <h2 className="font-display text-7xl md:text-9xl font-[900] text-gray-900 mb-4" style={{ fontWeight: 900 }}>
+          <h2 className="font-display text-4xl md:text-9xl font-[900] text-gray-900 mb-4" style={{ fontWeight: 900 }}>
             PSST...
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl leading-relaxed">
@@ -200,10 +200,10 @@ function PSSTSection() {
         </div>
 
         {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left: Benefits List */}
           <div>
-            <h3 className="font-display text-4xl md:text-5xl font-700 text-gray-900 mb-12">
+            <h3 className="font-display text-2xl md:text-5xl font-700 text-gray-900 mb-12">
               Dlaczego warto?
             </h3>
             <div className="space-y-8">
@@ -211,7 +211,7 @@ function PSSTSection() {
                 <div key={index} className="flex gap-6 items-start">
                   <div className="flex-shrink-0 -mt-2">
                     <div className="bg-yellow px-4 py-2 rounded-lg">
-                      <span className="font-display text-5xl font-[900] text-gray-900" style={{ fontWeight: 900 }}>
+                      <span className="font-display text-3xl md:text-5xl font-[900] text-gray-900" style={{ fontWeight: 900 }}>
                         {benefit.number}
                       </span>
                     </div>
@@ -282,7 +282,7 @@ function EmojiGridSection() {
   return (
     <section className="py-20 px-6 bg-yellow">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-12">
+        <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-12">
           Znasz podstawy?
         </h2>
 
@@ -330,12 +330,12 @@ function AboutFAQSection({ faqs }: { faqs: Array<{ emoji: string; question: stri
   ];
 
   return (
-    <section className="py-20 px-6 bg-yellow overflow-hidden">
+    <section className="py-12 md:py-20 px-4 md:px-6 bg-yellow overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Left: Benefits List */}
           <div>
-            <h2 className="font-display text-4xl md:text-5xl font-800 text-gray-900 mb-8">
+            <h2 className="font-display text-2xl md:text-5xl font-800 text-gray-900 mb-8">
               W czym freemoji może Ci pomóc?
             </h2>
             <ul className="space-y-6">
@@ -458,7 +458,7 @@ function TestimonialsSection() {
           <div className="lg:col-span-8">
             {/* Header */}
             <div className="mb-12">
-              <h2 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-4">
+              <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-4">
                 Opinie
               </h2>
               <p className="text-xl text-gray-600">
@@ -470,7 +470,7 @@ function TestimonialsSection() {
             <div className="relative">
               <div className="bg-white rounded-3xl p-10 md:p-12 shadow-2xl border-2 border-gray-100 max-w-2xl">
                 {/* Emoji */}
-                <div className="text-6xl mb-6">
+                <div className="text-4xl md:text-6xl mb-6">
                   {testimonials[currentIndex].emoji}
                 </div>
 
@@ -557,7 +557,7 @@ function TestimonialsSection() {
             {floatingEmojis.map((item, index) => (
               <div
                 key={index}
-                className="absolute text-7xl animate-float opacity-80"
+                className="absolute text-4xl md:text-7xl animate-float opacity-80"
                 style={{
                   top: `${(index * 15) % 80}%`,
                   left: `${(index * 25) % 60}%`,

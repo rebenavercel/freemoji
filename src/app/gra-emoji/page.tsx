@@ -58,13 +58,13 @@ function EmojiGame() {
   const isPerfectScore = score === questions.length;
 
   return (
-    <section className="min-h-screen pt-24 pb-16 px-6 bg-gradient-to-b from-yellow/10 to-white">
+    <section className="pt-24 pb-16 px-6 bg-gradient-to-b from-yellow/10 to-white">
       <div className="max-w-3xl mx-auto">
         {!gameFinished ? (
           <>
             {/* Header */}
             <div className="text-center mb-12">
-              <h1 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-4">
+              <h1 className="font-display text-3xl md:text-6xl font-800 text-gray-900 mb-4">
                 {t("emojiGame.quizHeading")}
               </h1>
               <div className="inline-block bg-yellow/20 border-2 border-yellow rounded-2xl px-6 py-3">
@@ -92,7 +92,7 @@ function EmojiGame() {
             <div className="bg-white rounded-3xl border-4 border-yellow p-10 md:p-14 shadow-2xl">
               {/* Emoji Display */}
               <div className="text-center mb-8">
-                <div className="text-9xl mb-6 animate-scale-in">
+                <div className="text-6xl md:text-9xl mb-6 animate-scale-in">
                   {questions[currentQuestion].emoji}
                 </div>
                 <h2 className="font-display text-3xl font-700 text-gray-900">
@@ -149,11 +149,11 @@ function EmojiGame() {
         ) : (
           /* Results Screen */
           <div className="bg-white rounded-3xl border-4 border-yellow p-10 md:p-16 shadow-2xl text-center">
-            <div className="text-8xl mb-6">
+            <div className="text-6xl md:text-8xl mb-6">
               {isPerfectScore ? "🎉" : score >= questions.length * 0.7 ? "😊" : "🤔"}
             </div>
             
-            <h2 className="font-display text-4xl md:text-5xl font-800 text-gray-900 mb-6">
+            <h2 className="font-display text-2xl md:text-5xl font-800 text-gray-900 mb-6">
               {isPerfectScore ? t("emojiGame.results.perfect") : score >= questions.length * 0.7 ? t("emojiGame.results.good") : t("emojiGame.results.low")}
             </h2>
             
@@ -167,7 +167,7 @@ function EmojiGame() {
                 <p className="text-sm text-gray-700 mb-2 font-600">
                   {t("emojiGame.results.perfectScoreText")}
                 </p>
-                <p className="font-display text-4xl font-900 text-gray-900 mb-2 tracking-wider">
+                <p className="font-display text-2xl md:text-4xl font-900 text-gray-900 mb-2 tracking-wider">
                   EMOJI5
                 </p>
                 <p className="text-sm text-gray-600">

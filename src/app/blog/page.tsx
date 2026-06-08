@@ -61,7 +61,7 @@ export default function BlogPage() {
       <Navbar />
       
       {/* Hero Section z tłem */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+      <section className="relative flex items-center overflow-hidden py-12 md:py-20">
         {/* Zdjęcie w tle */}
         <div className="absolute inset-0 z-0">
           <Image

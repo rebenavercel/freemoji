@@ -32,10 +32,12 @@ export default function RootLayout({
       lang="pl"
       className={`${outfit.variable} ${sora.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-full flex flex-col font-sans overflow-x-clip w-full">
         <LanguageProvider>
           <CartProvider>
-            {children}
+            <div className="flex-1 w-full overflow-x-clip">
+              {children}
+            </div>
             <Cart />
           </CartProvider>
         </LanguageProvider>

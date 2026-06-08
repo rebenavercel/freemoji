@@ -1,51 +1,140 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
+import { content, type VariantKey } from "@/data/content";
 
 type Language = "pl" | "en";
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  variant: VariantKey;
+  setVariant: (variant: VariantKey) => void;
   t: (key: string) => any;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Initialize language from localStorage or default to "pl"
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window !== "undefined") {
-      const savedLanguage = localStorage.getItem("language");
-      return (savedLanguage === "en" || savedLanguage === "pl") ? savedLanguage : "pl";
+  const [mounted, setMounted] = useState(false);
+  const [language, setLanguage] = useState<Language>("pl");
+  const [variant, setVariant] = useState<VariantKey>("normalne");
+
+  // Debug: Log content structure on mount
+  useEffect(() => {
+    console.log("📦 Content available:", {
+      variants: Object.keys(content),
+      normalne: content.normalne ? Object.keys(content.normalne) : "undefined",
+      genz: content.genz ? Object.keys(content.genz) : "undefined"
+    });
+  }, []);
+
+  // Load from localStorage after mount (client-side only)
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("language");
+    const savedVariant = localStorage.getItem("variant");
+    
+    console.log("🔵 LanguageContext: Loading from localStorage", { savedLanguage, savedVariant });
+    
+    if (savedLanguage === "en" || savedLanguage === "pl") {
+      setLanguage(savedLanguage);
     }
-    return "pl";
-  });
+    
+    if (savedVariant === "normalne" || savedVariant === "genz" || savedVariant === "boomer" || savedVariant === "genalpha") {
+      setVariant(savedVariant);
+    }
+    
+    setMounted(true);
+  }, []);
 
   // Save language to localStorage whenever it changes
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (mounted) {
+      console.log("🟢 LanguageContext: Saving language to localStorage", language);
       localStorage.setItem("language", language);
     }
-  }, [language]);
+  }, [language, mounted]);
 
-  const t = (key: string): any => {
-    const keys = key.split(".");
-    let value: any = translations[language];
-    
-    for (const k of keys) {
-      if (value && typeof value === "object" && k in value) {
-        value = value[k];
-      } else {
-        return key; // Return key if translation not found
-      }
+  // Save variant to localStorage whenever it changes
+  useEffect(() => {
+    if (mounted) {
+      console.log("🟡 LanguageContext: Saving variant to localStorage", variant);
+      localStorage.setItem("variant", variant);
     }
+  }, [variant, mounted]);
+
+  const t = useCallback((key: string): any => {
+    const keys = key.split(".");
     
-    return value !== undefined ? value : key;
-  };
+    // Helper function to get value from object, handling array indices
+    const getValue = (obj: any, keys: string[]): any => {
+      let value: any = obj;
+      
+      for (const k of keys) {
+        if (value === undefined || value === null) {
+          return undefined;
+        }
+        
+        // Check if key ends with a number (e.g., "headline1")
+        const match = k.match(/^(.+?)(\d+)$/);
+        if (match) {
+          const [, baseName, indexStr] = match;
+          const index = parseInt(indexStr, 10) - 1; // Convert 1-based to 0-based
+          
+          // Try to access array element
+          if (value && typeof value === "object" && baseName in value) {
+            const arr = value[baseName];
+            if (Array.isArray(arr) && index >= 0 && index < arr.length) {
+              value = arr[index];
+              continue;
+            }
+          }
+        }
+        
+        // Regular object property access
+        if (value && typeof value === "object" && k in value) {
+          value = value[k];
+        } else {
+          return undefined;
+        }
+      }
+      
+      return value;
+    };
+    
+    // For Polish, use variant-based content
+    if (language === "pl") {
+      // Remove "home." prefix if present for content lookup
+      const contentKeys = key.startsWith("home.") ? key.substring(5).split(".") : keys;
+      let value = getValue(content[variant], contentKeys);
+      
+      // Debug log
+      if (key.startsWith("home.hero.headline") || key.startsWith("hero.headline")) {
+        console.log("🔍 t() called:", { 
+          key, 
+          contentKeys,
+          variant, 
+          value, 
+          keys,
+          contentKeysUsed: contentKeys
+        });
+      }
+      
+      // Fallback to translations if not found in content
+      if (value === undefined) {
+        value = getValue(translations[language], keys);
+      }
+      
+      return value !== undefined ? value : key;
+    } else {
+      // For English, use regular translations
+      const value = getValue(translations[language], keys);
+      return value !== undefined ? value : key;
+    }
+  }, [language, variant]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, variant, setVariant, t }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -903,30 +992,30 @@ const translations = {
         ]
       },
       testimonials: {
-        title: "Testimonials",
-        subtitle: "See what our clients say about us",
+        title: "Opinie",
+        subtitle: "Zobacz co mówią o Nas Nasi klienci",
         items: [
           {
             emoji: "🥰",
-            quote: "BetterMessage completely changed the way I communicate with my team. I used to have problems interpreting message tone. Now I understand the context and avoid misunderstandings.",
+            quote: "BetterMessage całkowicie zmienił sposób, w jaki komunikuję się z moim zespołem. Wcześniej miałem problem z interpretacją tonu wiadomości. Teraz rozumiem kontekst i unikam nieporozumień.",
             name: "Karol Chrapkiewicz",
             title: "Re Bena Gesta"
           },
           {
             emoji: "😊",
-            quote: "As an HR Manager, I send dozens of messages to candidates every day. BetterMessage helped me build a warmer, more professional communication tone, which translated into better employer branding.",
+            quote: "Jako HR Manager codziennie wysyłam dziesiątki wiadomości do kandydatów. BetterMessage pomógł mi zbudować cieplejszy, bardziej profesjonalny ton komunikacji, co przełożyło się na lepszy employer branding.",
             name: "Anna Kowalska",
             title: "HR Manager, TechCorp"
           },
           {
             emoji: "🎯",
-            quote: "In sales, relationships are everything. Thanks to BetterMessage, I learned to express empathy in text messages, which significantly improved conversion and customer satisfaction.",
+            quote: "W sprzedaży relacja to wszystko. Dzięki BetterMessage nauczyłem się wyrażać empatię w wiadomościach tekstowych, co znacząco poprawiło konwersję i zadowolenie klientów.",
             name: "Marcin Nowak",
             title: "Sales Director, SalesPro"
           },
           {
             emoji: "💡",
-            quote: "As a coach, I conduct online sessions and email correspondence. BetterMessage showed me how important context is in written communication. It completely changed my practice.",
+            quote: "Jako coach prowadzę sesje online i korespondencję mailową. BetterMessage pokazał mi, jak ważny jest kontekst w komunikacji pisemnej. To kompletnie zmieniło moją praktykę.",
             name: "Joanna Wiśniewska",
             title: "Business Coach"
           }
@@ -1159,24 +1248,24 @@ const translations = {
     },
     about: {
       hero: {
-        title: "Gain a new advantage in remote communication.",
+        title: "Zyskaj nową przewagę w komunikacji zdalnej.",
         benefits: {
-          emotions: "Better emotion recognition",
-          emotionsDesc: "recognize hidden emotions in conversations",
-          intelligence: "Emotional Intelligence 2.0",
-          intelligenceDesc: "develop empathy in digital environment",
-          meetings: "More effective meetings",
-          meetingsDesc: "better decisions, fewer misunderstandings",
-          confidence: "Confidence in conversation",
-          confidenceDesc: "less stress in negotiations and online presentations",
-          credibility: "Leader credibility",
-          credibilityDesc: "build authority and trust in your team"
+          emotions: "Lepsze odczytywanie emocji",
+          emotionsDesc: "rozpoznawaj ukryte emocje u rozmówców",
+          intelligence: "Inteligencja emocjonalna 2.0",
+          intelligenceDesc: "rozwijaj empatię w środowisku cyfrowym",
+          meetings: "Skuteczniejsze spotkania",
+          meetingsDesc: "lepsze decyzje, mniej nieporozumień",
+          confidence: "Pewność w rozmowie",
+          confidenceDesc: "mniej stresu w negocjacjach i prezentacjach online",
+          credibility: "Wiarygodność lidera",
+          credibilityDesc: "buduj autorytet i zaufanie w zespole"
         }
       },
       team: {
-        title: "Let's get to know each other!",
+        title: "Poznajmy się lepiej!",
         ceo: "CEO",
-        contactUs: "Contact us!"
+        contactUs: "Napisz do nas!"
       }
     },
     contact: {
