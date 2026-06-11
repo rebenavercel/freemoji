@@ -478,7 +478,7 @@ function TestimonialsSection() {
 
               {/* Dots Indicator */}
               <div className="flex gap-2 mt-6">
-                {testimonials.map((_, index) => (
+                {Array.from({ length: testimonials.length }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
