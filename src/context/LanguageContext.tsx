@@ -162,11 +162,11 @@ const translations = {
         headline2: "do siebie częściej,",
         headline3: "niż rozmawiamy",
         subtitle: "Wiadomości, e-maile, komunikatory i spotkania online stały się codziennością. Warto jednak pamiętać, że również słowo pisane ma swój ton i emocje.",
-        cta: "Zapisz się na webinar",
+        cta: "Zobacz produkty",
         socialProof: "Dołącz do",
         professionals: "profesjonalistów"
       },
-      stickyCta: "Zapisz się na webinar",
+      stickyCta: "Zobacz produkty",
       problem: {
         heading: "Nie widzisz emocji? Tracisz połowę komunikatu.",
         desc: "W komunikacji zdalnej brakuje wielu sygnałów obecnych w rozmowie bezpośredniej – kontaktu wzrokowego, gestów czy mikroekspresji twarzy. W efekcie łatwo przeoczyć emocje rozmówcy, opór klienta czy niepewność współpracownika.",
@@ -208,7 +208,7 @@ const translations = {
         ]
       },
       forWhom: {
-        heading: "Dla kogo jest ten webinar?",
+        heading: "Dla kogo jest ten produkt?",
         tabs: [
           { label: "HR", emoji: "👔", text: "Rekruterzy i specjaliści HR codziennie komunikują się pisemnie z kandydatami. Ton wiadomości wpływa na doświadczenie rekrutacyjne i wizerunek firmy. Nauczymy jak pisać z empatią." },
           { label: "Sprzedawcy", emoji: "🤝", text: "W sprzedaży relacja to klucz. Wiadomości pozbawione emocji mogą zniechęcić klienta. Pokażemy jak budować ciepły, profesjonalny ton w komunikacji pisemnej." },
@@ -244,20 +244,20 @@ const translations = {
         label: "Jak to działa?",
         heading: "3 proste kroki",
         steps: [
-          { num: "1", emoji: "📝", title: "Zapisz się na webinar", desc: "Wybierz termin i zarezerwuj miejsce w 30 sekund." },
-          { num: "2", emoji: "💡", title: "Poznaj cyfrową mowę ciała", desc: "Na webinarze dowiesz się jak rozpoznawać i wyrażać emocje online." },
+          { num: "1", emoji: "📝", title: "Zobacz produkty", desc: "Wybierz i zarezerwuj dostęp w 30 sekund." },
+          { num: "2", emoji: "💡", title: "Poznaj cyfrową mowę ciała", desc: "W produkcie dowiesz się jak rozpoznawać i wyrażać emocje online." },
           { num: "3", emoji: "🚀", title: "Stosuj w praktyce", desc: "Zacznij świadomie komunikować się w mailach, czatach i na spotkaniach." }
         ]
       },
       webinar: {
-        heading: "Zapisz się na webinar",
+        heading: "Zobacz produkty",
         bullets: [
           { emoji: "📚", text: "Poznasz podstawy cyfrowej mowy ciała" },
           { emoji: "🎯", text: "Dowiesz się jak unikać nieporozumień w komunikacji online" },
           { emoji: "💡", text: "Otrzymasz praktyczne wskazówki do codziennej pracy" },
           { emoji: "🤝", text: "Zbudujesz lepsze relacje z zespołem i klientami" }
         ],
-        cta: "Zapisz się na webinar"
+        cta: "Zobacz produkty"
       },
       webinarPromo: {
         subtitle: "Dołącz do naszej społeczności i odkryj nowy wymiar komunikacji online.",
@@ -282,7 +282,7 @@ const translations = {
           },
           {
             question: "Jak wygląda szkolenie?",
-            answer: "Oferujemy webinary na żywo, materiały edukacyjne do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji."
+            answer: "Oferujemy produkty edukacyjne, materiały do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji."
           },
           {
             question: "Ile kosztuje dostęp?",
@@ -290,7 +290,7 @@ const translations = {
           },
           {
             question: "Czy mogę przetestować platformę?",
-            answer: "Tak! Zapisz się na bezpłatny webinar, aby poznać nasze podejście i zobaczyć fragment platformy w akcji."
+            answer: "Tak! Zobacz nasze bezpłatne produkty, aby poznać nasze podejście i zobaczyć fragment platformy w akcji."
           }
         ]
       }
@@ -524,7 +524,7 @@ const translations = {
         toGetCode: ", aby zdobyć kod rabatowy 🎁",
         tryAgainHint: "Spróbuj jeszcze raz - pytania są losowe!",
         medium: "Nieźle! 🤔",
-        mediumDesc: "Znasz podstawy, ale jest jeszcze sporo do nauczenia. Dołącz do nas na webinar!",
+        mediumDesc: "Znasz podstawy, ale jest jeszcze sporo do nauczenia. Dołącz do nas i zobacz produkty!",
         dontGiveUp: "Nie poddawaj się! Potrzebujesz",
         toGetDiscount: ", aby zdobyć kod na 5% rabatu 💪",
         collectMore: "Zbierz",
@@ -741,7 +741,7 @@ const translations = {
           {
             emoji: "📚",
             question: "Jak wygląda szkolenie?",
-            answer: "Oferujemy webinary na żywo, materiały edukacyjne do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji."
+            answer: "Oferujemy produkt edukacyjny z materiałami do samodzielnej nauki, interaktywnymi ćwiczeniami oraz mini grami, które pomagają zrozumieć kontekst emoji w komunikacji."
           },
           {
             emoji: "💰",
@@ -751,7 +751,7 @@ const translations = {
           {
             emoji: "🎯",
             question: "Czy mogę przetestować platformę?",
-            answer: "Tak! Zapisz się na bezpłatny webinar, aby poznać nasze podejście i zobaczyć fragment platformy w akcji."
+            answer: "Tak! Kup produkt, aby poznać nasze podejście i zobaczyć platformę w akcji."
           }
         ]
       },
@@ -835,11 +835,11 @@ const translations = {
         headline2: "to each other more often",
         headline3: "than we talk",
         subtitle: "Messages, emails, messengers, and online meetings have become everyday life. However, it's worth remembering that written words also have their tone and emotions.",
-        cta: "Sign up for webinar",
+        cta: "Buy the product",
         socialProof: "Join",
         professionals: "professionals"
       },
-      stickyCta: "Sign up for webinar",
+      stickyCta: "Buy the product",
       problem: {
         heading: "Don't see emotions? You're losing half the message.",
         desc: "Remote communication lacks many signals present in face-to-face conversation – eye contact, gestures, or micro-expressions. As a result, it's easy to miss your conversation partner's emotions, client resistance, or coworker uncertainty.",
@@ -881,7 +881,7 @@ const translations = {
         ]
       },
       forWhom: {
-        heading: "Who is this webinar for?",
+        heading: "Who is this product for?",
         tabs: [
           { label: "HR", emoji: "👔", text: "Recruiters and HR specialists communicate in writing with candidates every day. Message tone affects recruitment experience and company image. We'll teach you how to write with empathy." },
           { label: "Sales", emoji: "🤝", text: "In sales, relationships are key. Messages devoid of emotion can discourage clients. We'll show you how to build a warm, professional tone in written communication." },
@@ -917,20 +917,20 @@ const translations = {
         label: "How does it work?",
         heading: "3 simple steps",
         steps: [
-          { num: "1", emoji: "📝", title: "Sign up for webinar", desc: "Choose a date and reserve your spot in 30 seconds." },
-          { num: "2", emoji: "💡", title: "Learn digital body language", desc: "At the webinar, you'll learn how to recognize and express emotions online." },
+          { num: "1", emoji: "📝", title: "Buy the product", desc: "Choose your plan and get instant access." },
+          { num: "2", emoji: "💡", title: "Learn digital body language", desc: "Learn how to recognize and express emotions online." },
           { num: "3", emoji: "🚀", title: "Apply in practice", desc: "Start communicating consciously in emails, chats, and meetings." }
         ]
       },
       webinar: {
-        heading: "Sign up for webinar",
+        heading: "Get the product",
         bullets: [
           { emoji: "📚", text: "Learn the basics of digital body language" },
           { emoji: "🎯", text: "Learn how to avoid misunderstandings in online communication" },
           { emoji: "💡", text: "Get practical tips for everyday work" },
           { emoji: "🤝", text: "Build better relationships with your team and clients" }
         ],
-        cta: "Sign up for webinar"
+        cta: "Buy the product"
       },
       webinarPromo: {
         subtitle: "Join our community and discover a new dimension of online communication.",
@@ -955,7 +955,7 @@ const translations = {
           },
           {
             question: "What does the training look like?",
-            answer: "We offer live webinars, self-study educational materials, interactive exercises, and mini games that help you understand the context of emojis in communication."
+            answer: "We offer educational materials for self-study, interactive exercises, and mini games that help you understand the context of emojis in communication."
           },
           {
             question: "How much does access cost?",
@@ -963,7 +963,7 @@ const translations = {
           },
           {
             question: "Can I test the platform?",
-            answer: "Yes! Sign up for a free webinar to learn about our approach and see a preview of the platform in action."
+            answer: "Yes! Buy the product to learn about our approach and see the platform in action."
           }
         ]
       }
@@ -1197,7 +1197,7 @@ const translations = {
         toGetCode: "to get the discount code 🎁",
         tryAgainHint: "Try again - questions are random!",
         medium: "Not bad! 🤔",
-        mediumDesc: "You know the basics, but there's still a lot to learn. Join us at the webinar!",
+        mediumDesc: "You know the basics, but there's still a lot to learn. Check out the product!",
         dontGiveUp: "Don't give up! You need",
         toGetDiscount: "to get 5% discount code 💪",
         collectMore: "Collect",
@@ -1414,7 +1414,7 @@ const translations = {
           {
             emoji: "📚",
             question: "What does the training look like?",
-            answer: "We offer live webinars, self-study educational materials, interactive exercises, and mini games that help understand the context of emojis in communication."
+            answer: "We offer educational materials for self-study, interactive exercises, and mini games that help understand the context of emojis in communication."
           },
           {
             emoji: "💰",
@@ -1424,7 +1424,7 @@ const translations = {
           {
             emoji: "🎯",
             question: "Can I test the platform?",
-            answer: "Yes! Sign up for a free webinar to learn about our approach and see a preview of the platform in action."
+            answer: "Yes! Buy the product to learn about our approach and see the platform in action."
           }
         ]
       },

@@ -179,7 +179,7 @@ export const content: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["Dzis\u0301 piszemy", "wie\u0328cej niz\u0307", "mo\u0301wimy"],
       subtitle: "A przeciez\u0307 s\u0142owo pisane, tez\u0307 ma g\u0142os.",
-      cta: "Zapisz sie\u0328 na webinar! :)",
+      cta: "Zobacz produkty! :)",
       ctaSub: "Dowiedz sie\u0328 wie\u0328cej o cyfrowej mowie cia\u0142a.",
     },
     about: {
@@ -241,7 +241,7 @@ export const content: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "Co obejmuje webinar?",
+      heading: "Co obejmuje produkt?",
       desc: "",
       bullets: [
         { emoji: "\uD83D\uDC40", text: "Poznaj podstawy netykiety oraz zrozum podstawowe poje\u0328cia z cyfrowej komunikacji" },
@@ -250,7 +250,7 @@ export const content: Record<VariantKey, SectionContent> = {
         { emoji: "\uD83D\uDE0C", text: "Uz\u0307ywanie klarownych komunikato\u0301w, kto\u0301re pozwola\u0328 Cie\u0328 lepiej zrozumiec\u0301" },
         { emoji: "\uD83D\uDC51", text: "Dowiesz sie\u0328 jak prze\u0142amac\u0301 mie\u0328dzypokoleniowa\u0328 bariere\u0328 komunikacyjna\u0328" },
       ],
-      cta: "Zarezerwuj miejsce na najbliz\u0307szy webinar",
+      cta: "Zobacz produkt",
     },
     webinarPromo: {
       heading: "Podstawy cyfrowej mowy cia\u0142a na spotkaniach online",
@@ -392,7 +392,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "📚",
             question: "Jak wygląda szkolenie?",
-            answer: "Oferujemy webinary na żywo, materiały edukacyjne do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji."
+            answer: "Oferujemy produkty edukacyjne, materiały do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji."
           },
           {
             emoji: "💰",
@@ -402,7 +402,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "🎯",
             question: "Czy mogę przetestować platformę?",
-            answer: "Tak! Zapisz się na bezpłatny webinar, aby poznać nasze podejście i zobaczyć fragment platformy w akcji."
+            answer: "Tak! Zobacz nasze produkty, aby poznać nasze podejście i zobaczyć fragment platformy w akcji."
           }
         ]
       }
@@ -413,7 +413,7 @@ export const content: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["Plot twist:", "Piszesz wie\u0328cej", "niz\u0307 mo\u0301wisz"],
       subtitle: "A Twoje wiadomos\u0301ci tez\u0307 maja\u0328 vibe, aure\u0328 i emocje.",
-      cta: "Wbij na webinar \uD83D\uDD25",
+      cta: "Check produkty \uD83D\uDD25",
       ctaSub: "Jes\u0301li ich nie pokaz\u0307esz\u2026 Twoja wiadomos\u0301c\u0301 brzmi jak NPC dialog z tutoriala.",
     },
     about: {
@@ -477,7 +477,7 @@ export const content: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "Co obejmuje webinar?",
+      heading: "Co obejmuje produkt?",
       desc: "",
       bullets: [
         { emoji: "\uD83D\uDC40", text: "podstawy netykiety i cyfrowej komunikacji" },
@@ -486,7 +486,7 @@ export const content: Record<VariantKey, SectionContent> = {
         { emoji: "\uD83D\uDE0C", text: "jasne i zrozumia\u0142e komunikaty" },
         { emoji: "\uD83D\uDC51", text: "prze\u0142amanie bariery komunikacyjnej mie\u0328dzy pokoleniami" },
       ],
-      cta: "Zarezerwuj miejsce na najbliz\u0307szy webinar",
+      cta: "Zobacz produkt",
     },
     webinarPromo: {
       heading: "Podstawy cyfrowej mowy cia\u0142a",
@@ -628,7 +628,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83D\uDCDA",
             question: "Jak wygl\u0105da szkolenie?",
-            answer: "Oferujemy webinary na \u017cywo, materia\u0142y edukacyjne do samodzielnej nauki, interaktywne \u0107wiczenia oraz mini gry, kt\u00f3re pomagaj\u0105 zrozumie\u0107 kontekst emoji w komunikacji."
+            answer: "Oferujemy produkt edukacyjny z materia\u0142ami do samodzielnej nauki, interaktywnymi \u0107wiczeniami oraz mini grami, kt\u00f3re pomagaj\u0105 zrozumie\u0107 kontekst emoji w komunikacji."
           },
           {
             emoji: "\uD83D\uDCB0",
@@ -638,7 +638,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83C\uDFAF",
             question: "Czy mog\u0119 przetestowa\u0107 platform\u0119?",
-            answer: "Tak! Zapisz si\u0119 na bezp\u0142atny webinar, \u017ceby pozna\u0107 nasze podej\u015bcie i zobaczy\u0107 fragment platformy w akcji."
+            answer: "Tak! Kup produkt, \u017ceby pozna\u0107 nasze podej\u015bcie i zobaczy\u0107 platform\u0119 w akcji."
           }
         ]
       }
@@ -649,7 +649,7 @@ export const content: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["Dzis\u0301 piszemy", "do siebie cze\u0328s\u0301ciej,", "niz\u0307 rozmawiamy"],
       subtitle: "Wiadomos\u0301ci, e-maile, komunikatory i spotkania online sta\u0142y sie\u0328 codziennos\u0301cia\u0328. Warto jednak pamie\u0328tac\u0301, z\u0307e ro\u0301wniez\u0307 s\u0142owo pisane ma swo\u0301j ton i emocje.",
-      cta: "Zapisz sie\u0328 na webinar",
+      cta: "Kup produkt",
       ctaSub: "Dowiedz sie\u0328 wie\u0328cej o cyfrowej mowie cia\u0142a.",
     },
     about: {
@@ -711,8 +711,8 @@ export const content: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "Co obejmuje webinar?",
-      desc: "Podczas spotkania:",
+      heading: "Co obejmuje produkt?",
+      desc: "W produkcie znajdziesz:",
       bullets: [
         { emoji: "\uD83D\uDC40", text: "poznasz podstawy netykiety i komunikacji cyfrowej" },
         { emoji: "\uD83E\uDDE0", text: "zrozumiesz znaczenie interpunkcji i emocji w wiadomos\u0301ciach" },
@@ -720,7 +720,7 @@ export const content: Record<VariantKey, SectionContent> = {
         { emoji: "\uD83D\uDE0C", text: "nauczysz sie\u0328 tworzyc\u0301 jasne i zrozumia\u0142e komunikaty" },
         { emoji: "\uD83D\uDC51", text: "poznasz sposoby prze\u0142amywania barier komunikacyjnych mie\u0328dzy pokoleniami" },
       ],
-      cta: "Zarezerwuj miejsce na najbliz\u0307szy webinar",
+      cta: "Kup produkt",
     },
     webinarPromo: {
       heading: "Podstawy cyfrowej mowy cia\u0142a na spotkaniach online",
@@ -734,7 +734,7 @@ export const content: Record<VariantKey, SectionContent> = {
       cta2: "Dowiedz sie\u0328 wie\u0328cej",
     },
     forWhom: {
-      heading: "Dla kogo jest ten webinar?",
+      heading: "Dla kogo jest ten produkt?",
       bullets: [
         "Osoby pracuja\u0328ce w s\u0301rodowisku online",
         "Prowadza\u0328cy spotkania zdalne",
@@ -862,7 +862,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83D\uDCDA",
             question: "Jak przebiega szkolenie?",
-            answer: "Oferujemy webinary prowadzone na \u017cywo, materia\u0142y edukacyjne do samodzielnej nauki, interaktywne \u0107wiczenia oraz mini gry pomagaj\u0105ce zrozumie\u0107 kontekst emotikon w komunikacji."
+            answer: "Oferujemy produkt edukacyjny z materia\u0142ami do samodzielnej nauki, interaktywnymi \u0107wiczeniami oraz mini grami pomagaj\u0105cymi zrozumie\u0107 kontekst emotikon w komunikacji."
           },
           {
             emoji: "\uD83D\uDCB0",
@@ -872,7 +872,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83C\uDFAF",
             question: "Czy istnieje mo\u017cliwo\u015b\u0107 przetestowania platformy?",
-            answer: "Tak! Zapraszamy do zapisania si\u0119 na bezp\u0142atny webinar w celu zapoznania si\u0119 z naszym podej\u015bciem oraz zobaczenia fragmentu platformy w dzia\u0142aniu."
+            answer: "Tak! Zapraszamy do kupienia produktu w celu zapoznania si\u0119 z naszym podej\u015bciem oraz zobaczenia platformy w dzia\u0142aniu."
           }
         ]
       }
@@ -1097,7 +1097,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83D\uDCDA",
             question: "Jak wygl\u0105da training?",
-            answer: "Oferujemy webinars live, educational materials do samodzielnej nauki, interactive \u0107wiczenia plus mini games kt\u00f3re help zrozumie\u0107 context emoji w communication."
+            answer: "Oferujemy educational materials do samodzielnej nauki, interactive \u0107wiczenia plus mini games kt\u00f3re help zrozumie\u0107 context emoji w communication."
           },
           {
             emoji: "\uD83D\uDCB0",
@@ -1107,7 +1107,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83C\uDFAF",
             question: "Czy mog\u0119 przetestowa\u0107 platform?",
-            answer: "Ofc! Zapisz si\u0119 na free webinar \u017ceby pozna\u0107 nasze approach i zobaczy\u0107 fragment platformy in action."
+            answer: "Ofc! Kup produkt \u017ceby pozna\u0107 nasze approach i zobaczy\u0107 platform\u0119 in action."
           }
         ]
       }
@@ -1117,7 +1117,7 @@ export const content: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["Piszemy więcej", "niż rozmawiamy", "(i to spoko)"],
       subtitle: "Wiadomości też mają ton i emocje. Warto to wiedzieć.",
-      cta: "Zapisz się na webinar",
+      cta: "Kup produkt",
       ctaSub: "Dowiedz się więcej o komunikacji online",
     },
     about: {
@@ -1179,7 +1179,7 @@ export const content: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "Co zawiera webinar?",
+      heading: "Co zawiera produkt?",
       desc: "",
       bullets: [
         { emoji: "\uD83D\uDC40", text: "Podstawy netykiety i komunikacji cyfrowej" },
@@ -1188,7 +1188,7 @@ export const content: Record<VariantKey, SectionContent> = {
         { emoji: "\uD83D\uDE0C", text: "Jasne komunikaty, które naprawdę trafiają do odbiorcy" },
         { emoji: "\uD83D\uDC51", text: "Jak przełamać barierę między pokoleniami" },
       ],
-      cta: "Zarezerwuj miejsce na webinar",
+      cta: "Kup produkt",
     },
     webinarPromo: {
       heading: "Podstawy cyfrowej mowy ciała w pracy zdalnej",
@@ -1330,7 +1330,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "📚",
             question: "Jak wygląda szkolenie?",
-            answer: "Oferujemy webinary na żywo, materiały do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji."
+            answer: "Oferujemy produkty edukacyjne, materiały do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji."
           },
           {
             emoji: "💰",
@@ -1340,7 +1340,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "🎯",
             question: "Czy mogę przetestować platformę?",
-            answer: "Tak! Zapisz się na bezpłatny webinar, żeby poznać nasze podejście i zobaczyć fragment platformy w działaniu."
+            answer: "Tak! Zobacz nasze bezpłatne produkty, aby poznać nasze podejście i zobaczyć fragment platformy w działaniu."
           }
         ]
       }
@@ -1375,7 +1375,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["Today we write", "more than", "we speak"],
       subtitle: "But written words also have a voice.",
-      cta: "Sign up for webinar :)",
+      cta: "Check out the product :)",
       ctaSub: "Learn more about digital body language.",
     },
     about: {
@@ -1437,7 +1437,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "What does the webinar include?",
+      heading: "What does the product include?",
       desc: "",
       bullets: [
         { emoji: "👀", text: "Learn the basics of netiquette and understand basic concepts of digital communication" },
@@ -1446,7 +1446,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         { emoji: "😌", text: "Using clear messages that will help you be better understood" },
         { emoji: "👑", text: "Learn how to break the intergenerational communication barrier" },
       ],
-      cta: "Reserve a place at the next webinar",
+      cta: "Check out the product",
     },
     webinarPromo: {
       heading: "Digital body language basics for online meetings",
@@ -1588,7 +1588,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "📚",
             question: "What does the training look like?",
-            answer: "We offer live webinars, self-study educational materials, interactive exercises, and mini games that help understand the context of emojis in communication."
+            answer: "We offer educational materials for self-study, interactive exercises, and mini games that help understand the context of emojis in communication."
           },
           {
             emoji: "💰",
@@ -1598,7 +1598,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "🎯",
             question: "Can I test the platform?",
-            answer: "Yes! Sign up for a free webinar to learn about our approach and see a preview of the platform in action."
+            answer: "Yes! Buy the product to learn about our approach and see the platform in action."
           }
         ]
       }
@@ -1608,7 +1608,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["we text more", "than we talk", "ngl"],
       subtitle: "and like, written words have a vibe too",
-      cta: "join the webinar fr fr",
+      cta: "check the product fr fr",
       ctaSub: "learn digital body language, it slaps",
     },
     about: {
@@ -1670,7 +1670,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "what's in the webinar?",
+      heading: "what's in the product?",
       desc: "",
       bullets: [
         { emoji: "👀", text: "learn netiquette basics and digital communication" },
@@ -1679,7 +1679,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         { emoji: "😌", text: "send clearer messages that actually make sense" },
         { emoji: "👑", text: "break generational communication barriers" },
       ],
-      cta: "secure your spot at the next webinar",
+      cta: "get the product rn",
     },
     webinarPromo: {
       heading: "digital body language 101 for online meetings",
@@ -1821,7 +1821,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "📚",
             question: "what does the training look like?",
-            answer: "we offer live webinars, self-study educational materials, interactive exercises, and mini games that help understand the context of emojis in communication."
+            answer: "we offer educational materials for self-study, interactive exercises, and mini games that help understand the context of emojis in communication."
           },
           {
             emoji: "💰",
@@ -1831,7 +1831,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "🎯",
             question: "can i test the platform?",
-            answer: "yes! sign up for a free webinar to learn about our approach and see a preview of the platform in action."
+            answer: "yes! buy the product to learn about our approach and see the platform in action."
           }
         ]
       }
@@ -1841,7 +1841,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["These days we write", "more than", "we speak"],
       subtitle: "And written words have their own voice, too.",
-      cta: "Sign up for the webinar",
+      cta: "Buy the product",
       ctaSub: "Learn more about digital body language.",
     },
     about: {
@@ -1903,7 +1903,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "What does the webinar cover?",
+      heading: "What does the product cover?",
       desc: "",
       bullets: [
         { emoji: "👀", text: "Learn the fundamentals of netiquette and digital communication concepts" },
@@ -1912,7 +1912,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         { emoji: "😌", text: "Craft clear, understandable messages" },
         { emoji: "👑", text: "Discover how to overcome intergenerational communication barriers" },
       ],
-      cta: "Reserve your place at the upcoming webinar",
+      cta: "Explore the product",
     },
     webinarPromo: {
       heading: "Fundamentals of digital body language in online meetings",
@@ -2054,7 +2054,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "📚",
             question: "How does the training proceed?",
-            answer: "We offer live webinars, educational materials for self-study, interactive exercises, and mini games that help understand the context of emoticons in communication."
+            answer: "We offer educational materials for self-study, interactive exercises, and mini games that help understand the context of emoticons in communication."
           },
           {
             emoji: "💰",
@@ -2064,7 +2064,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "🎯",
             question: "Is it possible to test the platform?",
-            answer: "Yes! We invite you to register for a free webinar to familiarize yourself with our approach and see a fragment of the platform in action."
+            answer: "Yes! We invite you to purchase the product to familiarize yourself with our approach and see the platform in action."
           }
         ]
       }
@@ -2287,7 +2287,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "📚",
             question: "what does the training look like?",
-            answer: "we offer live webinars, educational materials 4 self-study, interactive exercises plus mini games that help understand emoji context in communication."
+            answer: "we offer products, educational materials 4 self-study, interactive exercises plus mini games that help understand emoji context in communication."
           },
           {
             emoji: "💰",
@@ -2297,7 +2297,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "🎯",
             question: "can i test the platform?",
-            answer: "ofc! sign up 4 free webinar 2 learn our approach n see preview of platform in action."
+            answer: "ofc! check our free product preview 2 learn our approach n see preview of platform in action."
           }
         ]
       }
@@ -2307,7 +2307,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["We text", "way more", "than we talk"],
       subtitle: "And honestly, written words have a voice too.",
-      cta: "Join the webinar!",
+      cta: "Check products!",
       ctaSub: "Learn about digital body language (it's actually useful)",
     },
     about: {
@@ -2369,7 +2369,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "What's included in the webinar?",
+      heading: "What's included in the product?",
       desc: "",
       bullets: [
         { emoji: "👀", text: "Learn digital etiquette fundamentals and communication best practices" },
@@ -2378,7 +2378,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         { emoji: "😌", text: "Write clearer messages that actually get your point across" },
         { emoji: "👑", text: "Bridge the generational communication gap" },
       ],
-      cta: "Save your spot for the next webinar",
+      cta: "Check products",
     },
     webinarPromo: {
       heading: "Digital body language essentials for remote work",
@@ -2388,7 +2388,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         "Master emotional expression in written communication",
         "Navigate the digital world with confidence",
       ],
-      cta1: "Upgrade your communication skills",
+      cta1: "See products",
       cta2: "Learn more",
     },
     forWhom: {
@@ -2520,7 +2520,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "📚",
             question: "What does the training look like?",
-            answer: "We offer live webinars, self-study materials, interactive exercises, and mini games that help understand emoji context in communication."
+            answer: "We offer products, self-study materials, interactive exercises, and mini games that help understand emoji context in communication."
           },
           {
             emoji: "💰",
@@ -2530,7 +2530,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "🎯",
             question: "Can I test the platform?",
-            answer: "Yes! Sign up for a free webinar to learn about our approach and see a preview of the platform in action."
+            answer: "Yes! Check our free product preview to learn about our approach and see a preview of the platform in action."
           }
         ]
       }
