@@ -162,7 +162,7 @@ export default function CheckoutPage() {
               </div>
 
               <div className="mt-6 bg-yellow/10 rounded-2xl p-4">
-                <div className="flex items-start gap-2">
+                <div className="flex items-start gap-4">
                   <span className="text-2xl">🔒</span>
                   <div>
                     <p className="text-xs font-600 text-gray-900 mb-1">

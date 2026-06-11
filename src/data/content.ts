@@ -883,7 +883,7 @@ export const content: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["Yo, piszesz", "wi\u0119cej ni\u017C", "gadasz"],
       subtitle: "A Twoje wiadomo\u015Bci maj\u0105 zero rizzu. No cap.",
-      cta: "Wbijaj na webinar \uD83D\uDD25",
+      cta: "Zobacz produkty \uD83D\uDD25",
       ctaSub: "Bo pisanie jak bot to biggest L ever.",
     },
     about: {
@@ -946,7 +946,7 @@ export const content: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "Co dostaniesz na webinarze?",
+      heading: "Co dostaniesz w produkcie?",
       desc: "Solid loot:",
       bullets: [
         { emoji: "\uD83D\uDC40", text: "podstawy netykiety \u2014 \u017Ceby nie by\u0107 tym cringe typem w czacie" },
@@ -955,7 +955,7 @@ export const content: Record<VariantKey, SectionContent> = {
         { emoji: "\uD83D\uDE0C", text: "jasne komunikaty \u2014 zero miscommunication" },
         { emoji: "\uD83D\uDC51", text: "jak gada\u0107 z boomerami i Gen Z bez cringe'u" },
       ],
-      cta: "Claimuj swoje miejsce \uD83C\uDFAE",
+      cta: "Check produkty \uD83C\uDFAE",
     },
     webinarPromo: {
       heading: "Cyfrowa mowa cia\u0142a \u2014 starter pack",
@@ -965,7 +965,7 @@ export const content: Record<VariantKey, SectionContent> = {
         "jak pisa\u0107 \u017Ceby ludzie czuli Tw\u00F3j mood",
         "jak ogarnia\u0107 komunikacj\u0119 mi\u0119dzy pokoleniami",
       ],
-      cta1: "Upgrade swoj\u0105 komunikacj\u0119 now",
+      cta1: "Zobacz produkty",
       cta2: "Wi\u0119cej info",
     },
     forWhom: {
@@ -2074,8 +2074,8 @@ export const contentEn: Record<VariantKey, SectionContent> = {
     hero: {
       headline: ["we text", "wayyy more", "than we yap"],
       subtitle: "written words got rizz too ngl",
-      cta: "join webinar (it's bussin)",
-      ctaSub: "learn digital body language fr no cap",
+      cta: "see products (it's bussin)",
+      ctaSub: "upgrade ur messaging game rn",
     },
     about: {
       label: "sooo,",
@@ -2136,7 +2136,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       ],
     },
     webinar: {
-      heading: "what's in the webinar tho?",
+      heading: "what's in the product tho?",
       desc: "",
       bullets: [
         { emoji: "👀", text: "learn netiquette and digital communication" },
@@ -2145,7 +2145,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         { emoji: "😌", text: "send clearer msgs that actually make sense" },
         { emoji: "👑", text: "break gen barriers in communication" },
       ],
-      cta: "get ur spot at next webinar",
+      cta: "check products",
     },
     webinarPromo: {
       heading: "digital body language basics 4 online meetings",
@@ -2155,7 +2155,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         "show emotions thru texts properly",
         "understand the digital world n its rules",
       ],
-      cta1: "upgrade ur communication rn",
+      cta1: "see products",
       cta2: "learn more",
     },
     forWhom: {

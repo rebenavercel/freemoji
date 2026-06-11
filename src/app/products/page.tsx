@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import FAQSection from "@/components/FAQSection";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCart } from "@/context/CartContext";
 import { type VariantKey } from "@/data/content";
 
 /* ─── Hero Section with People ─── */
@@ -183,12 +184,13 @@ function ProductsList() {
 /* ─── Product Variants / Pricing Tiers ─── */
 function ProductVariants() {
   const { t } = useLanguage();
+  const { addItem, setIsCartOpen, items } = useCart();
   
   const tiers = [
     {
       name: "Starter",
       description: "Perfect for individuals starting their communication journey",
-      price: "$29",
+      price: 29,
       period: "one-time",
       features: [
         "Basic communication style assessment",
@@ -203,7 +205,7 @@ function ProductVariants() {
     {
       name: "Professional",
       description: "Most popular for professionals who communicate daily",
-      price: "$79",
+      price: 79,
       period: "one-time",
       badge: "RECOMMENDED",
       features: [
@@ -223,7 +225,7 @@ function ProductVariants() {
     {
       name: "Team",
       description: "For teams that want to communicate better together",
-      price: "$199",
+      price: 199,
       period: "per team (up to 5 people)",
       features: [
         "Everything in Professional, plus:",
@@ -240,6 +242,21 @@ function ProductVariants() {
       cta: "Get Team Plan"
     }
   ];
+
+  const handleAddToCart = (tier: typeof tiers[0]) => {
+    addItem({
+      id: `bettermessage-${tier.name.toLowerCase()}`,
+      name: tier.name,
+      price: tier.price,
+      variant: "BetterMessage",
+      description: tier.description,
+    });
+    setIsCartOpen(true);
+  };
+
+  const isInCart = (tierName: string) => {
+    return items.some((item) => item.id === `bettermessage-${tierName.toLowerCase()}`);
+  };
 
   return (
     <section className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50">
@@ -286,7 +303,7 @@ function ProductVariants() {
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
                   <span className={`font-display text-5xl font-900 ${tier.highlighted ? "text-yellow" : "text-gray-900"}`}>
-                    {tier.price}
+                    ${tier.price}
                   </span>
                 </div>
                 <p className={`text-sm mt-1 ${tier.highlighted ? "text-gray-400" : "text-gray-500"}`}>
@@ -295,16 +312,16 @@ function ProductVariants() {
               </div>
 
               {/* CTA Button */}
-              <a
-                href="/checkout"
+              <button
+                onClick={() => handleAddToCart(tier)}
                 className={`w-full py-4 rounded-full font-700 text-center transition-all hover:scale-105 mb-8 ${
                   tier.highlighted
                     ? "bg-yellow hover:bg-yellow-dark text-gray-900"
                     : "bg-gray-900 hover:bg-gray-800 text-white"
-                }`}
+                } ${isInCart(tier.name) ? "opacity-75" : ""}`}
               >
-                {tier.cta}
-              </a>
+                {isInCart(tier.name) ? "Added to Cart ✓" : tier.cta}
+              </button>
 
               {/* Features List */}
               <ul className="space-y-3 flex-grow">
