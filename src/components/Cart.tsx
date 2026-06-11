@@ -8,14 +8,41 @@ import Image from "next/image";
 
 export default function Cart() {
   const { t } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
-  const { items, removeItem, total, itemCount } = useCart();
+  const { items, removeItem, total, itemCount, isCartOpen, setIsCartOpen } = useCart();
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleCheckout = async () => {
+    setIsProcessing(true);
+    
+    try {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Failed to create checkout session");
+      }
+    } catch (error) {
+      console.error("Checkout error:", error);
+      alert("Something went wrong. Please try again.");
+      setIsProcessing(false);
+    }
+  };
 
   return (
     <>
       {/* Floating Cart Button */}
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => setIsCartOpen(true)}
         className="fixed bottom-6 right-6 z-40 bg-yellow hover:bg-yellow-dark text-gray-900 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 border-2 border-gray-900"
         aria-label="Koszyk"
       >
@@ -42,19 +69,19 @@ export default function Cart() {
       {/* Cart Sidebar */}
       <div
         className={`fixed inset-0 z-50 transition-all duration-300 ${
-          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          isCartOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         {/* Backdrop */}
         <div
           className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          onClick={() => setIsOpen(false)}
+          onClick={() => setIsCartOpen(false)}
         />
 
         {/* Sidebar */}
         <div
           className={`absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transition-transform duration-300 ${
-            isOpen ? "translate-x-0" : "translate-x-full"
+            isCartOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           {/* Header */}
@@ -63,7 +90,7 @@ export default function Cart() {
               {t("cart.title")} 🛒
             </h2>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsCartOpen(false)}
               className="w-10 h-10 rounded-full bg-gray-900 hover:bg-gray-800 text-white flex items-center justify-center transition-colors"
               aria-label={t("cart.close")}
             >
@@ -152,16 +179,18 @@ export default function Cart() {
                   ${total}
                 </span>
               </div>
-              <Link
-                href="/checkout"
-                onClick={() => setIsOpen(false)}
-                className="block w-full bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg py-4 rounded-full text-center transition-all hover:scale-105 shadow-lg mb-3"
+              <button
+                onClick={handleCheckout}
+                disabled={isProcessing}
+                className={`block w-full bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg py-4 rounded-full text-center transition-all hover:scale-105 shadow-lg mb-3 ${
+                  isProcessing ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               >
-                {t("cart.checkout")}
-              </Link>
+                {isProcessing ? "Processing..." : t("cart.checkout")}
+              </button>
               <Link
-                href="/bettermessage"
-                onClick={() => setIsOpen(false)}
+                href="/products/bettermessage"
+                onClick={() => setIsCartOpen(false)}
                 className="block w-full bg-white hover:bg-gray-50 text-gray-900 font-600 text-base py-3 rounded-full text-center transition-all border-2 border-gray-200"
               >
                 {t("cart.continueShopping")}

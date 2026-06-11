@@ -11,7 +11,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const { t } = useLanguage();
+  const { t, variant, setVariant } = useLanguage();
 
   // Get articles, categories, and tags from translations
   const ARTICLES = (t("blog.articles") as any[]).map((article, index) => ({
@@ -58,7 +58,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
       
       {/* Hero Section z tłem */}
       <section className="relative flex items-center overflow-hidden py-12 md:py-20">
@@ -102,7 +102,7 @@ export default function BlogPage() {
             {/* Przycisk do produktów */}
             <div className="animate-fade-up stagger-2">
               <Link
-                href="/produkty"
+                href="/products"
                 className="inline-block bg-yellow hover:bg-yellow-dark text-gray-900 font-600 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 {t("blog.hero.cta")}

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
-import { content, type VariantKey } from "@/data/content";
+import { content, contentEn, type VariantKey } from "@/data/content";
 
 type Language = "pl" | "en";
 
@@ -17,7 +17,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
-  const [language, setLanguage] = useState<Language>("pl");
+  const [language, setLanguage] = useState<Language>("en");
   const [variant, setVariant] = useState<VariantKey>("normalne");
 
   // Debug: Log content structure on mount
@@ -102,35 +102,32 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       return value;
     };
     
-    // For Polish, use variant-based content
-    if (language === "pl") {
-      // Remove "home." prefix if present for content lookup
-      const contentKeys = key.startsWith("home.") ? key.substring(5).split(".") : keys;
-      let value = getValue(content[variant], contentKeys);
-      
-      // Debug log
-      if (key.startsWith("home.hero.headline") || key.startsWith("hero.headline")) {
-        console.log("🔍 t() called:", { 
-          key, 
-          contentKeys,
-          variant, 
-          value, 
-          keys,
-          contentKeysUsed: contentKeys
-        });
-      }
-      
-      // Fallback to translations if not found in content
-      if (value === undefined) {
-        value = getValue(translations[language], keys);
-      }
-      
-      return value !== undefined ? value : key;
-    } else {
-      // For English, use regular translations
-      const value = getValue(translations[language], keys);
-      return value !== undefined ? value : key;
+    // Select content source based on language
+    const contentSource = language === "pl" ? content : contentEn;
+    
+    // Remove "home." prefix if present for content lookup
+    const contentKeys = key.startsWith("home.") ? key.substring(5).split(".") : keys;
+    let value = getValue(contentSource[variant], contentKeys);
+    
+    // Debug log
+    if (key.startsWith("home.hero.headline") || key.startsWith("hero.headline")) {
+      console.log("🔍 t() called:", { 
+        key, 
+        contentKeys,
+        variant, 
+        language,
+        value, 
+        keys,
+        contentKeysUsed: contentKeys
+      });
     }
+    
+    // Fallback to translations if not found in content
+    if (value === undefined) {
+      value = getValue(translations[language], keys);
+    }
+    
+    return value !== undefined ? value : key;
   }, [language, variant]);
 
   return (
@@ -690,6 +687,103 @@ const translations = {
         title: "Poznajmy się lepiej!",
         ceo: "CEO",
         contactUs: "Napisz do nas!"
+      },
+      psst: {
+        heading: "PSST...",
+        intro: "Warto obejrzeć wideo, poza ciekawą treścią na nagraniu usłyszysz jak brzmi kod rabatowy. Zastawialiśmy go w nagraniu abyś odebrał swój ebook taniej znając już podstawy cyfrowej interpunkcji.",
+        whyTitle: "Dlaczego warto?",
+        benefits: [
+          {
+            number: "01.",
+            title: "Naucz się rozpoznawać sygnały emocjonalne online",
+            description: "Zrozum, jak odbiorcy interpretują Twoje wiadomości. Dowiedz się, które sformułowania mogą być odebrane negatywnie i jak je poprawić, aby budować lepsze relacje biznesowe."
+          },
+          {
+            number: "02.",
+            title: "Zwiększ efektywność zespołu",
+            description: "Lepsze zrozumienie prowadzi do szybszej współpracy. Zredukuj ilość wyjaśnień i powtórzeń dzięki precyzyjnej komunikacji dostosowanej do odbiorcy."
+          },
+          {
+            number: "03.",
+            title: "Unikaj kosztownych wpadek",
+            description: "Jedno źle odebrane emoji może zepsuć relację z ważnym klientem. Nasz system ostrzega przed potencjalnymi nieporozumieniami zanim wyślesz wiadomość."
+          },
+          {
+            number: "04.",
+            title: "Buduj profesjonalny wizerunek",
+            description: "Spójna i świadoma komunikacja w całej firmie przekłada się na lepszy odbiór marki. Stwórz standardy komunikacji, które wzmocnią Twój profesjonalizm."
+          }
+        ]
+      },
+      emojiGrid: {
+        heading: "Znasz podstawy?"
+      },
+      faq: {
+        heading: "W czym freemoji może Ci pomóc?",
+        benefits: [
+          { emoji: "👀", title: "Lepsze odczytywanie emocji – rozpoznawaj ukryte emocje u rozmówców" },
+          { emoji: "🧠", title: "Inteligencja emocjonalna 2.0 – rozwijaj empatię w środowisku cyfrowym" },
+          { emoji: "🗣️", title: "Skuteczniejsze spotkania – lepsze decyzje, mniej nieporozumień" },
+          { emoji: "💬", title: "Pewność w rozmowie – mniej stresu w negocjacjach i prezentacjach online" },
+          { emoji: "⚡", title: "Wiarygodność lidera – buduj autorytet i zaufanie w zespole" }
+        ],
+        questions: [
+          {
+            emoji: "🤔",
+            question: "Czym dokładnie jest cyfrowa mowa ciała?",
+            answer: "To sposób wyrażania emocji, intencji i tonu w komunikacji pisemnej — za pomocą emoji, interpunkcji, formatowania tekstu, czasu odpowiedzi i innych elementów, które zastępują mimikę i gesty w rozmowie twarzą w twarz."
+          },
+          {
+            emoji: "👥",
+            question: "Dla kogo jest freemoji?",
+            answer: "Dla każdego, kto komunikuje się pisemnie w pracy lub życiu prywatnym. Szczególnie polecamy osobom z działów HR, sprzedaży, liderom zespołów, coachom i trenerom."
+          },
+          {
+            emoji: "📚",
+            question: "Jak wygląda szkolenie?",
+            answer: "Oferujemy webinary na żywo, materiały edukacyjne do samodzielnej nauki, interaktywne ćwiczenia oraz mini gry, które pomagają zrozumieć kontekst emoji w komunikacji."
+          },
+          {
+            emoji: "💰",
+            question: "Ile kosztuje dostęp?",
+            answer: "Dostęp do platformy zaczyna się od 199 zł. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com."
+          },
+          {
+            emoji: "🎯",
+            question: "Czy mogę przetestować platformę?",
+            answer: "Tak! Zapisz się na bezpłatny webinar, aby poznać nasze podejście i zobaczyć fragment platformy w akcji."
+          }
+        ]
+      },
+      testimonials: {
+        heading: "Opinie",
+        subtitle: "Zobacz co mówią o Nas Nasi klienci",
+        list: [
+          {
+            emoji: "🥰",
+            quote: "BetterMessage całkowicie zmienił sposób, w jaki komunikuję się z moim zespołem. Wcześniej miałem problem z interpretacją tonu wiadomości. Teraz rozumiem kontekst i unikam nieporozumień.",
+            name: "Karol Chrapkiewicz",
+            title: "Re Bena Gesta"
+          },
+          {
+            emoji: "😊",
+            quote: "Jako HR Manager codziennie wysyłam dziesiątki wiadomości do kandydatów. BetterMessage pomógł mi zbudować cieplejszy, bardziej profesjonalny ton komunikacji, co przełożyło się na lepszy employer branding.",
+            name: "Anna Kowalska",
+            title: "HR Manager, TechCorp"
+          },
+          {
+            emoji: "🎯",
+            quote: "W sprzedaży relacja to wszystko. Dzięki BetterMessage nauczyłem się wyrażać empatię w wiadomościach tekstowych, co znacząco poprawiło konwersję i zadowolenie klientów.",
+            name: "Marcin Nowak",
+            title: "Sales Director, SalesPro"
+          },
+          {
+            emoji: "💡",
+            quote: "Jako coach prowadzę sesje online i korespondencję mailową. BetterMessage pokazał mi, jak ważny jest kontekst w komunikacji pisemnej. To kompletnie zmieniło moją praktykę.",
+            name: "Joanna Wiśniewska",
+            title: "Business Coach"
+          }
+        ]
       }
     },
     contact: {
@@ -1248,24 +1342,121 @@ const translations = {
     },
     about: {
       hero: {
-        title: "Zyskaj nową przewagę w komunikacji zdalnej.",
+        title: "Gain a new advantage in remote communication.",
         benefits: {
-          emotions: "Lepsze odczytywanie emocji",
-          emotionsDesc: "rozpoznawaj ukryte emocje u rozmówców",
-          intelligence: "Inteligencja emocjonalna 2.0",
-          intelligenceDesc: "rozwijaj empatię w środowisku cyfrowym",
-          meetings: "Skuteczniejsze spotkania",
-          meetingsDesc: "lepsze decyzje, mniej nieporozumień",
-          confidence: "Pewność w rozmowie",
-          confidenceDesc: "mniej stresu w negocjacjach i prezentacjach online",
-          credibility: "Wiarygodność lidera",
-          credibilityDesc: "buduj autorytet i zaufanie w zespole"
+          emotions: "Better emotion reading",
+          emotionsDesc: "recognize hidden emotions in conversation partners",
+          intelligence: "Emotional intelligence 2.0",
+          intelligenceDesc: "develop empathy in digital environment",
+          meetings: "More effective meetings",
+          meetingsDesc: "better decisions, fewer misunderstandings",
+          confidence: "Confidence in conversation",
+          confidenceDesc: "less stress in negotiations and online presentations",
+          credibility: "Leader credibility",
+          credibilityDesc: "build authority and trust in your team"
         }
       },
       team: {
-        title: "Poznajmy się lepiej!",
+        title: "Let's get to know each other better!",
         ceo: "CEO",
-        contactUs: "Napisz do nas!"
+        contactUs: "Contact us!"
+      },
+      psst: {
+        heading: "PSST...",
+        intro: "It's worth watching the video - besides interesting content, you'll hear what the discount code sounds like. We placed it in the video so you can get your ebook cheaper while already knowing the basics of digital punctuation.",
+        whyTitle: "Why is it worth it?",
+        benefits: [
+          {
+            number: "01.",
+            title: "Learn to recognize emotional signals online",
+            description: "Understand how recipients interpret your messages. Learn which phrases may be received negatively and how to improve them to build better business relationships."
+          },
+          {
+            number: "02.",
+            title: "Increase team effectiveness",
+            description: "Better understanding leads to faster collaboration. Reduce the amount of explanations and repetitions through precise communication tailored to the recipient."
+          },
+          {
+            number: "03.",
+            title: "Avoid costly mistakes",
+            description: "One misunderstood emoji can ruin a relationship with an important client. Our system warns against potential misunderstandings before you send a message."
+          },
+          {
+            number: "04.",
+            title: "Build a professional image",
+            description: "Consistent and conscious communication throughout the company translates to better brand perception. Create communication standards that strengthen your professionalism."
+          }
+        ]
+      },
+      emojiGrid: {
+        heading: "Do you know the basics?"
+      },
+      faq: {
+        heading: "How can freemoji help you?",
+        benefits: [
+          { emoji: "👀", title: "Better emotion reading – recognize hidden emotions in conversation partners" },
+          { emoji: "🧠", title: "Emotional intelligence 2.0 – develop empathy in digital environment" },
+          { emoji: "🗣️", title: "More effective meetings – better decisions, fewer misunderstandings" },
+          { emoji: "💬", title: "Confidence in conversation – less stress in negotiations and online presentations" },
+          { emoji: "⚡", title: "Leader credibility – build authority and trust in your team" }
+        ],
+        questions: [
+          {
+            emoji: "🤔",
+            question: "What is digital body language?",
+            answer: "Digital body language is how we express emotions, intentions, and tone in written communication - through emojis, punctuation, text formatting, response time, and other elements that replace facial expressions and gestures in face-to-face conversations."
+          },
+          {
+            emoji: "👥",
+            question: "Who is freemoji for?",
+            answer: "For anyone who communicates in writing at work or in personal life. We especially recommend it for HR professionals, salespeople, team leaders, coaches, and trainers."
+          },
+          {
+            emoji: "📚",
+            question: "What does the training look like?",
+            answer: "We offer live webinars, self-study educational materials, interactive exercises, and mini games that help understand the context of emojis in communication."
+          },
+          {
+            emoji: "💰",
+            question: "How much does access cost?",
+            answer: "Platform access starts at 199 PLN. You can find pricing details in the contact section or by writing to us at kontakt@freemoji.com."
+          },
+          {
+            emoji: "🎯",
+            question: "Can I test the platform?",
+            answer: "Yes! Sign up for a free webinar to learn about our approach and see a preview of the platform in action."
+          }
+        ]
+      },
+      testimonials: {
+        heading: "Testimonials",
+        subtitle: "See what our clients say about us",
+        list: [
+          {
+            emoji: "🥰",
+            quote: "BetterMessage completely changed the way I communicate with my team. I used to struggle with interpreting message tone. Now I understand the context and avoid misunderstandings.",
+            name: "Karol Chrapkiewicz",
+            title: "Re Bena Gesta"
+          },
+          {
+            emoji: "😊",
+            quote: "As an HR Manager, I send dozens of messages to candidates daily. BetterMessage helped me build a warmer, more professional communication tone, which improved our employer branding.",
+            name: "Anna Kowalska",
+            title: "HR Manager, TechCorp"
+          },
+          {
+            emoji: "🎯",
+            quote: "In sales, relationships are everything. Thanks to BetterMessage, I learned to express empathy in text messages, which significantly improved conversion and customer satisfaction.",
+            name: "Marcin Nowak",
+            title: "Sales Director, SalesPro"
+          },
+          {
+            emoji: "💡",
+            quote: "As a coach conducting online sessions and email correspondence, BetterMessage showed me how important context is in written communication. It completely changed my practice.",
+            name: "Joanna Wiśniewska",
+            title: "Business Coach"
+          }
+        ]
       }
     },
     contact: {

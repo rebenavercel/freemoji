@@ -221,8 +221,7 @@ function EmojiGame() {
 
 /* ─── Main Page ─── */
 export default function GamePage() {
-  const { t } = useLanguage();
-  const [variant, setVariant] = useState<VariantKey>("genz");
+  const { t, variant, setVariant } = useLanguage();
   
   // FAQ data - get from translations
   const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;

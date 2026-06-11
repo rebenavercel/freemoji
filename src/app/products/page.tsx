@@ -88,32 +88,32 @@ function ProductsList() {
       description: t("products.list.betterMessage.description"),
       price: "89",
       available: true,
-      link: "/bettermessage",
+      link: "/products/bettermessage",
     },
-    {
-      emoji: "😏",
-      fruit: "🍇🍇",
-      title: t("products.list.smartComm.title"),
-      description: t("products.list.smartComm.description"),
-      price: "129",
-      available: false,
-    },
-    {
-      emoji: "🤣",
-      fruit: "🍉🍉",
-      title: t("products.list.funComm.title"),
-      description: t("products.list.funComm.description"),
-      price: "199",
-      available: false,
-    },
-    {
-      emoji: "🎯",
-      fruit: "🍎🍎",
-      title: t("products.list.directComm.title"),
-      description: t("products.list.directComm.description"),
-      price: "179",
-      available: false,
-    },
+    // {
+    //   emoji: "😏",
+    //   fruit: "🍇🍇",
+    //   title: t("products.list.smartComm.title"),
+    //   description: t("products.list.smartComm.description"),
+    //   price: "129",
+    //   available: false,
+    // },
+    // {
+    //   emoji: "🤣",
+    //   fruit: "🍉🍉",
+    //   title: t("products.list.funComm.title"),
+    //   description: t("products.list.funComm.description"),
+    //   price: "199",
+    //   available: false,
+    // },
+    // {
+    //   emoji: "🎯",
+    //   fruit: "🍎🍎",
+    //   title: t("products.list.directComm.title"),
+    //   description: t("products.list.directComm.description"),
+    //   price: "179",
+    //   available: false,
+    // },
   ];
 
   return (
@@ -180,10 +180,170 @@ function ProductsList() {
   );
 }
 
+/* ─── Product Variants / Pricing Tiers ─── */
+function ProductVariants() {
+  const { t } = useLanguage();
+  
+  const tiers = [
+    {
+      name: "Starter",
+      description: "Perfect for individuals starting their communication journey",
+      price: "$29",
+      period: "one-time",
+      features: [
+        "Basic communication style assessment",
+        "Emotion detection in 5 sample messages",
+        "Tone analysis report (PDF)",
+        "Basic emoji recommendations",
+        "Email support"
+      ],
+      highlighted: false,
+      cta: "Get Started"
+    },
+    {
+      name: "Professional",
+      description: "Most popular for professionals who communicate daily",
+      price: "$79",
+      period: "one-time",
+      badge: "RECOMMENDED",
+      features: [
+        "Everything in Starter, plus:",
+        "Advanced communication style assessment",
+        "Emotion & context detection in 20 messages",
+        "Detailed tone perception analysis",
+        "Recipient type adaptation suggestions",
+        "Custom emoji & expression recommendations",
+        "Communication improvement roadmap",
+        "Priority email & chat support",
+        "30-day follow-up assessment"
+      ],
+      highlighted: true,
+      cta: "Get Professional"
+    },
+    {
+      name: "Team",
+      description: "For teams that want to communicate better together",
+      price: "$199",
+      period: "per team (up to 5 people)",
+      features: [
+        "Everything in Professional, plus:",
+        "Team communication dynamics analysis",
+        "Individual assessments for each member",
+        "Team communication patterns report",
+        "Cross-cultural communication insights",
+        "1-hour video consultation with expert",
+        "3-month progress tracking",
+        "Dedicated support manager",
+        "Custom workshop materials"
+      ],
+      highlighted: false,
+      cta: "Get Team Plan"
+    }
+  ];
+
+  return (
+    <section className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-display text-3xl md:text-5xl font-900 text-gray-900 mb-4">
+            Choose Your Communication Assessment
+          </h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+            Get insights into your communication style, understand how your messages are perceived, and learn to communicate better with everyone.
+          </p>
+        </div>
+
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {tiers.map((tier, index) => (
+            <div
+              key={index}
+              className={`relative flex flex-col rounded-3xl p-8 transition-all ${
+                tier.highlighted
+                  ? "bg-gray-900 text-white shadow-2xl scale-105 border-4 border-yellow"
+                  : "bg-white text-gray-900 shadow-lg hover:shadow-xl border-2 border-gray-100"
+              }`}
+            >
+              {/* Badge for highlighted tier */}
+              {tier.badge && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow text-gray-900 px-4 py-1 rounded-full text-xs font-800 tracking-wide">
+                  {tier.badge}
+                </div>
+              )}
+
+              {/* Tier Name */}
+              <h3 className={`font-display text-2xl font-800 mb-2 ${tier.highlighted ? "text-white" : "text-gray-900"}`}>
+                {tier.name}
+              </h3>
+              
+              {/* Description */}
+              <p className={`text-sm mb-6 ${tier.highlighted ? "text-gray-300" : "text-gray-600"}`}>
+                {tier.description}
+              </p>
+
+              {/* Price */}
+              <div className="mb-6">
+                <div className="flex items-baseline gap-2">
+                  <span className={`font-display text-5xl font-900 ${tier.highlighted ? "text-yellow" : "text-gray-900"}`}>
+                    {tier.price}
+                  </span>
+                </div>
+                <p className={`text-sm mt-1 ${tier.highlighted ? "text-gray-400" : "text-gray-500"}`}>
+                  {tier.period}
+                </p>
+              </div>
+
+              {/* CTA Button */}
+              <a
+                href="/checkout"
+                className={`w-full py-4 rounded-full font-700 text-center transition-all hover:scale-105 mb-8 ${
+                  tier.highlighted
+                    ? "bg-yellow hover:bg-yellow-dark text-gray-900"
+                    : "bg-gray-900 hover:bg-gray-800 text-white"
+                }`}
+              >
+                {tier.cta}
+              </a>
+
+              {/* Features List */}
+              <ul className="space-y-3 flex-grow">
+                {tier.features.map((feature, fIndex) => (
+                  <li key={fIndex} className="flex items-start gap-3">
+                    <svg 
+                      className={`w-5 h-5 mt-0.5 flex-shrink-0 ${tier.highlighted ? "text-yellow" : "text-green-500"}`} 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className={`text-sm ${tier.highlighted ? "text-gray-200" : "text-gray-700"} ${feature.includes("Everything in") ? "font-700" : ""}`}>
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Note */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-gray-500">
+            All assessments are conducted by our AI-powered analysis system with human expert review. 
+            <br className="hidden md:block" />
+            Results delivered within 48 hours of submission.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Main Page ─── */
 export default function ProductsPage() {
-  const [variant, setVariant] = useState<VariantKey>("normalne");
-  const { t } = useLanguage();
+  const { t, variant, setVariant } = useLanguage();
 
   // FAQ data - get from translations
   const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
@@ -200,6 +360,7 @@ export default function ProductsPage() {
       <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
       <ProductsHero />
       <ProductsList />
+      <ProductVariants />
       <FAQSection faqs={faqs} />
       <ContactForm />
       <Footer />

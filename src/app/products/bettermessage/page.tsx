@@ -14,7 +14,7 @@ function HeroSection() {
   const { t } = useLanguage();
   
   return (
-    <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
+    <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-6 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left: Image */}
@@ -24,7 +24,7 @@ function HeroSection() {
                 src="/media/hero-image.png"
                 alt="BetterMessage Dashboard"
                 fill
-                className="object-contain"
+                className="object-contain drop-shadow-2xl"
                 priority
               />
             </div>
@@ -32,22 +32,85 @@ function HeroSection() {
 
           {/* Right: Content */}
           <div className="flex-1 w-full text-center lg:text-left">
-            <h1 className="font-display text-3xl md:text-6xl font-800 text-gray-900 mb-4 md:mb-6">
-              {t("betterMessage.hero.heading")}
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-yellow/20 border-2 border-yellow px-4 py-2 rounded-full mb-4">
+              <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span className="text-sm font-700 text-gray-900">Rated 4.9/5 by professionals</span>
+            </div>
+
+            <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-900 text-gray-900 mb-4 md:mb-6 leading-tight">
+              Better Message
             </h1>
             <p className="text-lg md:text-2xl font-600 text-gray-800 mb-3 md:mb-4">
-              {t("betterMessage.hero.subtitle")}
+              Improve digital communication quality
             </p>
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
-              {t("betterMessage.hero.description")}
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
+              Improve the quality of digital conversations between you and contractors. Increase communication fluency and improve conversation efficiency through accurate messages.
             </p>
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
-              <button className="bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg px-8 py-3 rounded-full transition-all hover:scale-105 shadow-lg">
-                {t("betterMessage.hero.cta")}
-              </button>
+
+            {/* Social Proof Icons */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mb-8">
+              {/* Trust Badge 1 */}
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-700 text-gray-900">500+</div>
+                  <div className="text-xs text-gray-600">Happy clients</div>
+                </div>
+              </div>
+
+              {/* Trust Badge 2 */}
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-700 text-gray-900">48-hour</div>
+                  <div className="text-xs text-gray-600">Delivery</div>
+                </div>
+              </div>
+
+              {/* Trust Badge 3 */}
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-700 text-gray-900">Money-back</div>
+                  <div className="text-xs text-gray-600">Guarantee</div>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center justify-center lg:justify-start gap-3">
-              <span className="text-gray-500 text-sm">{t("betterMessage.hero.by")}</span>
+
+            {/* CTA Button */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-6">
+              <a 
+                href="#pricing"
+                className="w-full sm:w-auto bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg px-10 py-4 rounded-full transition-all hover:scale-105 shadow-xl hover:shadow-2xl inline-block text-center"
+              >
+                Choose Variant →
+              </a>
+              <div className="flex items-center gap-2 text-gray-600">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-sm">Secure checkout with Stripe</span>
+              </div>
+            </div>
+
+            {/* Brand */}
+            <div className="flex items-center justify-center lg:justify-start gap-3 pt-4 border-t border-gray-200">
+              <span className="text-gray-500 text-sm">By</span>
               <Image
                 src="/logo.svg"
                 alt="freemoji"
@@ -167,139 +230,198 @@ function BenefitsSection() {
 }
 
 /* ─── Pricing Section ─── */
-function PricingSection() {
-  const { addItem } = useCart();
-  const { t } = useLanguage();
-  const [addedPlan, setAddedPlan] = useState<string | null>(null);
-
-  const pricingPlans = [
+/* ─── Product Variants / Pricing Tiers ─── */
+function ProductVariants() {
+  const { addItem, setIsCartOpen, items } = useCart();
+  
+  const tiers = [
     {
-      variant: t("betterMessage.pricing.variant1.variant"),
-      name: t("betterMessage.pricing.variant1.name"),
-      price: t("betterMessage.pricing.variant1.price"),
-      period: t("betterMessage.pricing.variant1.period"),
-      description: t("betterMessage.pricing.variant1.description"),
-      ctaText: t("betterMessage.pricing.variant1.cta"),
+      name: "Starter",
+      description: "Perfect for individuals starting their communication journey",
+      price: 29,
+      priceDisplay: "$29",
+      period: "one-time",
+      features: [
+        "Basic communication style assessment",
+        "Emotion detection in 5 sample messages",
+        "Tone analysis report (PDF)",
+        "Basic emoji recommendations",
+        "Email support"
+      ],
       highlighted: false,
+      cta: "Get Started"
     },
     {
-      variant: t("betterMessage.pricing.variant2.variant"),
-      name: t("betterMessage.pricing.variant2.name"),
-      price: t("betterMessage.pricing.variant2.price"),
-      period: t("betterMessage.pricing.variant2.period"),
-      description: t("betterMessage.pricing.variant2.description"),
-      ctaText: t("betterMessage.pricing.variant2.cta"),
+      name: "Professional",
+      description: "Most popular for professionals who communicate daily",
+      price: 79,
+      priceDisplay: "$79",
+      period: "one-time",
+      badge: "RECOMMENDED",
+      features: [
+        "Everything in Starter, plus:",
+        "Advanced communication style assessment",
+        "Emotion & context detection in 20 messages",
+        "Detailed tone perception analysis",
+        "Recipient type adaptation suggestions",
+        "Custom emoji & expression recommendations",
+        "Communication improvement roadmap",
+        "Priority email & chat support",
+        "30-day follow-up assessment"
+      ],
       highlighted: true,
+      cta: "Get Professional"
     },
     {
-      variant: t("betterMessage.pricing.variant3.variant"),
-      name: t("betterMessage.pricing.variant3.name"),
-      price: t("betterMessage.pricing.variant3.price"),
-      period: t("betterMessage.pricing.variant3.period"),
-      description: t("betterMessage.pricing.variant3.description"),
-      ctaText: t("betterMessage.pricing.variant3.cta"),
+      name: "Team",
+      description: "For teams that want to communicate better together",
+      price: 199,
+      priceDisplay: "$199",
+      period: "per team (up to 5 people)",
+      features: [
+        "Everything in Professional, plus:",
+        "Team communication dynamics analysis",
+        "Individual assessments for each member",
+        "Team communication patterns report",
+        "Cross-cultural communication insights",
+        "1-hour video consultation with expert",
+        "3-month progress tracking",
+        "Dedicated support manager",
+        "Custom workshop materials"
+      ],
       highlighted: false,
-    },
+      cta: "Get Team Plan"
+    }
   ];
 
-  const handleAddToCart = (plan: typeof pricingPlans[0]) => {
-    const priceNum = parseFloat(plan.price.replace("$", ""));
+  const handleAddToCart = (tier: typeof tiers[0]) => {
     addItem({
-      id: `plan-${plan.name.toLowerCase()}`,
-      name: plan.name,
-      price: priceNum,
-      variant: plan.variant,
-      description: plan.description,
+      id: `plan-${tier.name.toLowerCase()}`,
+      name: tier.name,
+      price: tier.price,
+      variant: "BetterMessage",
+      description: tier.description,
     });
-    setAddedPlan(plan.name);
-    setTimeout(() => setAddedPlan(null), 2000);
+    setIsCartOpen(true);
   };
 
   return (
-    <section id="pricing" className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50">
+    <section id="pricing" className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8 md:mb-16">
-          <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-3 md:mb-4">
-            {t("betterMessage.pricing.header")}
+        {/* Section Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-display text-3xl md:text-5xl font-900 text-gray-900 mb-4">
+            Choose Your Communication Assessment
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t("betterMessage.pricing.subtitle")}
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+            Get insights into your communication style, understand how your messages are perceived, and learn to communicate better with everyone.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, index) => (
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {tiers.map((tier, index) => {
+            const isInCart = items.some(item => item.id === `plan-${tier.name.toLowerCase()}`);
+            
+            return (
             <div
               key={index}
-              className={`relative bg-white rounded-3xl border-2 p-8 flex flex-col ${
-                plan.highlighted
-                  ? "border-yellow shadow-xl scale-105"
-                  : "border-gray-200 shadow-lg"
+              className={`relative flex flex-col rounded-3xl p-8 transition-all ${
+                tier.highlighted
+                  ? "bg-gray-900 text-white shadow-2xl scale-105 border-4 border-yellow"
+                  : "bg-white text-gray-900 shadow-lg hover:shadow-xl border-2 border-gray-100"
               }`}
             >
-              {/* Best Value Badge */}
-              {plan.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow text-gray-900 px-6 py-2 rounded-full font-700 text-sm shadow-lg">
-                  {t("betterMessage.pricing.bestChoice")}
+              {/* Badge for highlighted tier */}
+              {tier.badge && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow text-gray-900 px-4 py-1 rounded-full text-xs font-800 tracking-wide">
+                  {tier.badge}
                 </div>
               )}
 
-              {/* Variant Label */}
-              <div className="text-gray-400 text-sm font-600 mb-2">
-                {plan.variant}
-              </div>
-
-              {/* Plan Name */}
-              <h3 className="font-display text-2xl md:text-4xl font-800 text-gray-900 mb-4 md:mb-6">
-                {plan.name}
+              {/* Tier Name */}
+              <h3 className={`font-display text-2xl font-800 mb-2 ${tier.highlighted ? "text-white" : "text-gray-900"}`}>
+                {tier.name}
               </h3>
+              
+              {/* Description */}
+              <p className={`text-sm mb-6 ${tier.highlighted ? "text-gray-300" : "text-gray-600"}`}>
+                {tier.description}
+              </p>
 
               {/* Price */}
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-4xl md:text-6xl font-800 text-gray-900">
-                    {plan.price}
+                  <span className={`font-display text-5xl font-900 ${tier.highlighted ? "text-yellow" : "text-gray-900"}`}>
+                    {tier.priceDisplay}
                   </span>
-                  <span className="text-gray-600 text-lg">{plan.period}</span>
                 </div>
+                <p className={`text-sm mt-1 ${tier.highlighted ? "text-gray-400" : "text-gray-500"}`}>
+                  {tier.period}
+                </p>
               </div>
-
-              {/* Description */}
-              <p className="text-gray-600 leading-relaxed text-justify mb-8 flex-grow">
-                {plan.description}
-              </p>
 
               {/* CTA Button */}
               <button
-                onClick={() => handleAddToCart(plan)}
-                disabled={addedPlan === plan.name}
-                className={`w-full py-4 px-6 rounded-full font-700 text-sm transition-all ${
-                  addedPlan === plan.name
-                    ? "bg-green-500 text-white"
-                    : "bg-yellow hover:bg-yellow-dark text-gray-900 hover:scale-105"
+                onClick={() => handleAddToCart(tier)}
+                disabled={isInCart}
+                className={`w-full py-4 rounded-full font-700 text-center transition-all mb-8 ${
+                  isInCart
+                    ? "bg-green-500 text-white cursor-not-allowed"
+                    : tier.highlighted
+                    ? "bg-yellow hover:bg-yellow-dark text-gray-900 hover:scale-105"
+                    : "bg-gray-900 hover:bg-gray-800 text-white hover:scale-105"
                 }`}
               >
-                {addedPlan === plan.name ? t("betterMessage.pricing.addedToCart") : `${plan.ctaText} 🛒`}
+                {isInCart ? "Added to Cart ✓" : `${tier.cta} 🛒`}
               </button>
 
+              {/* Features List */}
+              <ul className="space-y-3 flex-grow">
+                {tier.features.map((feature, fIndex) => (
+                  <li key={fIndex} className="flex items-start gap-3">
+                    <svg 
+                      className={`w-5 h-5 mt-0.5 flex-shrink-0 ${tier.highlighted ? "text-yellow" : "text-green-500"}`} 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className={`text-sm ${tier.highlighted ? "text-gray-200" : "text-gray-700"} ${feature.includes("Everything in") ? "font-700" : ""}`}>
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
               {/* Stripe Badge */}
-              <div className="mt-6 text-center text-sm text-gray-500 flex items-center justify-center gap-2">
-                <span>{t("betterMessage.pricing.securePayments")}</span>
+              <div className={`mt-6 text-center text-xs flex items-center justify-center gap-2 ${tier.highlighted ? "text-gray-400" : "text-gray-500"}`}>
+                <span>Secure payments</span>
                 <svg
-                  className="h-4"
+                  className="h-3"
                   viewBox="0 0 60 25"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M59.64 14.28h-8.06c.19 1.93 1.6 2.55 3.2 2.55 1.64 0 2.96-.37 4.05-.95v3.32a8.33 8.33 0 01-4.56 1.1c-4.01 0-6.83-2.5-6.83-7.48 0-4.19 2.39-7.52 6.3-7.52 3.92 0 5.96 3.28 5.96 7.5 0 .4-.04 1.26-.06 1.48zm-5.92-5.62c-1.03 0-2.17.73-2.17 2.58h4.25c0-1.85-1.07-2.58-2.08-2.58zM40.95 20.3c-1.44 0-2.32-.6-2.9-1.04l-.02 4.63-4.12.87V5.57h3.76l.08 1.02a4.7 4.7 0 013.23-1.29c2.9 0 5.62 2.6 5.62 7.4 0 5.23-2.7 7.6-5.65 7.6zM40 8.95c-.95 0-1.54.34-1.97.81l.02 6.12c.4.44.98.78 1.95.78 1.52 0 2.54-1.65 2.54-3.87 0-2.15-1.04-3.84-2.54-3.84zM28.24 5.57h4.13v14.44h-4.13V5.57zm0-4.7L32.37 0v3.36l-4.13.88V.88zm-4.32 9.35v9.79H19.8V5.57h3.7l.12 1.22c1-1.77 3.07-1.41 3.62-1.22v3.79c-.52-.17-2.29-.43-3.32.86zm-8.55 4.72c0 2.43 2.6 1.68 3.12 1.46v3.36c-.55.3-1.54.54-2.89.54a4.15 4.15 0 01-4.27-4.24l.01-13.17 4.02-.86v3.54h3.14V9.1h-3.13v5.85zm-4.91.7c0 2.97-2.31 4.66-5.73 4.66a11.2 11.2 0 01-4.46-.93v-3.93c1.38.75 3.1 1.31 4.46 1.31.92 0 1.53-.24 1.53-1C6.26 13.77 0 14.51 0 9.95 0 7.04 2.28 5.3 5.62 5.3c1.36 0 2.72.2 4.09.75v3.88a9.23 9.23 0 00-4.1-1.06c-.86 0-1.44.25-1.44.93 0 1.85 6.29.97 6.29 5.88z"
-                    fill="#6772E5"
+                    fill={tier.highlighted ? "#9CA3AF" : "#6772E5"}
                   />
                 </svg>
               </div>
             </div>
-          ))}
+            );
+          })}
+        </div>
+
+        {/* Bottom Note */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-gray-500">
+            All assessments are conducted by our AI-powered analysis system with human expert review. 
+            <br className="hidden md:block" />
+            Results delivered within 48 hours of submission.
+          </p>
         </div>
       </div>
     </section>
@@ -856,7 +978,7 @@ function ContactFormSection() {
 
 /* ─── Main Page ─── */
 export default function BetterMessagePage() {
-  const { t } = useLanguage();
+  const { t, variant, setVariant } = useLanguage();
   
   // FAQ data - używamy tych samych pytań co na home page
   const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
@@ -867,9 +989,9 @@ export default function BetterMessagePage() {
   
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
+      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
       <HeroSection />
-      <PricingSection />
+      <ProductVariants />
       <BenefitsSection />
       <FAQSection faqs={faqs} />
       <PSSTSection />

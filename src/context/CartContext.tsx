@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
 
 export interface CartItem {
   id: string;
@@ -17,12 +17,15 @@ interface CartContextType {
   clearCart: () => void;
   total: number;
   itemCount: number;
+  isCartOpen: boolean;
+  setIsCartOpen: (open: boolean) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -41,7 +44,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("freemoji-cart", JSON.stringify(items));
   }, [items]);
 
-  const addItem = (item: CartItem) => {
+  const addItem = useCallback((item: CartItem) => {
     setItems((prev) => {
       // Check if item already exists
       const exists = prev.find((i) => i.id === item.id);
@@ -51,15 +54,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prev, item];
     });
-  };
+  }, []);
 
-  const removeItem = (id: string) => {
+  const removeItem = useCallback((id: string) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
-  };
+  }, []);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setItems([]);
-  };
+  }, []);
 
   const total = items.reduce((sum, item) => sum + item.price, 0);
   const itemCount = items.length;
@@ -73,6 +76,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         clearCart,
         total,
         itemCount,
+        isCartOpen,
+        setIsCartOpen,
       }}
     >
       {children}

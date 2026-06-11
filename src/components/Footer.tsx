@@ -29,7 +29,7 @@ export default function Footer() {
             <a href="#" className="hover:underline transition-all">
               {t("footer.terms")}
             </a>
-            <a href="/kontakt" className="hover:underline transition-all">
+            <a href="/contact" className="hover:underline transition-all">
               {t("footer.contact")}
             </a>
             <a href="tel:+48654456546" className="hover:underline transition-all font-600">

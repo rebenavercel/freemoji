@@ -117,7 +117,7 @@ function TeamSection() {
               {/* Yellow button at bottom center */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-10">
                 <a
-                  href="/kontakt"
+                  href="/contact"
                   className="bg-yellow hover:bg-yellow-dark text-gray-900 px-8 py-3 rounded-full font-800 text-base shadow-xl hover:scale-105 transition-all inline-block whitespace-nowrap"
                 >
                   {t("about.team.contactUs")}
@@ -156,32 +156,7 @@ function TeamSection() {
 
 /* ─── PSST Section ─── */
 function PSSTSection() {
-  const benefits = [
-    {
-      number: "01.",
-      title: "Naucz się rozpoznawać sygnały emocjonalne online",
-      description:
-        "Zrozum, jak odbiorcy interpretują Twoje wiadomości. Dowiedz się, które sformułowania mogą być odebrane negatywnie i jak je poprawić, aby budować lepsze relacje biznesowe.",
-    },
-    {
-      number: "02.",
-      title: "Zwiększ efektywność zespołu",
-      description:
-        "Lepsze zrozumienie prowadzi do szybszej współpracy. Zredukuj ilość wyjaśnień i powtórzeń dzięki precyzyjnej komunikacji dostosowanej do odbiorcy.",
-    },
-    {
-      number: "03.",
-      title: "Unikaj kosztownych wpadek",
-      description:
-        "Jedno źle odebrane emoji może zepsuć relację z ważnym klientem. Nasz system ostrzega przed potencjalnymi nieporozumieniami zanim wyślesz wiadomość.",
-    },
-    {
-      number: "04.",
-      title: "Buduj profesjonalny wizerunek",
-      description:
-        "Spójna i świadoma komunikacja w całej firmie przekłada się na lepszy odbiór marki. Stwórz standardy komunikacji, które wzmocnią Twój profesjonalizm.",
-    },
-  ];
+  const { t } = useLanguage();
 
   return (
     <section className="py-12 md:py-20 px-4 md:px-6 bg-white">
@@ -189,13 +164,10 @@ function PSSTSection() {
         {/* PSST Header */}
         <div className="mb-16">
           <h2 className="font-display text-4xl md:text-9xl font-[900] text-gray-900 mb-4" style={{ fontWeight: 900 }}>
-            PSST...
+            {t("about.psst.heading")}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl leading-relaxed">
-            Warto obejrzeć wideo, poza ciekawą treścią na nagraniu usłyszysz{" "}
-            <strong>jak brzmi kod rabatowy</strong>. Zastawialiśmy go w nagraniu
-            abyś odebrał swój ebook taniej znając już podstawy cyfrowej
-            interpunkcji.
+            {t("about.psst.intro")}
           </p>
         </div>
 
@@ -204,10 +176,10 @@ function PSSTSection() {
           {/* Left: Benefits List */}
           <div>
             <h3 className="font-display text-2xl md:text-5xl font-700 text-gray-900 mb-12">
-              Dlaczego warto?
+              {t("about.psst.whyTitle")}
             </h3>
             <div className="space-y-8">
-              {benefits.map((benefit, index) => (
+              {t("about.psst.benefits").map((benefit: any, index: number) => (
                 <div key={index} className="flex gap-6 items-start">
                   <div className="flex-shrink-0 -mt-2">
                     <div className="bg-yellow px-4 py-2 rounded-lg">
@@ -266,6 +238,7 @@ function PSSTSection() {
 
 /* ─── Emoji Grid Section ─── */
 function EmojiGridSection() {
+  const { t } = useLanguage();
   const emojiRows = [
     ["😀", "😃", "😄", "😁", "😆", "😅", "🤣", "😂", "🙂", "🙃"],
     ["😉", "😊", "😇", "🥰", "😍", "🤩", "😘", "😗", "☺️", "😚"],
@@ -283,7 +256,7 @@ function EmojiGridSection() {
     <section className="py-20 px-6 bg-yellow">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-12">
-          Znasz podstawy?
+          {t("about.emojiGrid.heading")}
         </h2>
 
         {/* Emoji Grid */}
@@ -319,15 +292,8 @@ function EmojiGridSection() {
 
 /* ─── FAQ Section with Benefits List ─── */
 function AboutFAQSection({ faqs }: { faqs: Array<{ emoji: string; question: string; answer: string }> }) {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const benefits = [
-    { emoji: "👀", title: "Lepsze odczytywanie emocji – rozpoznawaj ukryte emocje u rozmówców" },
-    { emoji: "🧠", title: "Inteligencja emocjonalna 2.0 – rozwijaj empatię w środowisku cyfrowym" },
-    { emoji: "🗣️", title: "Skuteczniejsze spotkania – lepsze decyzje, mniej nieporozumień" },
-    { emoji: "💬", title: "Pewność w rozmowie – mniej stresu w negocjacjach i prezentacjach online" },
-    { emoji: "⚡", title: "Wiarygodność lidera – buduj autorytet i zaufanie w zespole" },
-  ];
 
   return (
     <section className="py-12 md:py-20 px-4 md:px-6 bg-yellow overflow-hidden">
@@ -336,10 +302,10 @@ function AboutFAQSection({ faqs }: { faqs: Array<{ emoji: string; question: stri
           {/* Left: Benefits List */}
           <div>
             <h2 className="font-display text-2xl md:text-5xl font-800 text-gray-900 mb-8">
-              W czym freemoji może Ci pomóc?
+              {t("about.faq.heading")}
             </h2>
             <ul className="space-y-6">
-              {benefits.map((benefit, index) => (
+              {t("about.faq.benefits").map((benefit: any, index: number) => (
                 <li key={index} className="flex items-start gap-4">
                   <span className="text-3xl flex-shrink-0">{benefit.emoji}</span>
                   <p className="text-lg text-gray-900 font-600 pt-1">
@@ -392,34 +358,10 @@ function AboutFAQSection({ faqs }: { faqs: Array<{ emoji: string; question: stri
 
 /* ─── Testimonials Section ─── */
 function TestimonialsSection() {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonials = [
-    {
-      emoji: "🥰",
-      quote: "BetterMessage całkowicie zmienił sposób, w jaki komunikuję się z moim zespołem. Wcześniej miałem problem z interpretacją tonu wiadomości. Teraz rozumiem kontekst i unikam nieporozumień.",
-      name: "Karol Chrapkiewicz",
-      title: "Re Bena Gesta",
-    },
-    {
-      emoji: "😊",
-      quote: "Jako HR Manager codziennie wysyłam dziesiątki wiadomości do kandydatów. BetterMessage pomógł mi zbudować cieplejszy, bardziej profesjonalny ton komunikacji, co przełożyło się na lepszy employer branding.",
-      name: "Anna Kowalska",
-      title: "HR Manager, TechCorp",
-    },
-    {
-      emoji: "🎯",
-      quote: "W sprzedaży relacja to wszystko. Dzięki BetterMessage nauczyłem się wyrażać empatię w wiadomościach tekstowych, co znacząco poprawiło konwersję i zadowolenie klientów.",
-      name: "Marcin Nowak",
-      title: "Sales Director, SalesPro",
-    },
-    {
-      emoji: "💡",
-      quote: "Jako coach prowadzę sesje online i korespondencję mailową. BetterMessage pokazał mi, jak ważny jest kontekst w komunikacji pisemnej. To kompletnie zmieniło moją praktykę.",
-      name: "Joanna Wiśniewska",
-      title: "Business Coach",
-    },
-  ];
+  const testimonials = t("about.testimonials.list");
 
   const floatingEmojis = [
     { emoji: "😀", delay: "0s" },
@@ -459,10 +401,10 @@ function TestimonialsSection() {
             {/* Header */}
             <div className="mb-12">
               <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-4">
-                Opinie
+                {t("about.testimonials.heading")}
               </h2>
               <p className="text-xl text-gray-600">
-                Zobacz co mówią o Nas Nasi klienci
+                {t("about.testimonials.subtitle")}
               </p>
             </div>
 
@@ -585,18 +527,14 @@ function TestimonialsSection() {
 
 /* ─── Main Page ─── */
 export default function AboutPage() {
-  const { t } = useLanguage();
+  const { t, variant, setVariant } = useLanguage();
   
-  // FAQ data - używamy tych samych pytań co na home page
-  const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
-  const faqs = faqQuestions.map((faq, index) => ({
-    emoji: ["🤔", "👥", "📚", "💰", "✨"][index % 5],
-    ...faq
-  }));
+  // FAQ data - używamy pytań z about page
+  const faqs = t("about.faq.questions") as Array<{ emoji: string; question: string; answer: string }>;
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
+      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
       <AboutHero />
       <TeamSection />
       <PSSTSection />
