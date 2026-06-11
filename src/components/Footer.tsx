@@ -26,7 +26,7 @@ export default function Footer() {
             <a href="#" className="hover:underline transition-all">
               {t("footer.privacy")}
             </a>
-            <a href="#" className="hover:underline transition-all">
+            <a href="/terms" className="hover:underline transition-all">
               {t("footer.terms")}
             </a>
             <a href="/contact" className="hover:underline transition-all">

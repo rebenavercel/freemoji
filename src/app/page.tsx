@@ -372,10 +372,10 @@ function WebinarPricing() {
           {/* Right: pricing card (2 cols) */}
           <div className="md:col-span-2">
             <div className="bg-gray-900 rounded-3xl p-8 md:p-10 text-white text-center sticky top-24">
-              <p className="text-yellow font-600 text-sm uppercase tracking-widest mb-4">Webinar</p>
+              <p className="text-yellow font-600 text-sm uppercase tracking-widest mb-4">Product</p>
               <div className="bg-yellow rounded-2xl p-6 mb-6">
-                <p className="text-gray-900/60 text-xs mb-1">Dostęp do platformy od</p>
-                <p className="font-display font-800 text-4xl md:text-5xl text-gray-900">199<span className="text-lg md:text-2xl">,00 zł</span></p>
+                <p className="text-gray-900/60 text-xs mb-1">Starting from</p>
+                <p className="font-display font-800 text-4xl md:text-5xl text-gray-900">$29</p>
               </div>
               <ul className="text-left space-y-3 mb-8 text-sm">
                 {[0, 1, 2, 3].map((i) => (
@@ -388,7 +388,7 @@ function WebinarPricing() {
               <a href="#contact" className="block w-full bg-yellow hover:bg-yellow-dark text-gray-900 font-600 py-4 rounded-full transition-all hover:scale-105 text-lg">
                 {t("home.webinar.cta")}
               </a>
-              <p className="mt-3 text-gray-500 text-xs">(Nie zapomnij dodać emoji!)</p>
+              <p className="mt-3 text-gray-500 text-xs">(Don't forget to add emojis!)</p>
             </div>
           </div>
         </div>
