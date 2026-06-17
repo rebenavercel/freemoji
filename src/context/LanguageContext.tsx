@@ -10,7 +10,7 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
   variant: VariantKey;
   setVariant: (variant: VariantKey) => void;
-  t: (key: string) => any;
+  t: (key: string, forceVariant?: VariantKey) => any;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -63,7 +63,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [variant, mounted]);
 
-  const t = useCallback((key: string): any => {
+  const t = useCallback((key: string, forceVariant?: VariantKey): any => {
     const keys = key.split(".");
     
     // Helper function to get value from object, handling array indices
@@ -105,16 +105,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     // Select content source based on language
     const contentSource = language === "pl" ? content : contentEn;
     
+    // Use forceVariant if provided, otherwise use current variant
+    const effectiveVariant = forceVariant || variant;
+    
     // Remove "home." prefix if present for content lookup
     const contentKeys = key.startsWith("home.") ? key.substring(5).split(".") : keys;
-    let value = getValue(contentSource[variant], contentKeys);
+    let value = getValue(contentSource[effectiveVariant], contentKeys);
     
     // Debug log
-    if (key.startsWith("home.hero.headline") || key.startsWith("hero.headline")) {
+    if (key.startsWith("home.hero.headline") || key.startsWith("hero.headline") || key.startsWith("betterMessage")) {
       console.log("🔍 t() called:", { 
         key, 
         contentKeys,
-        variant, 
+        variant: effectiveVariant, 
         language,
         value, 
         keys,

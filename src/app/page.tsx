@@ -23,7 +23,7 @@ function StickyCTA() {
   if (!show) return null;
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-t border-gray-200 px-4 py-3">
-      <a href="#contact" className="block w-full bg-yellow hover:bg-yellow-dark text-gray-900 font-600 text-center py-3 rounded-full transition-colors">
+      <a href="/products/bettermessage" className="block w-full bg-yellow hover:bg-yellow-dark text-gray-900 font-600 text-center py-3 rounded-full transition-colors">
         {t("home.stickyCta")}
       </a>
     </div>
@@ -59,7 +59,7 @@ function Hero() {
           <p className="text-base md:text-xl text-gray-600 mb-6 md:mb-8 max-w-md leading-relaxed">
             {t("home.hero.subtitle")}
           </p>
-          <a href="#contact" className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-600 text-lg transition-all hover:scale-105 hover:shadow-xl">
+          <a href="/products/bettermessage" className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-600 text-lg transition-all hover:scale-105 hover:shadow-xl">
             {t("home.hero.cta")}
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="ml-1">
               <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -127,11 +127,15 @@ function About() {
   return (
     <section id="about" className="py-12 md:py-32">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-start">
-        <div className="relative">
-          <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-yellow/30 to-yellow/10 overflow-hidden flex items-end justify-center">
-            <span className="text-[8rem] mb-8">{"👩‍💼"}</span>
-          </div>
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow rounded-2xl -z-10" />
+        <div>
+          <Image 
+            src="/product.jpeg" 
+            alt="freemoji product" 
+            width={800} 
+            height={1000} 
+            className="w-full h-auto"
+            priority
+          />
         </div>
         <div>
           <p className="text-yellow font-600 text-sm uppercase tracking-widest mb-3">{t("home.about.label")}</p>
@@ -385,7 +389,7 @@ function WebinarPricing() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className="block w-full bg-yellow hover:bg-yellow-dark text-gray-900 font-600 py-4 rounded-full transition-all hover:scale-105 text-lg">
+              <a href="/products/bettermessage" className="block w-full bg-yellow hover:bg-yellow-dark text-gray-900 font-600 py-4 rounded-full transition-all hover:scale-105 text-lg">
                 {t("home.webinar.cta")}
               </a>
               <p className="mt-3 text-gray-500 text-xs">(Don't forget to add emojis!)</p>

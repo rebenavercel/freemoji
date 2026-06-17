@@ -33,13 +33,13 @@ function ProductsHero() {
           {/* Text Content */}
           <div className="relative z-20 mb-6 animate-fade-up">
             <p className="text-sm md:text-base text-gray-600 mb-4 font-500 max-w-2xl mx-auto">
-              {t("products.hero.subtitle")}
+              {t("products.hero.subtitle", "normalne")}
             </p>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-900 text-gray-900 leading-tight tracking-tight mb-4">
-              {t("products.hero.title1")}
+              {t("products.hero.title1", "normalne")}
               <br />
               <span className="relative inline-block">
-                {t("products.hero.title2")}
+                {t("products.hero.title2", "normalne")}
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 400 12" fill="none">
                   <path d="M2 8c60-6 120-6 180-2s120 2 175-4" stroke="#FFD600" strokeWidth="6" strokeLinecap="round" />
                 </svg>
@@ -66,7 +66,7 @@ function ProductsHero() {
               href="#products" 
               className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-700 text-base transition-all hover:scale-105 hover:shadow-xl"
             >
-              {t("products.hero.cta")}
+              {t("products.hero.cta", "normalne")}
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="ml-1">
                 <path d="M10 4v12m0 0l4-4m-4 4l-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -85,8 +85,8 @@ function ProductsList() {
     {
       emoji: "😎",
       fruit: "🍊🍊",
-      title: t("products.list.betterMessage.title"),
-      description: t("products.list.betterMessage.description"),
+      title: t("products.list.betterMessage.title", "normalne"),
+      description: t("products.list.betterMessage.description", "normalne"),
       price: "89",
       available: true,
       link: "/products/bettermessage",
@@ -164,13 +164,13 @@ function ProductsList() {
                     href={product.link}
                     className="bg-yellow hover:bg-yellow-dark text-gray-900 px-8 py-4 rounded-full font-800 text-base transition-all hover:scale-105 shadow-lg hover:shadow-xl"
                   >
-                    {t("products.seeProduct")}
+                    {t("products.seeProduct", "normalne")}
                   </a>
                 </div>
               ) : (
                 <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-400 rounded-full font-700 text-sm">
-                  <span>{t("products.comingSoon")}</span>
-                  <span className="text-xs">({product.price} {t("products.currency")})</span>
+                  <span>{t("products.comingSoon", "normalne")}</span>
+                  <span className="text-xs">({product.price} {t("products.currency", "normalne")})</span>
                 </div>
               )}
             </div>
@@ -362,8 +362,8 @@ function ProductVariants() {
 export default function ProductsPage() {
   const { t, variant, setVariant } = useLanguage();
 
-  // FAQ data - get from translations
-  const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
+  // FAQ data - get from translations - force "normalne" variant
+  const faqQuestions = t("home.faq.questions", "normalne") as Array<{ question: string; answer: string }>;
   const faqs = [
     { emoji: "🤔", ...faqQuestions[0] },
     { emoji: "👥", ...faqQuestions[1] },
@@ -378,7 +378,7 @@ export default function ProductsPage() {
       <ProductsHero />
       <ProductsList />
       <ProductVariants />
-      <FAQSection faqs={faqs} />
+      <FAQSection faqs={faqs} forceNormale={true} />
       <ContactForm />
       <Footer />
     </main>

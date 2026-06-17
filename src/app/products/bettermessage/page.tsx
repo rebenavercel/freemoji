@@ -11,113 +11,198 @@ import { useLanguage } from "@/context/LanguageContext";
 
 /* ─── Hero Section ─── */
 function HeroSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const [selectedVariant, setSelectedVariant] = useState<'starter' | 'professional' | 'team'>('professional');
+  const [hoveredVariant, setHoveredVariant] = useState<string | null>(null);
+
+  // Get variant data from translations - force "normalne" variant
+  const variantData = {
+    starter: t("betterMessage.variants.starter", "normalne"),
+    professional: t("betterMessage.variants.professional", "normalne"),
+    team: t("betterMessage.variants.team", "normalne")
+  };
+
+  const variants = {
+    starter: {
+      name: variantData.starter.name,
+      price: 89,
+      originalPrice: 178,
+      features: Array.isArray(variantData.starter.features) ? variantData.starter.features : [],
+      description: variantData.starter.description,
+      billing: 'one-time',
+      cta: variantData.starter.cta
+    },
+    professional: {
+      name: variantData.professional.name,
+      price: 129,
+      originalPrice: 258,
+      features: Array.isArray(variantData.professional.features) ? variantData.professional.features : [],
+      description: variantData.professional.description,
+      recommended: true,
+      billing: 'monthly',
+      cta: variantData.professional.cta
+    },
+    team: {
+      name: variantData.team.name,
+      price: 689,
+      originalPrice: 1378,
+      features: Array.isArray(variantData.team.features) ? variantData.team.features : [],
+      description: variantData.team.description,
+      priceNote: 'per team (up to 5 people)',
+      billing: 'monthly',
+      cta: variantData.team.cta
+    }
+  };
+
+  const currentVariant = variants[selectedVariant];
+  const discount = Math.round(((currentVariant.originalPrice - currentVariant.price) / currentVariant.originalPrice) * 100);
   
   return (
-    <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-6 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+    <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-6 bg-white relative overflow-hidden">
+      {/* Background Color Block - full height but narrower width */}
+      <div className="absolute left-0 top-0 bottom-0 w-[40%] bg-gray-900 rounded-r-[60px] z-0" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           {/* Left: Image */}
           <div className="flex-1 w-full">
-            <div className="relative aspect-[4/3] w-full max-w-sm md:max-w-lg mx-auto">
+            <div className="relative w-full max-w-sm md:max-w-lg mx-auto">
               <Image
-                src="/media/hero-image.png"
-                alt="BetterMessage Dashboard"
-                fill
-                className="object-contain drop-shadow-2xl"
+                src="/productnobg.png"
+                alt="BetterMessage Product"
+                width={600}
+                height={750}
+                className="w-full h-auto drop-shadow-2xl relative z-20"
                 priority
               />
             </div>
           </div>
 
-          {/* Right: Content */}
-          <div className="flex-1 w-full text-center lg:text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-yellow/20 border-2 border-yellow px-4 py-2 rounded-full mb-4">
-              <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <span className="text-sm font-700 text-gray-900">Rated 4.9/5 by professionals</span>
-            </div>
+          {/* Right: E-commerce Content */}
+          <div className="flex-1 w-full">
+            <div className="bg-white rounded-3xl border-2 border-gray-900 p-8 lg:p-10 shadow-2xl">
+              {/* Product Title */}
+              <h1 className="font-display text-3xl md:text-4xl font-900 text-gray-900 mb-2">
+                Better Message
+              </h1>
+              <p className="text-gray-600 mb-6">
+                Master digital communication skills
+              </p>
 
-            <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-900 text-gray-900 mb-4 md:mb-6 leading-tight">
-              Better Message
-            </h1>
-            <p className="text-lg md:text-2xl font-600 text-gray-800 mb-3 md:mb-4">
-              Improve digital communication quality
-            </p>
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
-              Improve the quality of digital conversations between you and contractors. Increase communication fluency and improve conversation efficiency through accurate messages.
-            </p>
+              {/* Rating */}
+              <div className="flex items-center gap-2 mb-6">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-yellow" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm text-gray-600">(500+ reviews)</span>
+              </div>
 
-            {/* Social Proof Icons */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mb-8">
-              {/* Trust Badge 1 */}
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              {/* Variant Selection */}
+              <div className="mb-6">
+                <label className="block text-sm font-700 text-gray-900 mb-3">Choose Package:</label>
+                <div className="flex gap-3">
+                  {Object.entries(variants).map(([key, variant]) => (
+                    <div key={key} className="flex-1 relative">
+                      {variant.recommended && (
+                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow px-3 py-1 rounded-full text-xs font-700 text-gray-900 whitespace-nowrap z-10">
+                          RECOMMENDED
+                        </div>
+                      )}
+                      <button 
+                        onClick={() => setSelectedVariant(key as 'starter' | 'professional' | 'team')}
+                        className={`w-full border-2 rounded-2xl p-4 text-center transition-all ${
+                          selectedVariant === key 
+                            ? 'border-yellow bg-yellow scale-105 shadow-lg' 
+                            : 'border-gray-900 bg-white hover:bg-gray-50 hover:scale-105'
+                        }`}
+                      >
+                        <div className="flex items-center justify-center gap-1 mb-1">
+                          <div className={`font-700 ${selectedVariant === key ? 'text-gray-900' : 'text-gray-900'}`}>
+                            {variant.name}
+                          </div>
+                          <div 
+                            className="relative group cursor-help"
+                            onMouseEnter={() => setHoveredVariant(key)}
+                            onMouseLeave={() => setHoveredVariant(null)}
+                          >
+                            <svg className="w-4 h-4 text-gray-500 hover:text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {hoveredVariant === key && (
+                              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-56 bg-gray-900 text-white text-xs rounded-lg p-3 shadow-xl z-50">
+                                <div className="font-700 mb-2">{variant.description}</div>
+                                <ul className="space-y-1 text-left">
+                                  {variant.features.map((feature, idx) => (
+                                    <li key={idx} className="flex items-start gap-1">
+                                      <span className="text-yellow shrink-0">✓</span>
+                                      <span>{feature}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                                <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        <div className={`text-sm ${selectedVariant === key ? 'text-gray-900' : 'text-gray-600'}`}>
+                          ${variant.price}
+                        </div>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Price */}
+              <div className="bg-gray-50 rounded-2xl p-6 mb-6">
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-5xl font-900 text-gray-900">${currentVariant.price}</span>
+                  {currentVariant.billing === 'monthly' && <span className="text-xl text-gray-600">/ month</span>}
+                  <span className="text-lg text-gray-500 line-through">${currentVariant.originalPrice}</span>
+                  <span className="bg-yellow px-3 py-1 rounded-full text-sm font-700">{discount}% OFF</span>
+                </div>
+                <p className="text-sm text-gray-600">
+                  {currentVariant.billing === 'one-time' ? 'One-time payment' : 'Monthly subscription'}
+                  {currentVariant.priceNote && ` • ${currentVariant.priceNote}`}
+                </p>
+              </div>
+
+              {/* Features List */}
+              <ul className="space-y-3 mb-6">
+                {currentVariant.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA Button */}
+              <button className="w-full bg-gray-900 hover:bg-gray-800 text-white font-700 text-lg py-5 rounded-full transition-all hover:scale-105 shadow-xl hover:shadow-2xl mb-4">
+                {currentVariant.cta} 🛒
+              </button>
+
+              {/* Trust Badges */}
+              <div className="flex items-center justify-center gap-4 text-sm text-gray-600 pt-4 border-t border-gray-200">
+                <div className="flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
+                  <span>Secure checkout</span>
                 </div>
-                <div className="text-left">
-                  <div className="text-sm font-700 text-gray-900">500+</div>
-                  <div className="text-xs text-gray-600">Happy clients</div>
-                </div>
-              </div>
-
-              {/* Trust Badge 2 */}
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                <div className="flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                </div>
-                <div className="text-left">
-                  <div className="text-sm font-700 text-gray-900">48-hour</div>
-                  <div className="text-xs text-gray-600">Delivery</div>
+                  <span>30-day guarantee</span>
                 </div>
               </div>
-
-              {/* Trust Badge 3 */}
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div className="text-left">
-                  <div className="text-sm font-700 text-gray-900">Money-back</div>
-                  <div className="text-xs text-gray-600">Guarantee</div>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-6">
-              <a 
-                href="#pricing"
-                className="w-full sm:w-auto bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg px-10 py-4 rounded-full transition-all hover:scale-105 shadow-xl hover:shadow-2xl inline-block text-center"
-              >
-                Choose Variant →
-              </a>
-              <div className="flex items-center gap-2 text-gray-600">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-                <span className="text-sm">Secure checkout with Stripe</span>
-              </div>
-            </div>
-
-            {/* Brand */}
-            <div className="flex items-center justify-center lg:justify-start gap-3 pt-4 border-t border-gray-200">
-              <span className="text-gray-500 text-sm">By</span>
-              <Image
-                src="/logo.svg"
-                alt="freemoji"
-                width={120}
-                height={37}
-                className="h-6 w-auto"
-              />
             </div>
           </div>
         </div>
@@ -128,20 +213,65 @@ function HeroSection() {
 
 /* ─── Benefits Section ─── */
 function BenefitsSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  
+  // Get chatExamples from base content (not variant-specific)
+  const chatExamples = language === "pl" 
+    ? {
+        chat1: {
+          message1: "Pamiętasz babcię Halinę?",
+          message2: "Dzisiaj zmarła 🤣🤣🤣",
+          time1: "18:50",
+          reply1: "Kondolencje",
+          replyTime1: "18:50",
+          reply2: "Nic nie wiedziałam 🤣🤣🤣",
+          replyTime2: "18:55",
+          message3: "Wczoraj ją do szpitala zabrali a dzisiaj takie wieści 🤣🤣🤣"
+        },
+        chat2: {
+          message1: "Wujek Marek zmarł\n💀",
+          message2: "Planujemy go skremować\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Dzisiaj umarł wujek Janek 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Tato to nie są smutne emotki",
+          message2: "Jak to nie są"
+        }
+      }
+    : {
+        chat1: {
+          message1: "Do you remember grandma Halina?",
+          message2: "She passed away today 🤣🤣🤣",
+          time1: "18:50",
+          reply1: "My condolences",
+          replyTime1: "18:50",
+          reply2: "I had no idea 🤣🤣🤣",
+          replyTime2: "18:55",
+          message3: "They took her to the hospital yesterday and today we got this news 🤣🤣🤣"
+        },
+        chat2: {
+          message1: "Uncle Mark passed away\n💀",
+          message2: "We're planning to cremate him\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Uncle John died today 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Dad those aren't sad emojis",
+          message2: "What do you mean they aren't"
+        }
+      };
   
   const benefits = [
     {
-      title: t("betterMessage.benefits.title1"),
-      description: t("betterMessage.benefits.desc1"),
+      title: t("betterMessage.benefits.title1", "normalne"),
+      description: t("betterMessage.benefits.desc1", "normalne"),
     },
     {
-      title: t("betterMessage.benefits.title2"),
-      description: t("betterMessage.benefits.desc2"),
+      title: t("betterMessage.benefits.title2", "normalne"),
+      description: t("betterMessage.benefits.desc2", "normalne"),
     },
     {
-      title: t("betterMessage.benefits.title3"),
-      description: t("betterMessage.benefits.desc3"),
+      title: t("betterMessage.benefits.title3", "normalne"),
+      description: t("betterMessage.benefits.desc3", "normalne"),
     },
   ];
 
@@ -154,59 +284,53 @@ function BenefitsSection() {
             {/* Chat 1 */}
             <div className="bg-white rounded-2xl p-4 shadow-md">
               <div className="text-sm text-gray-500 mb-2">
-                Pamiętasz babcię Halinę?
+                {chatExamples.chat1.message1}
                 <br />
-                Dzisiaj zmarła 😭😭😭{" "}
-                <span className="text-xs text-gray-400">18:50</span>
+                {chatExamples.chat1.message2} {" "}
+                <span className="text-xs text-gray-400">{chatExamples.chat1.time1}</span>
               </div>
               <div className="flex flex-col items-end gap-2">
                 <div className="bg-blue-500 text-white rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                   <div className="text-sm">
-                    Kondolencje{" "}
-                    <span className="text-xs opacity-80">18:50</span>
+                    {chatExamples.chat1.reply1}{" "}
+                    <span className="text-xs opacity-80">{chatExamples.chat1.replyTime1}</span>
                   </div>
                 </div>
                 <div className="bg-blue-500 text-white rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                   <div className="text-sm">
-                    Nic nie wiedziałam 😭😭😭{" "}
-                    <span className="text-xs opacity-80">18:55</span>
+                    {chatExamples.chat1.reply2}{" "}
+                    <span className="text-xs opacity-80">{chatExamples.chat1.replyTime2}</span>
                   </div>
                 </div>
               </div>
               <div className="text-sm text-gray-500 mt-2">
-                Wczoraj ją do szpitala zabrali a dzisiaj takie wieści 😭😭😭
+                {chatExamples.chat1.message3}
               </div>
             </div>
 
             {/* Chat 2 */}
             <div className="bg-white rounded-2xl p-4 shadow-md flex flex-col items-start gap-3">
               <div className="bg-gray-200 rounded-2xl px-4 py-2">
-                <div className="text-sm text-gray-800">
-                  Wujek Marek zmarł
-                  <br />
-                  💀
+                <div className="text-sm text-gray-800 whitespace-pre-line">
+                  {chatExamples.chat2.message1}
                 </div>
               </div>
               <div className="bg-gray-200 rounded-2xl px-4 py-2">
-                <div className="text-sm text-gray-800">
-                  Planujemy go skremować
-                  <br />
-                  🔥🔥💀💀
+                <div className="text-sm text-gray-800 whitespace-pre-line">
+                  {chatExamples.chat2.message2}
                 </div>
               </div>
             </div>
 
             {/* Chat 3 - Dark mode */}
             <div className="bg-gray-900 rounded-2xl p-4 shadow-md">
-              <div className="text-white text-sm mb-3">
-                Dzisiaj umarł wujek Janek 🤣🤣🤣
-                <br />
-                🤣🤣🤣
+              <div className="text-white text-sm mb-3 whitespace-pre-line">
+                {chatExamples.chat3.message1}
               </div>
               <div className="bg-gray-700 text-white rounded-2xl px-4 py-2 inline-block mb-2">
-                <div className="text-sm">Tato to nie są smutne emotki</div>
+                <div className="text-sm">{chatExamples.chat3.reply1}</div>
               </div>
-              <div className="text-white text-sm">Jak to nie są</div>
+              <div className="text-white text-sm">{chatExamples.chat3.message2}</div>
             </div>
           </div>
 
@@ -233,64 +357,46 @@ function BenefitsSection() {
 /* ─── Product Variants / Pricing Tiers ─── */
 function ProductVariants() {
   const { addItem, setIsCartOpen, items } = useCart();
+  const { t } = useLanguage();
+  
+  // Get variant data from translations - force "normalne" variant
+  const variantData = {
+    starter: t("betterMessage.variants.starter", "normalne"),
+    professional: t("betterMessage.variants.professional", "normalne"),
+    team: t("betterMessage.variants.team", "normalne")
+  };
   
   const tiers = [
     {
-      name: "Starter",
-      description: "Perfect for individuals starting their communication journey",
-      price: 29,
-      priceDisplay: "$29",
+      name: variantData.starter.name,
+      description: variantData.starter.description,
+      price: 89,
+      priceDisplay: "$89",
       period: "one-time",
-      features: [
-        "Basic communication style assessment",
-        "Emotion detection in 5 sample messages",
-        "Tone analysis report (PDF)",
-        "Basic emoji recommendations",
-        "Email support"
-      ],
+      features: Array.isArray(variantData.starter.features) ? variantData.starter.features : [],
       highlighted: false,
-      cta: "Get Started"
+      cta: variantData.starter.cta
     },
     {
-      name: "Professional",
-      description: "Most popular for professionals who communicate daily",
-      price: 79,
-      priceDisplay: "$79",
-      period: "one-time",
+      name: variantData.professional.name,
+      description: variantData.professional.description,
+      price: 129,
+      priceDisplay: "$129",
+      period: "monthly",
       badge: "RECOMMENDED",
-      features: [
-        "Everything in Starter, plus:",
-        "Advanced communication style assessment",
-        "Emotion & context detection in 20 messages",
-        "Detailed tone perception analysis",
-        "Recipient type adaptation suggestions",
-        "Custom emoji & expression recommendations",
-        "Communication improvement roadmap",
-        "Priority email & chat support",
-        "30-day follow-up assessment"
-      ],
+      features: Array.isArray(variantData.professional.features) ? variantData.professional.features : [],
       highlighted: true,
-      cta: "Get Professional"
+      cta: variantData.professional.cta
     },
     {
-      name: "Team",
-      description: "For teams that want to communicate better together",
-      price: 199,
-      priceDisplay: "$199",
-      period: "per team (up to 5 people)",
-      features: [
-        "Everything in Professional, plus:",
-        "Team communication dynamics analysis",
-        "Individual assessments for each member",
-        "Team communication patterns report",
-        "Cross-cultural communication insights",
-        "1-hour video consultation with expert",
-        "3-month progress tracking",
-        "Dedicated support manager",
-        "Custom workshop materials"
-      ],
+      name: variantData.team.name,
+      description: variantData.team.description,
+      price: 689,
+      priceDisplay: "$689",
+      period: "monthly • per team (up to 5 people)",
+      features: Array.isArray(variantData.team.features) ? variantData.team.features : [],
       highlighted: false,
-      cta: "Get Team Plan"
+      cta: variantData.team.cta
     }
   ];
 
@@ -311,10 +417,10 @@ function ProductVariants() {
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-display text-3xl md:text-5xl font-900 text-gray-900 mb-4">
-            Choose Your Communication Assessment
+            {t("betterMessage.pricingHeading", "normalne")}
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-            Get insights into your communication style, understand how your messages are perceived, and learn to communicate better with everyone.
+            {t("betterMessage.pricingSubtitle", "normalne")}
           </p>
         </div>
 
@@ -445,12 +551,12 @@ function EmojiWarningSection() {
 
         {/* Main Message */}
         <h2 className="font-display text-2xl md:text-5xl lg:text-6xl font-700 text-gray-900 mb-4 md:mb-6 leading-tight">
-          {t("betterMessage.emojiWarning.title")} <span className="font-[900]" style={{ fontWeight: 900 }}>{t("betterMessage.emojiWarning.title2")}</span>
+          {t("betterMessage.emojiWarning.title", "normalne")} <span className="font-[900]" style={{ fontWeight: 900 }}>{t("betterMessage.emojiWarning.title2", "normalne")}</span>
         </h2>
 
         {/* Description */}
         <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
-          {t("betterMessage.emojiWarning.description")}
+          {t("betterMessage.emojiWarning.description", "normalne")}
         </p>
       </div>
     </section>
@@ -482,22 +588,22 @@ function VideoSection() {
             {/* Left: Content */}
             <div>
               <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-8 leading-tight">
-                {t("betterMessage.video.title")}
+                {t("betterMessage.video.title", "normalne")}
                 <br />
-                {t("betterMessage.video.title2")}
+                {t("betterMessage.video.title2", "normalne")}
               </h2>
 
               {/* Yellow badge */}
               <div className="bg-yellow inline-block px-8 py-4 rounded-2xl mb-6">
                 <div className="flex items-center gap-4">
                   <span className="font-display text-2xl md:text-4xl font-[900] text-gray-900" style={{ fontWeight: 900 }}>
-                    {t("betterMessage.video.badge1")}
+                    {t("betterMessage.video.badge1", "normalne")}
                   </span>
                   <div>
                     <p className="font-display text-lg font-700 text-gray-900">
-                      {t("betterMessage.video.badge2")}
+                      {t("betterMessage.video.badge2", "normalne")}
                       <br />
-                      {t("betterMessage.video.badge3")}
+                      {t("betterMessage.video.badge3", "normalne")}
                     </p>
                   </div>
                 </div>
@@ -508,7 +614,7 @@ function VideoSection() {
                 onClick={() => setIsPopupOpen(true)}
                 className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-700 text-lg transition-all border-4 border-gray-900 hover:border-yellow"
               >
-                {t("betterMessage.video.cta")}
+                {t("betterMessage.video.cta", "normalne")}
               </button>
             </div>
 
@@ -542,7 +648,7 @@ function VideoSection() {
                 {/* Text overlay */}
                 <div className="absolute top-4 right-4 bg-white/90 px-4 py-2 rounded-full">
                   <p className="text-sm font-600 text-gray-900">
-                    {t("betterMessage.video.previewText")}
+                    {t("betterMessage.video.previewText", "normalne")}
                   </p>
                 </div>
               </button>
@@ -599,7 +705,7 @@ function VideoSection() {
 /* ─── PSST Section ─── */
 function PSSTSection() {
   const { t } = useLanguage();
-  const benefits = t("betterMessage.psst.benefits") as Array<{
+  const benefits = t("betterMessage.psst.benefits", "normalne") as Array<{
     number: string;
     title: string;
     description: string;
@@ -611,10 +717,10 @@ function PSSTSection() {
         {/* PSST Header */}
         <div className="mb-16">
           <h2 className="font-display text-4xl md:text-9xl font-[900] text-gray-900 mb-4" style={{ fontWeight: 900 }}>
-            {t("betterMessage.psst.heading")}
+            {t("betterMessage.psst.heading", "normalne")}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl leading-relaxed">
-            {t("betterMessage.psst.intro")}
+            {t("betterMessage.psst.intro", "normalne")}
           </p>
         </div>
 
@@ -623,7 +729,7 @@ function PSSTSection() {
           {/* Left: Benefits List */}
           <div>
             <h3 className="font-display text-2xl md:text-5xl font-700 text-gray-900 mb-12">
-              {t("betterMessage.psst.whyTitle")}
+              {t("betterMessage.psst.whyTitle", "normalne")}
             </h3>
             <div className="space-y-8">
               {benefits.map((benefit, index) => (
@@ -688,7 +794,7 @@ function TestimonialsSection() {
   const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonials = t("betterMessage.testimonials.items") as Array<{
+  const testimonials = t("betterMessage.testimonials.items", "normalne") as Array<{
     emoji: string;
     quote: string;
     name: string;
@@ -733,10 +839,10 @@ function TestimonialsSection() {
             {/* Header */}
             <div className="mb-12">
               <h2 className="font-display text-2xl md:text-6xl font-800 text-gray-900 mb-4">
-                {t("betterMessage.testimonials.title")}
+                {t("betterMessage.testimonials.title", "normalne")}
               </h2>
               <p className="text-xl text-gray-600">
-                {t("betterMessage.testimonials.subtitle")}
+                {t("betterMessage.testimonials.subtitle", "normalne")}
               </p>
             </div>
 
@@ -882,9 +988,9 @@ function ContactFormSection() {
           {/* Header */}
           <div className="mb-12">
             <h2 className="font-display text-2xl md:text-5xl font-800 text-gray-900 mb-3">
-              {t("betterMessage.contact.heading")}
+              {t("betterMessage.contact.heading", "normalne")}
             </h2>
-            <p className="text-gray-500 text-sm">{t("betterMessage.contact.reminder")}</p>
+            <p className="text-gray-500 text-sm">{t("betterMessage.contact.reminder", "normalne")}</p>
           </div>
 
           {/* Form */}
@@ -892,21 +998,21 @@ function ContactFormSection() {
             {/* Name and Subject */}
             <div className="text-lg text-gray-700 leading-relaxed space-y-4">
               <p className="flex flex-wrap items-center gap-2">
-                <span>{t("betterMessage.contact.hello")}</span>
+                <span>{t("betterMessage.contact.hello", "normalne")}</span>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder={t("betterMessage.contact.namePlaceholder")}
+                  placeholder={t("betterMessage.contact.namePlaceholder", "normalne")}
                   className="inline-block border-b-2 border-gray-300 focus:border-yellow outline-none px-2 py-1 min-w-[200px] bg-transparent transition-colors"
                   required
                 />
-                <span>{t("betterMessage.contact.andIHave")}</span>
+                <span>{t("betterMessage.contact.andIHave", "normalne")}</span>
                 <input
                   type="text"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  placeholder={t("betterMessage.contact.subjectPlaceholder")}
+                  placeholder={t("betterMessage.contact.subjectPlaceholder", "normalne")}
                   className="inline-block border-b-2 border-gray-300 focus:border-yellow outline-none px-2 py-1 min-w-[250px] bg-transparent transition-colors"
                   required
                 />
@@ -914,7 +1020,7 @@ function ContactFormSection() {
               </p>
 
               <p className="flex flex-wrap items-start gap-2">
-                <span>{t("betterMessage.contact.namely")}</span>
+                <span>{t("betterMessage.contact.namely", "normalne")}</span>
               </p>
 
               {/* Message Area */}
@@ -922,7 +1028,7 @@ function ContactFormSection() {
                 <textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder={t("betterMessage.contact.messagePlaceholder")}
+                  placeholder={t("betterMessage.contact.messagePlaceholder", "normalne")}
                   rows={4}
                   className="w-full border-b-2 border-gray-300 focus:border-yellow outline-none px-2 py-2 bg-transparent resize-none transition-colors"
                   required
@@ -933,12 +1039,12 @@ function ContactFormSection() {
             {/* Email */}
             <div className="text-lg text-gray-700 pt-4">
               <p className="flex flex-wrap items-center gap-2">
-                <span>{t("betterMessage.contact.replyTo")}</span>
+                <span>{t("betterMessage.contact.replyTo", "normalne")}</span>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder={t("betterMessage.contact.emailPlaceholder")}
+                  placeholder={t("betterMessage.contact.emailPlaceholder", "normalne")}
                   className="inline-block border-b-2 border-gray-300 focus:border-yellow outline-none px-2 py-1 min-w-[280px] bg-transparent transition-colors"
                   required
                 />
@@ -956,7 +1062,7 @@ function ContactFormSection() {
                 required
               />
               <label htmlFor="consent" className="text-sm text-gray-600 cursor-pointer">
-                {t("betterMessage.contact.consent")}
+                {t("betterMessage.contact.consent", "normalne")}
               </label>
             </div>
 
@@ -966,7 +1072,7 @@ function ContactFormSection() {
                 type="submit"
                 className="bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                {t("betterMessage.contact.submit")}
+                {t("betterMessage.contact.submit", "normalne")}
               </button>
             </div>
           </form>
@@ -981,7 +1087,7 @@ export default function BetterMessagePage() {
   const { t, variant, setVariant } = useLanguage();
   
   // FAQ data - używamy tych samych pytań co na home page
-  const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
+  const faqQuestions = t("home.faq.questions", "normalne") as Array<{ question: string; answer: string }>;
   const faqs = faqQuestions.map((faq, index) => ({
     emoji: ["🤔", "👥", "📚", "💰", "✨"][index % 5],
     ...faq
@@ -993,7 +1099,7 @@ export default function BetterMessagePage() {
       <HeroSection />
       <ProductVariants />
       <BenefitsSection />
-      <FAQSection faqs={faqs} />
+      <FAQSection faqs={faqs} forceNormale={true} />
       <PSSTSection />
       <VideoSection />
       <EmojiWarningSection />

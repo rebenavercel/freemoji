@@ -12,9 +12,10 @@ interface FAQItem {
 
 interface FAQSectionProps {
   faqs: FAQItem[];
+  forceNormale?: boolean;
 }
 
-export default function FAQSection({ faqs }: FAQSectionProps) {
+export default function FAQSection({ faqs, forceNormale = false }: FAQSectionProps) {
   const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -58,10 +59,10 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
             {/* Title on left side */}
             <div className="absolute top-8 left-0">
               <h2 className="font-display text-7xl font-800 text-gray-900 mb-2">
-                {t("home.faq.title")}
+                {t("home.faq.title", forceNormale ? "normalne" : undefined)}
               </h2>
               <p className="text-xl text-gray-800">
-                {t("home.faq.subtitle")}
+                {t("home.faq.subtitle", forceNormale ? "normalne" : undefined)}
               </p>
               <div className="mt-4">
                 <Image
@@ -80,10 +81,10 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
             {/* Mobile title */}
             <div className="lg:hidden mb-8">
               <h2 className="font-display text-2xl md:text-4xl font-800 text-gray-900 mb-2">
-                {t("home.faq.title")}
+                {t("home.faq.title", forceNormale ? "normalne" : undefined)}
               </h2>
               <p className="text-base md:text-xl text-gray-800">
-                {t("home.faq.subtitle")}
+                {t("home.faq.subtitle", forceNormale ? "normalne" : undefined)}
               </p>
               <div className="mt-4">
                 <Image

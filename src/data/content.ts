@@ -64,11 +64,19 @@ export interface ForWhomContent {
   bullets: string[];
 }
 
+export interface PricingVariant {
+  name: string;
+  description: string;
+  features: string[];
+  cta: string;
+}
+
 export interface BetterMessageContent {
   heroHeading: string;
   heroSubtitle: string;
   heroCta: string;
   pricingHeading: string;
+  pricingSubtitle: string;
   videoHeading: string;
   videoSubtitle: string;
   emojiWarningHeading: string;
@@ -78,6 +86,11 @@ export interface BetterMessageContent {
   contactPlaceholder2: string;
   contactPlaceholder3: string;
   contactSubmit: string;
+  variants: {
+    starter: PricingVariant;
+    professional: PricingVariant;
+    team: PricingVariant;
+  };
 }
 
 export interface EmojiGameContent {
@@ -286,6 +299,26 @@ export const content: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "temat",
       contactPlaceholder3: "tres\u0301c\u0301 wiadomos\u0301ci",
       contactSubmit: "Wys\u0142ij wiadomos\u0301c\u0301",
+      chatExamples: {
+        chat1: {
+          message1: "Pamiętasz babcię Halinę?",
+          time1: "18:50",
+          reply1: "Kondolencje",
+          replyTime1: "18:50",
+          reply2: "Nic nie wiedziałam 😭😭😭",
+          replyTime2: "18:55",
+          message2: "Wczoraj ją do szpitala zabrali a dzisiaj takie wieści 😭😭😭"
+        },
+        chat2: {
+          message1: "Wujek Marek zmarł\n💀",
+          message2: "Planujemy go skremować\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Dzisiaj umarł wujek Janek 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Tato to nie są smutne emotki",
+          message2: "Jak to nie są"
+        }
+      }
     },
     emojiGame: {
       bannerText: "\uD83C\uDFC6 Zdobadz\u0307 5/5 i odbierz kod na 5% rabatu!",
@@ -522,6 +555,26 @@ export const content: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "o co chodzi",
       contactPlaceholder3: "Tw\u00f3j message",
       contactSubmit: "Wy\u015blij",
+      chatExamples: {
+        chat1: {
+          message1: "Pamiętasz babcię Halinę?",
+          time1: "18:50",
+          reply1: "Kondolencje",
+          replyTime1: "18:50",
+          reply2: "Nic nie wiedziałam 😭😭😭",
+          replyTime2: "18:55",
+          message2: "Wczoraj ją do szpitala zabrali a dzisiaj takie wieści 😭😭😭"
+        },
+        chat2: {
+          message1: "Wujek Marek zmarł\n💀",
+          message2: "Planujemy go skremować\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Dzisiaj umarł wujek Janek 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Tato to nie są smutne emotki",
+          message2: "Jak to nie są"
+        }
+      }
     },
     emojiGame: {
       bannerText: "\uD83C\uDFC6 5/5 = kod na 5% rabatu!",
@@ -756,6 +809,26 @@ export const content: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "temat zapytania",
       contactPlaceholder3: "tres\u0301c\u0301 wiadomos\u0301ci",
       contactSubmit: "Wys\u0142ij zapytanie",
+      chatExamples: {
+        chat1: {
+          message1: "Pamiętasz babcię Halinę?",
+          time1: "18:50",
+          reply1: "Kondolencje",
+          replyTime1: "18:50",
+          reply2: "Nic nie wiedziałam 😭😭😭",
+          replyTime2: "18:55",
+          message2: "Wczoraj ją do szpitala zabrali a dzisiaj takie wieści 😭😭😭"
+        },
+        chat2: {
+          message1: "Wujek Marek zmarł\n💀",
+          message2: "Planujemy go skremować\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Dzisiaj umarł wujek Janek 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Tato to nie są smutne emotki",
+          message2: "Jak to nie są"
+        }
+      }
     },
     emojiGame: {
       bannerText: "\uD83C\uDFC6 Uzyskaj wynik 5/5 i otrzymaj kod rabatowy na 5%!",
@@ -991,6 +1064,26 @@ export const content: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "o co pytasz",
       contactPlaceholder3: "Tw\u00f3j vibe",
       contactSubmit: "Send",
+      chatExamples: {
+        chat1: {
+          message1: "Pamiętasz babcię Halinę?",
+          time1: "18:50",
+          reply1: "Kondolencje",
+          replyTime1: "18:50",
+          reply2: "Nic nie wiedziałam 😭😭😭",
+          replyTime2: "18:55",
+          message2: "Wczoraj ją do szpitala zabrali a dzisiaj takie wieści 😭😭😭"
+        },
+        chat2: {
+          message1: "Wujek Marek zmarł\n💀",
+          message2: "Planujemy go skremować\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Dzisiaj umarł wujek Janek 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Tato to nie są smutne emotki",
+          message2: "Jak to nie są"
+        }
+      }
     },
     emojiGame: {
       bannerText: "\uD83C\uDFC6 5/5 = kod na 5% off!",
@@ -1215,15 +1308,62 @@ export const content: Record<VariantKey, SectionContent> = {
       heroSubtitle: "Pisz jaśniej, z większą empatią i skutecznością",
       heroCta: "Zacznij naukę",
       pricingHeading: "Wybierz swój plan",
+      pricingSubtitle: "Uzyskaj wgląd w swój styl komunikacji, zrozum jak Twoje wiadomości są odbierane i naucz się lepiej komunikować ze wszystkimi.",
       videoHeading: "Zobacz jak to działa",
       videoSubtitle: "Krótkie intro do cyfrowej mowy ciała",
-      emojiWarningHeading: "\uD83D\uDE2D **nie zawsze** = płacz. Emoji **to nie cudowne rozwiązanie.**",
+      emojiWarningHeading: "😭 **nie zawsze** = płacz. Emoji **to nie cudowne rozwiązanie.**",
       testimonialsHeading: "Co mówią uczestnicy",
       contactHeading: "Pytania?",
       contactPlaceholder1: "Imię",
       contactPlaceholder2: "O co chodzi?",
       contactPlaceholder3: "Twoja wiadomość",
       contactSubmit: "Wyślij",
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "Idealny dla osób rozpoczynających swoją przygodę z komunikacją",
+          features: [
+            "Podstawowa ocena stylu komunikacji",
+            "Detekcja emocji w 5 przykładowych wiadomościach",
+            "Raport analizy tonu (PDF)",
+            "Podstawowe rekomendacje emoji",
+            "Wsparcie email"
+          ],
+          cta: "Zacznij z Starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "Najpopularniejszy wybór dla profesjonalistów komunikujących się codziennie",
+          features: [
+            "Wszystko ze Starter, plus:",
+            "Zaawansowana ocena stylu komunikacji",
+            "Detekcja emocji i kontekstu w 20 wiadomościach",
+            "Szczegółowa analiza percepcji tonu",
+            "Sugestie dostosowania do typu odbiorcy",
+            "Spersonalizowane rekomendacje emoji i wyrażeń",
+            "Mapa rozwoju komunikacji",
+            "Priorytetowe wsparcie email i chat",
+            "Kontrolna ocena po 30 dniach"
+          ],
+          cta: "Wybierz Professional"
+        },
+        team: {
+          name: "Team",
+          description: "Dla zespołów, które chcą lepiej się komunikować",
+          features: [
+            "Wszystko z Professional, plus:",
+            "Analiza dynamiki komunikacji zespołowej",
+            "Indywidualne oceny dla każdego członka",
+            "Raport wzorców komunikacji zespołu",
+            "Wgląd w komunikację międzykulturową",
+            "1-godzinna konsultacja wideo z ekspertem",
+            "Śledzenie postępów przez 3 miesiące",
+            "Dedykowany manager wsparcia",
+            "Materiały do warsztatów na zamówienie"
+          ],
+          cta: "Wybierz Plan Team"
+        }
+      }
     },
     emojiGame: {
       bannerText: "\uD83C\uDFC6 Wynik 5/5 = kod zniżkowy 5%!",
@@ -1473,6 +1613,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       heroSubtitle: "Learn to write clearer, more empathetic, and more effective messages",
       heroCta: "Start learning",
       pricingHeading: "Choose your plan",
+      pricingSubtitle: "Get insights into your communication style, understand how your messages are perceived, and learn to communicate better with everyone.",
       videoHeading: "See how it works",
       videoSubtitle: "Quick intro to digital body language",
       emojiWarningHeading: "Tears **don't always** = crying. Emojis **aren't a cheat code.**",
@@ -1482,6 +1623,52 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "your question",
       contactPlaceholder3: "Your vibe",
       contactSubmit: "Send",
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "Perfect for individuals starting their communication journey",
+          features: [
+            "Basic communication style assessment",
+            "Emotion detection in 5 sample messages",
+            "Tone analysis report (PDF)",
+            "Basic emoji recommendations",
+            "Email support"
+          ],
+          cta: "Get Started"
+        },
+        professional: {
+          name: "Professional",
+          description: "Most popular for professionals who communicate daily",
+          features: [
+            "Everything in Starter, plus:",
+            "Advanced communication style assessment",
+            "Emotion & context detection in 20 messages",
+            "Detailed tone perception analysis",
+            "Recipient type adaptation suggestions",
+            "Custom emoji & expression recommendations",
+            "Communication improvement roadmap",
+            "Priority email & chat support",
+            "30-day follow-up assessment"
+          ],
+          cta: "Get Professional"
+        },
+        team: {
+          name: "Team",
+          description: "For teams that want to communicate better together",
+          features: [
+            "Everything in Professional, plus:",
+            "Team communication dynamics analysis",
+            "Individual assessments for each member",
+            "Team communication patterns report",
+            "Cross-cultural communication insights",
+            "1-hour video consultation with expert",
+            "3-month progress tracking",
+            "Dedicated support manager",
+            "Custom workshop materials"
+          ],
+          cta: "Get Team Plan"
+        }
+      }
     },
     emojiGame: {
       bannerText: "🏆 5/5 = 5% off code!",

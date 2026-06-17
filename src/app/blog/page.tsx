@@ -102,7 +102,7 @@ export default function BlogPage() {
             {/* Przycisk do produktów */}
             <div className="animate-fade-up stagger-2">
               <Link
-                href="/products"
+                href="/products/bettermessage"
                 className="inline-block bg-yellow hover:bg-yellow-dark text-gray-900 font-600 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 {t("blog.hero.cta")}

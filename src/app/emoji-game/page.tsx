@@ -19,8 +19,8 @@ function EmojiGame() {
   const [showResult, setShowResult] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
 
-  // Get questions from translations
-  const questions = (t("emojiGame.questions") || []) as Array<{
+  // Get questions from translations - force "normalne" variant
+  const questions = (t("emojiGame.questions", "normalne") || []) as Array<{
     emoji: string;
     question: string;
     options: Array<{ text: string; correct: boolean }>;
@@ -65,11 +65,11 @@ function EmojiGame() {
             {/* Header */}
             <div className="text-center mb-12">
               <h1 className="font-display text-3xl md:text-6xl font-800 text-gray-900 mb-4">
-                {t("emojiGame.quizHeading")}
+                {t("emojiGame.quizHeading", "normalne")}
               </h1>
               <div className="inline-block bg-yellow/20 border-2 border-yellow rounded-2xl px-6 py-3">
                 <p className="text-gray-900 font-700 text-lg">
-                  {t("emojiGame.bannerText")}
+                  {t("emojiGame.bannerText", "normalne")}
                 </p>
               </div>
             </div>
@@ -77,8 +77,8 @@ function EmojiGame() {
             {/* Progress Bar */}
             <div className="mb-8">
               <div className="flex justify-between text-sm text-gray-600 mb-2">
-                <span>{t("emojiGame.questionLabel")} {currentQuestion + 1}/{questions.length}</span>
-                <span>{t("emojiGame.scoreLabel")}: {score}/{questions.length}</span>
+                <span>{t("emojiGame.questionLabel", "normalne")} {currentQuestion + 1}/{questions.length}</span>
+                <span>{t("emojiGame.scoreLabel", "normalne")}: {score}/{questions.length}</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                 <div
@@ -154,24 +154,24 @@ function EmojiGame() {
             </div>
             
             <h2 className="font-display text-2xl md:text-5xl font-800 text-gray-900 mb-6">
-              {isPerfectScore ? t("emojiGame.results.perfect") : score >= questions.length * 0.7 ? t("emojiGame.results.good") : t("emojiGame.results.low")}
+              {isPerfectScore ? t("emojiGame.results.perfect", "normalne") : score >= questions.length * 0.7 ? t("emojiGame.results.good", "normalne") : t("emojiGame.results.low", "normalne")}
             </h2>
             
             <p className="text-2xl text-gray-700 mb-8">
-              {t("emojiGame.scoreLabel")}: <span className="font-700 text-yellow">{score}/{questions.length}</span>
+              {t("emojiGame.scoreLabel", "normalne")}: <span className="font-700 text-yellow">{score}/{questions.length}</span>
             </p>
 
             {/* Discount Code */}
             {isPerfectScore && (
               <div className="bg-yellow rounded-2xl p-8 mb-8 border-2 border-gray-900">
                 <p className="text-sm text-gray-700 mb-2 font-600">
-                  {t("emojiGame.results.perfectScoreText")}
+                  {t("emojiGame.results.perfectScoreText", "normalne")}
                 </p>
                 <p className="font-display text-2xl md:text-4xl font-900 text-gray-900 mb-2 tracking-wider">
                   EMOJI5
                 </p>
                 <p className="text-sm text-gray-600">
-                  {t("emojiGame.results.discountText")}
+                  {t("emojiGame.results.discountText", "normalne")}
                 </p>
               </div>
             )}
@@ -179,10 +179,10 @@ function EmojiGame() {
             {!isPerfectScore && score >= questions.length * 0.7 && (
               <div className="bg-gray-100 rounded-2xl p-6 mb-8">
                 <p className="text-gray-700 font-600">
-                  {t("emojiGame.results.almostPerfect")} <span className="text-yellow bg-gray-900 px-2 py-1 rounded font-700">5/5</span>{t("emojiGame.results.toGetCode")}
+                  {t("emojiGame.results.almostPerfect", "normalne")} <span className="text-yellow bg-gray-900 px-2 py-1 rounded font-700">5/5</span>{t("emojiGame.results.toGetCode", "normalne")}
                 </p>
                 <p className="text-gray-600 text-sm mt-2">
-                  {t("emojiGame.results.tryAgainHint")}
+                  {t("emojiGame.results.tryAgainHint", "normalne")}
                 </p>
               </div>
             )}
@@ -190,10 +190,10 @@ function EmojiGame() {
             {score < questions.length * 0.7 && (
               <div className="bg-gray-100 rounded-2xl p-6 mb-8">
                 <p className="text-gray-700 font-600">
-                  {t("emojiGame.results.dontGiveUp")} <span className="text-yellow bg-gray-900 px-2 py-1 rounded font-700">5/5</span>{t("emojiGame.results.toGetDiscount")}
+                  {t("emojiGame.results.dontGiveUp", "normalne")} <span className="text-yellow bg-gray-900 px-2 py-1 rounded font-700">5/5</span>{t("emojiGame.results.toGetDiscount", "normalne")}
                 </p>
                 <p className="text-gray-600 text-sm mt-2">
-                  {t("emojiGame.results.collectMore")} {questions.length - score} {t("emojiGame.results.moreCorrect")}
+                  {t("emojiGame.results.collectMore", "normalne")} {questions.length - score} {t("emojiGame.results.moreCorrect", "normalne")}
                 </p>
               </div>
             )}
@@ -203,13 +203,13 @@ function EmojiGame() {
                 onClick={resetGame}
                 className="bg-yellow hover:bg-yellow-dark text-gray-900 font-700 px-8 py-4 rounded-full transition-all hover:scale-105"
               >
-                {t("emojiGame.results.restartQuiz")}
+                {t("emojiGame.results.restartQuiz", "normalne")}
               </button>
               <Link
                 href="/"
                 className="bg-gray-900 hover:bg-gray-800 text-white font-700 px-8 py-4 rounded-full transition-all hover:scale-105 inline-block"
               >
-                {t("emojiGame.results.exploreProducts")}
+                {t("emojiGame.results.exploreProducts", "normalne")}
               </Link>
             </div>
           </div>
@@ -223,8 +223,8 @@ function EmojiGame() {
 export default function GamePage() {
   const { t, variant, setVariant } = useLanguage();
   
-  // FAQ data - get from translations
-  const faqQuestions = t("home.faq.questions") as Array<{ question: string; answer: string }>;
+  // FAQ data - get from translations - force "normalne" variant
+  const faqQuestions = t("home.faq.questions", "normalne") as Array<{ question: string; answer: string }>;
   const faqs = [
     { emoji: "🤔", ...faqQuestions[0] },
     { emoji: "👥", ...faqQuestions[1] },
@@ -237,7 +237,7 @@ export default function GamePage() {
     <main className="min-h-screen bg-white">
       <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
       <EmojiGame />
-      <FAQSection faqs={faqs} />
+      <FAQSection faqs={faqs} forceNormale={true} />
       <ContactForm />
       <Footer />
     </main>
