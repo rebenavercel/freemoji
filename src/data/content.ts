@@ -69,6 +69,23 @@ export interface PricingVariant {
   description: string;
   features: string[];
   cta: string;
+  priceNote?: string;
+}
+
+export interface ChatExample {
+  message1: string;
+  time1?: string;
+  reply1?: string;
+  replyTime1?: string;
+  reply2?: string;
+  replyTime2?: string;
+  message2?: string;
+}
+
+export interface ChatExamples {
+  chat1: ChatExample;
+  chat2: ChatExample;
+  chat3: ChatExample;
 }
 
 export interface BetterMessageContent {
@@ -77,6 +94,16 @@ export interface BetterMessageContent {
   heroCta: string;
   pricingHeading: string;
   pricingSubtitle: string;
+  choosePackage: string;
+  secureCheckout: string;
+  thirtyDayGuarantee: string;
+  securePayments: string;
+  addedToCart: string;
+  oneTimePayment: string;
+  monthlySubscription: string;
+  monthlyTeamPeriod: string;
+  teamPriceNote: string;
+  assessmentsNote: string;
   videoHeading: string;
   videoSubtitle: string;
   emojiWarningHeading: string;
@@ -86,6 +113,7 @@ export interface BetterMessageContent {
   contactPlaceholder2: string;
   contactPlaceholder3: string;
   contactSubmit: string;
+  chatExamples: ChatExamples;
   variants: {
     starter: PricingVariant;
     professional: PricingVariant;
@@ -317,6 +345,63 @@ export const content: Record<VariantKey, SectionContent> = {
           message1: "Dzisiaj umarł wujek Janek 🤣🤣🤣\n🤣🤣🤣",
           reply1: "Tato to nie są smutne emotki",
           message2: "Jak to nie są"
+        }
+      },
+      pricingSubtitle: "Uzyskaj wgląd w swój styl komunikacji, zrozum jak Twoje wiadomości są odbierane i naucz się lepiej komunikować ze wszystkimi.",
+      choosePackage: "Wybierz pakiet:",
+      secureCheckout: "Bezpieczne płatności",
+      thirtyDayGuarantee: "30-dniowa gwarancja",
+      securePayments: "Bezpieczne płatności",
+      addedToCart: "Dodano do koszyka ✓",
+      oneTimePayment: "Płatność jednorazowa",
+      monthlySubscription: "Subskrypcja miesięczna",
+      monthlyTeamPeriod: "miesięcznie • dla zespołu (do 5 osób)",
+      teamPriceNote: "dla zespołu (do 5 osób)",
+      assessmentsNote: "Wszystkie oceny przeprowadza nasz system analiz AI z przeglądem eksperckim. Wyniki w ciągu 48 godzin od zgłoszenia.",
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "Idealny dla osób rozpoczynających swoją przygodę z komunikacją",
+          features: [
+            "Podstawowa ocena stylu komunikacji",
+            "Detekcja emocji w 5 przykładowych wiadomościach",
+            "Raport analizy tonu (PDF)",
+            "Podstawowe rekomendacje emoji",
+            "Wsparcie email"
+          ],
+          cta: "Zacznij z Starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "Najpopularniejszy wybór dla profesjonalistów komunikujących się codziennie",
+          features: [
+            "Wszystko ze Starter, plus:",
+            "Zaawansowana ocena stylu komunikacji",
+            "Detekcja emocji i kontekstu w 20 wiadomościach",
+            "Szczegółowa analiza percepcji tonu",
+            "Sugestie dostosowania do typu odbiorcy",
+            "Spersonalizowane rekomendacje emoji i wyrażeń",
+            "Mapa rozwoju komunikacji",
+            "Priorytetowe wsparcie email i chat",
+            "Kontrolna ocena po 30 dniach"
+          ],
+          cta: "Wybierz Professional"
+        },
+        team: {
+          name: "Team",
+          description: "Dla zespołów, które chcą lepiej się komunikować",
+          features: [
+            "Wszystko z Professional, plus:",
+            "Analiza dynamiki komunikacji zespołowej",
+            "Indywidualne oceny dla każdego członka",
+            "Raport wzorców komunikacji zespołu",
+            "Wgląd w komunikację międzykulturową",
+            "1-godzinna konsultacja wideo z ekspertem",
+            "Śledzenie postępów przez 3 miesiące",
+            "Dedykowany manager wsparcia",
+            "Materiały do warsztatów na zamówienie"
+          ],
+          cta: "Wybierz Plan Team"
         }
       }
     },
@@ -574,6 +659,63 @@ export const content: Record<VariantKey, SectionContent> = {
           reply1: "Tato to nie są smutne emotki",
           message2: "Jak to nie są"
         }
+      },
+      pricingSubtitle: "Sprawdź swój styl komunikacji, zobacz jak Twoje wiadomości wypadają i naucz się normalnie gadać z ludźmi.",
+      choosePackage: "Wybierz pakiet:",
+      secureCheckout: "Bezpieczna płatność",
+      thirtyDayGuarantee: "Gwarancja 30 dni",
+      securePayments: "Bezpieczna płatność",
+      addedToCart: "Dodano ✓",
+      oneTimePayment: "Jednorazowo",
+      monthlySubscription: "Miesięcznie",
+      monthlyTeamPeriod: "miesięcznie • dla teamu (do 5 osób)",
+      teamPriceNote: "dla teamu (do 5 osób)",
+      assessmentsNote: "Wszystko ogarniane przez AI + sprawdzane przez ekspertów. Wyniki w 48h.",
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "Git na start z komunikacją",
+          features: [
+            "Podstawowa ocena stylu",
+            "Analiza emocji w 5 wiadomościach",
+            "Raport PDF",
+            "Podstawowe porady emoji",
+            "Pomoc przez email"
+          ],
+          cta: "Biorę Starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "Najlepszy wybór dla tych co gadają non stop",
+          features: [
+            "Wszystko ze Starter, plus:",
+            "Zaawansowana ocena stylu",
+            "Analiza emocji w 20 wiadomościach",
+            "Szczegółowa analiza vibe'u",
+            "Porady jak gadać z różnymi ludźmi",
+            "Spersonalizowane emoji i wyrażenia",
+            "Mapa rozwoju komunikacji",
+            "Priorytetowa pomoc email i chat",
+            "Kontrolna ocena po 30 dniach"
+          ],
+          cta: "Wybieram Professional"
+        },
+        team: {
+          name: "Team",
+          description: "Dla teamów co chcą się dogadywać",
+          features: [
+            "Wszystko z Professional, plus:",
+            "Analiza jak team się gada",
+            "Indywidualne oceny dla każdego",
+            "Raport wzorców komunikacji teamu",
+            "Wgląd w różnice kulturowe",
+            "1h konsultacji wideo z ekspertem",
+            "Tracking przez 3 miesiące",
+            "Dedykowany support manager",
+            "Materiały na warsztaty custom"
+          ],
+          cta: "Wybieram Team"
+        }
       }
     },
     emojiGame: {
@@ -827,6 +969,63 @@ export const content: Record<VariantKey, SectionContent> = {
           message1: "Dzisiaj umarł wujek Janek 🤣🤣🤣\n🤣🤣🤣",
           reply1: "Tato to nie są smutne emotki",
           message2: "Jak to nie są"
+        }
+      },
+      pricingSubtitle: "Uzyskaj wgląd w swój styl komunikacji, zrozum jak Twoje wiadomości są odbierane i naucz się lepiej komunikować ze wszystkimi.",
+      choosePackage: "Wybierz pakiet:",
+      secureCheckout: "Bezpieczne płatności",
+      thirtyDayGuarantee: "30-dniowa gwarancja",
+      securePayments: "Bezpieczne płatności",
+      addedToCart: "Dodano do koszyka ✓",
+      oneTimePayment: "Płatność jednorazowa",
+      monthlySubscription: "Subskrypcja miesięczna",
+      monthlyTeamPeriod: "miesięcznie • dla zespołu (do 5 osób)",
+      teamPriceNote: "dla zespołu (do 5 osób)",
+      assessmentsNote: "Wszystkie oceny przeprowadza nasz system analiz AI z przeglądem eksperckim. Wyniki w ciągu 48 godzin od zgłoszenia.",
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "Idealny dla osób rozpoczynających swoją przygodę z komunikacją",
+          features: [
+            "Podstawowa ocena stylu komunikacji",
+            "Detekcja emocji w 5 przykładowych wiadomościach",
+            "Raport analizy tonu (PDF)",
+            "Podstawowe rekomendacje emoji",
+            "Wsparcie email"
+          ],
+          cta: "Zacznij z Starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "Najpopularniejszy wybór dla profesjonalistów komunikujących się codziennie",
+          features: [
+            "Wszystko ze Starter, plus:",
+            "Zaawansowana ocena stylu komunikacji",
+            "Detekcja emocji i kontekstu w 20 wiadomościach",
+            "Szczegółowa analiza percepcji tonu",
+            "Sugestie dostosowania do typu odbiorcy",
+            "Spersonalizowane rekomendacje emoji i wyrażeń",
+            "Mapa rozwoju komunikacji",
+            "Priorytetowe wsparcie email i chat",
+            "Kontrolna ocena po 30 dniach"
+          ],
+          cta: "Wybierz Professional"
+        },
+        team: {
+          name: "Team",
+          description: "Dla zespołów, które chcą lepiej się komunikować",
+          features: [
+            "Wszystko z Professional, plus:",
+            "Analiza dynamiki komunikacji zespołowej",
+            "Indywidualne oceny dla każdego członka",
+            "Raport wzorców komunikacji zespołu",
+            "Wgląd w komunikację międzykulturową",
+            "1-godzinna konsultacja wideo z ekspertem",
+            "Śledzenie postępów przez 3 miesiące",
+            "Dedykowany manager wsparcia",
+            "Materiały do warsztatów na zamówienie"
+          ],
+          cta: "Wybierz Plan Team"
         }
       }
     },
@@ -1083,6 +1282,63 @@ export const content: Record<VariantKey, SectionContent> = {
           reply1: "Tato to nie są smutne emotki",
           message2: "Jak to nie są"
         }
+      },
+      pricingSubtitle: "Check swój styl, zobacz jak twoje messages wypadają i naucz się proper komunikować. Literally.",
+      choosePackage: "Pick pakiet:",
+      secureCheckout: "Secure payment",
+      thirtyDayGuarantee: "30-day no-cap gwarancja",
+      securePayments: "Secure payment",
+      addedToCart: "Added ✓",
+      oneTimePayment: "One-time payment",
+      monthlySubscription: "Monthly sub",
+      monthlyTeamPeriod: "monthly • dla squad (do 5 osób)",
+      teamPriceNote: "dla squad (do 5 osób)",
+      assessmentsNote: "All checks by AI + expert review. Results w 48h. Fr fr.",
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "Perfect dla tych co zaczynają journey z komunikacją",
+          features: [
+            "Basic check stylu",
+            "Analiza vibes w 5 messages",
+            "PDF report",
+            "Basic emoji tips",
+            "Email support"
+          ],
+          cta: "Start ze Starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "Top tier dla tych co gadają 24/7",
+          features: [
+            "All ze Starter, plus:",
+            "Advanced style check",
+            "Analiza vibes w 20 messages",
+            "Detailed vibe analysis",
+            "Tips jak gadać z różnymi people",
+            "Custom emoji i phrases",
+            "Communication development map",
+            "Priority email i chat support",
+            "Follow-up check po 30 dniach"
+          ],
+          cta: "Choose Professional"
+        },
+        team: {
+          name: "Team",
+          description: "Dla squads co chcą proper się komunikować",
+          features: [
+            "All z Professional, plus:",
+            "Squad dynamic analysis",
+            "Individual checks dla każdego",
+            "Squad communication patterns report",
+            "Cultural diff insights",
+            "1h video consultation z expert",
+            "Progress tracking przez 3 miesiące",
+            "Dedicated support manager",
+            "Custom workshop materials"
+          ],
+          cta: "Choose Team"
+        }
       }
     },
     emojiGame: {
@@ -1309,6 +1565,16 @@ export const content: Record<VariantKey, SectionContent> = {
       heroCta: "Zacznij naukę",
       pricingHeading: "Wybierz swój plan",
       pricingSubtitle: "Uzyskaj wgląd w swój styl komunikacji, zrozum jak Twoje wiadomości są odbierane i naucz się lepiej komunikować ze wszystkimi.",
+      choosePackage: "Wybierz pakiet:",
+      secureCheckout: "Bezpieczne płatności",
+      thirtyDayGuarantee: "30-dniowa gwarancja",
+      securePayments: "Bezpieczne płatności",
+      addedToCart: "Dodano do koszyka ✓",
+      oneTimePayment: "Płatność jednorazowa",
+      monthlySubscription: "Subskrypcja miesięczna",
+      monthlyTeamPeriod: "miesięcznie • dla zespołu (do 5 osób)",
+      teamPriceNote: "dla zespołu (do 5 osób)",
+      assessmentsNote: "Wszystkie oceny przeprowadza nasz system analiz AI z przeglądem eksperckim. Wyniki w ciągu 48 godzin od zgłoszenia.",
       videoHeading: "Zobacz jak to działa",
       videoSubtitle: "Krótkie intro do cyfrowej mowy ciała",
       emojiWarningHeading: "😭 **nie zawsze** = płacz. Emoji **to nie cudowne rozwiązanie.**",
@@ -1318,6 +1584,26 @@ export const content: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "O co chodzi?",
       contactPlaceholder3: "Twoja wiadomość",
       contactSubmit: "Wyślij",
+      chatExamples: {
+        chat1: {
+          message1: "Pamiętasz babcię Halinę?",
+          time1: "18:50",
+          reply1: "Kondolencje",
+          replyTime1: "18:50",
+          reply2: "Nic nie wiedziałam 😭😭😭",
+          replyTime2: "18:55",
+          message2: "Wczoraj ją do szpitala zabrali a dzisiaj takie wieści 😭😭😭"
+        },
+        chat2: {
+          message1: "Wujek Marek zmarł\n💀",
+          message2: "Planujemy go skremować\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Dzisiaj umarł wujek Janek 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Tato to nie są smutne emotki",
+          message2: "Jak to nie są"
+        }
+      },
       variants: {
         starter: {
           name: "Starter",
@@ -1614,6 +1900,16 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       heroCta: "Start learning",
       pricingHeading: "Choose your plan",
       pricingSubtitle: "Get insights into your communication style, understand how your messages are perceived, and learn to communicate better with everyone.",
+      choosePackage: "Choose Package:",
+      secureCheckout: "Secure checkout",
+      thirtyDayGuarantee: "30-day guarantee",
+      securePayments: "Secure payments",
+      addedToCart: "Added to Cart ✓",
+      oneTimePayment: "One-time payment",
+      monthlySubscription: "Monthly subscription",
+      monthlyTeamPeriod: "monthly • per team (up to 5 people)",
+      teamPriceNote: "per team (up to 5 people)",
+      assessmentsNote: "All assessments are conducted by our AI-powered analysis system with human expert review. Results delivered within 48 hours of submission.",
       videoHeading: "See how it works",
       videoSubtitle: "Quick intro to digital body language",
       emojiWarningHeading: "Tears **don't always** = crying. Emojis **aren't a cheat code.**",
@@ -1623,6 +1919,26 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "your question",
       contactPlaceholder3: "Your vibe",
       contactSubmit: "Send",
+      chatExamples: {
+        chat1: {
+          message1: "Do you remember grandma Halina?",
+          time1: "18:50",
+          reply1: "Condolences",
+          replyTime1: "18:50",
+          reply2: "I didn't know 😭😭😭",
+          replyTime2: "18:55",
+          message2: "They took her to the hospital yesterday and today such news 😭😭😭"
+        },
+        chat2: {
+          message1: "Uncle Mark passed away\n💀",
+          message2: "We're planning to cremate him\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Uncle John died today 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Dad, these aren't sad emojis",
+          message2: "What do you mean they aren't"
+        }
+      },
       variants: {
         starter: {
           name: "Starter",
@@ -1902,6 +2218,83 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "what's up",
       contactPlaceholder3: "your vibe",
       contactSubmit: "send it",
+      chatExamples: {
+        chat1: {
+          message1: "Do you remember grandma Halina?",
+          time1: "18:50",
+          reply1: "Condolences",
+          replyTime1: "18:50",
+          reply2: "I didn't know 😭😭😭",
+          replyTime2: "18:55",
+          message2: "They took her to the hospital yesterday and today such news 😭😭😭"
+        },
+        chat2: {
+          message1: "Uncle Mark passed away\n💀",
+          message2: "We're planning to cremate him\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Uncle John died today 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Dad, these aren't sad emojis",
+          message2: "What do you mean they aren't"
+        }
+      },
+      pricingSubtitle: "check your communication style, see how your messages hit, and learn to communicate properly",
+      choosePackage: "choose package:",
+      secureCheckout: "secure checkout",
+      thirtyDayGuarantee: "30-day guarantee",
+      securePayments: "secure payments",
+      addedToCart: "added ✓",
+      oneTimePayment: "one-time payment",
+      monthlySubscription: "monthly sub",
+      monthlyTeamPeriod: "monthly • per squad (up to 5 ppl)",
+      teamPriceNote: "per squad (up to 5 ppl)",
+      assessmentsNote: "all checks by AI + expert review. results in 48h no cap.",
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "perfect for starting your communication journey",
+          features: [
+            "basic style check",
+            "vibe analysis in 5 messages",
+            "PDF report",
+            "basic emoji tips",
+            "email support"
+          ],
+          cta: "get starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "top tier for ppl who communicate 24/7",
+          features: [
+            "everything in starter, plus:",
+            "advanced style check",
+            "vibe analysis in 20 messages",
+            "detailed vibe breakdown",
+            "tips for talking to different ppl",
+            "custom emoji recommendations",
+            "communication development map",
+            "priority email & chat support",
+            "follow-up check after 30 days"
+          ],
+          cta: "choose professional"
+        },
+        team: {
+          name: "Team",
+          description: "for squads who wanna communicate better",
+          features: [
+            "everything in professional, plus:",
+            "squad dynamics analysis",
+            "individual checks for everyone",
+            "squad communication patterns report",
+            "cultural insights",
+            "1h video consultation w/ expert",
+            "progress tracking for 3 months",
+            "dedicated support manager",
+            "custom workshop materials"
+          ],
+          cta: "choose team"
+        }
+      }
     },
     emojiGame: {
       bannerText: "🏆 5/5 = 5% off code no cap",
@@ -2135,6 +2528,83 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "Your question",
       contactPlaceholder3: "Your message",
       contactSubmit: "Submit",
+      chatExamples: {
+        chat1: {
+          message1: "Do you remember grandma Halina?",
+          time1: "18:50",
+          reply1: "Condolences",
+          replyTime1: "18:50",
+          reply2: "I didn't know 😭😭😭",
+          replyTime2: "18:55",
+          message2: "They took her to the hospital yesterday and today such news 😭😭😭"
+        },
+        chat2: {
+          message1: "Uncle Mark passed away\n💀",
+          message2: "We're planning to cremate him\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Uncle John died today 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Dad, these aren't sad emojis",
+          message2: "What do you mean they aren't"
+        }
+      },
+      pricingSubtitle: "Gain insights into your communication style, understand how your messages are perceived, and learn to communicate more effectively with all audiences.",
+      choosePackage: "Select package:",
+      secureCheckout: "Secure checkout",
+      thirtyDayGuarantee: "30-day guarantee",
+      securePayments: "Secure payments",
+      addedToCart: "Added to cart ✓",
+      oneTimePayment: "One-time payment",
+      monthlySubscription: "Monthly subscription",
+      monthlyTeamPeriod: "monthly • per team (up to 5 people)",
+      teamPriceNote: "per team (up to 5 people)",
+      assessmentsNote: "All assessments are conducted by our AI-powered analysis system with expert review. Results delivered within 48 hours.",
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "Ideal for individuals beginning their communication journey",
+          features: [
+            "Basic communication style assessment",
+            "Emotion detection in 5 sample messages",
+            "Tone analysis report (PDF)",
+            "Basic emoji recommendations",
+            "Email support"
+          ],
+          cta: "Begin with Starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "Most popular choice for professionals who communicate regularly",
+          features: [
+            "Everything in Starter, plus:",
+            "Advanced communication style assessment",
+            "Emotion and context detection in 20 messages",
+            "Detailed tone perception analysis",
+            "Recommendations for different audience types",
+            "Personalized emoji and expression suggestions",
+            "Communication development roadmap",
+            "Priority email and chat support",
+            "Follow-up assessment after 30 days"
+          ],
+          cta: "Select Professional"
+        },
+        team: {
+          name: "Team",
+          description: "For teams seeking to enhance communication",
+          features: [
+            "Everything in Professional, plus:",
+            "Team communication dynamics analysis",
+            "Individual assessments for each member",
+            "Team communication patterns report",
+            "Cross-cultural communication insights",
+            "1-hour video consultation with expert",
+            "Progress tracking for 3 months",
+            "Dedicated support manager",
+            "Custom workshop materials"
+          ],
+          cta: "Select Team Plan"
+        }
+      }
     },
     emojiGame: {
       bannerText: "🏆 Perfect score = 5% discount code!",
@@ -2359,6 +2829,17 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       heroSubtitle: "learn 2 write clearer more empathetic msgs that slap",
       heroCta: "start learning",
       pricingHeading: "pick ur vibe",
+      pricingSubtitle: "check ur style, see how ur msgs land, n learn 2 communicate proper fr",
+      choosePackage: "pick ur package:",
+      secureCheckout: "secure checkout",
+      thirtyDayGuarantee: "30-day money back",
+      securePayments: "secure payments",
+      addedToCart: "added 2 cart ✓",
+      oneTimePayment: "one-time payment",
+      monthlySubscription: "monthly sub",
+      monthlyTeamPeriod: "monthly • 4 ur squad (up 2 5 ppl)",
+      teamPriceNote: "4 ur squad (up 2 5 ppl)",
+      assessmentsNote: "all reviews by AI + expert check. results in 48h no cap.",
       videoHeading: "see how it works",
       videoSubtitle: "quick intro 2 digital body language",
       emojiWarningHeading: "😭 **don't always** = crying. emojis **r not cheat codes**",
@@ -2368,6 +2849,72 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "wassup",
       contactPlaceholder3: "ur vibe",
       contactSubmit: "send",
+      chatExamples: {
+        chat1: {
+          message1: "do u remember grandma halina?",
+          time1: "18:50",
+          reply1: "omg condolences",
+          replyTime1: "18:50",
+          reply2: "wait i didn't know 😭😭😭",
+          replyTime2: "18:55",
+          message2: "they took her 2 the hospital yesterday n today this news 😭😭😭"
+        },
+        chat2: {
+          message1: "uncle mark passed away\n💀",
+          message2: "we're gonna cremate him\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "uncle john died 2day 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "dad those aren't sad emojis",
+          message2: "wdym they aren't"
+        }
+      },
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "perfect 4 starting ur communication journey",
+          features: [
+            "basic style vibe check",
+            "emotion detection in 5 msgs",
+            "PDF vibe report",
+            "basic emoji recs",
+            "email support"
+          ],
+          cta: "cop starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "most popular 4 ppl who r always online",
+          features: [
+            "everything in starter, plus:",
+            "advanced style analysis",
+            "emotion n context check in 20 msgs",
+            "detailed tone perception breakdown",
+            "tips 2 match different ppl",
+            "custom emoji n phrase recs",
+            "communication growth map",
+            "priority email n chat support",
+            "follow-up check after 30 days"
+          ],
+          cta: "choose professional"
+        },
+        team: {
+          name: "Team",
+          description: "4 squads who wanna level up their comms",
+          features: [
+            "everything in professional, plus:",
+            "squad communication dynamics analysis",
+            "individual checks 4 everyone",
+            "squad patterns report",
+            "cross-cultural communication insights",
+            "1hr video call w/ expert",
+            "progress tracking 4 3 months",
+            "dedicated support manager",
+            "custom workshop materials"
+          ],
+          cta: "choose team plan"
+        }
+      }
     },
     emojiGame: {
       bannerText: "🏆 5/5 = 5% off code",
@@ -2592,6 +3139,17 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       heroSubtitle: "Write clearer, more empathetic messages that actually land",
       heroCta: "Get started",
       pricingHeading: "Choose your plan",
+      pricingSubtitle: "Get insights into your communication style, understand how your messages are perceived, and learn to communicate better with everyone.",
+      choosePackage: "Choose your package:",
+      secureCheckout: "Secure checkout",
+      thirtyDayGuarantee: "30-day money-back guarantee",
+      securePayments: "Secure payments",
+      addedToCart: "Added to cart ✓",
+      oneTimePayment: "One-time payment",
+      monthlySubscription: "Monthly subscription",
+      monthlyTeamPeriod: "monthly • for team (up to 5 people)",
+      teamPriceNote: "for team (up to 5 people)",
+      assessmentsNote: "All assessments are conducted by our AI analysis system with expert review. Results within 48 hours of submission.",
       videoHeading: "See it in action",
       videoSubtitle: "Quick intro to digital body language",
       emojiWarningHeading: "😭 **doesn't always** mean crying. Emojis **aren't a silver bullet.**",
@@ -2601,6 +3159,72 @@ export const contentEn: Record<VariantKey, SectionContent> = {
       contactPlaceholder2: "What's on your mind?",
       contactPlaceholder3: "Your message",
       contactSubmit: "Send",
+      chatExamples: {
+        chat1: {
+          message1: "Do you remember grandma Halina?",
+          time1: "18:50",
+          reply1: "My condolences",
+          replyTime1: "18:50",
+          reply2: "I had no idea 😭😭😭",
+          replyTime2: "18:55",
+          message2: "They took her to the hospital yesterday and today we got this news 😭😭😭"
+        },
+        chat2: {
+          message1: "Uncle Mark passed away\n💀",
+          message2: "We're planning to cremate him\n🔥🔥💀💀"
+        },
+        chat3: {
+          message1: "Uncle John died today 🤣🤣🤣\n🤣🤣🤣",
+          reply1: "Dad, those aren't sad emojis",
+          message2: "What do you mean they aren't"
+        }
+      },
+      variants: {
+        starter: {
+          name: "Starter",
+          description: "Perfect for getting started with better communication",
+          features: [
+            "Basic communication style assessment",
+            "Emotion detection in 5 sample messages",
+            "Tone analysis report (PDF)",
+            "Basic emoji recommendations",
+            "Email support"
+          ],
+          cta: "Start with Starter"
+        },
+        professional: {
+          name: "Professional",
+          description: "The most popular choice for professionals who communicate daily",
+          features: [
+            "Everything in Starter, plus:",
+            "Advanced communication style assessment",
+            "Emotion and context detection in 20 messages",
+            "Detailed tone perception analysis",
+            "Suggestions for adapting to different audiences",
+            "Personalized emoji and expression recommendations",
+            "Communication development roadmap",
+            "Priority email and chat support",
+            "Follow-up assessment after 30 days"
+          ],
+          cta: "Choose Professional"
+        },
+        team: {
+          name: "Team",
+          description: "For teams that want to communicate better together",
+          features: [
+            "Everything in Professional, plus:",
+            "Team communication dynamics analysis",
+            "Individual assessments for each member",
+            "Team communication patterns report",
+            "Cross-cultural communication insights",
+            "1-hour video consultation with expert",
+            "Progress tracking for 3 months",
+            "Dedicated support manager",
+            "Custom workshop materials"
+          ],
+          cta: "Choose Team Plan"
+        }
+      }
     },
     emojiGame: {
       bannerText: "🏆 Perfect score = 5% off!",

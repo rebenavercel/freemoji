@@ -9,7 +9,7 @@ export default function TermsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       
       <div className="max-w-4xl mx-auto px-6 py-24">
         <h1 className="font-display text-4xl md:text-5xl font-800 text-gray-900 mb-8">

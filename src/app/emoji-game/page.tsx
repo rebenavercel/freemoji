@@ -235,7 +235,7 @@ export default function GamePage() {
   
   return (
     <main className="min-h-screen bg-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       <EmojiGame />
       <FAQSection faqs={faqs} forceNormale={true} />
       <ContactForm />

@@ -10,7 +10,7 @@ export default function ContactPage() {
   
   return (
     <main className="bg-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       
       {/* Contact Form */}
       <ContactForm />

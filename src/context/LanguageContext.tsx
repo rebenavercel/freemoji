@@ -620,6 +620,7 @@ const translations = {
       clearFilters: "Wyczyść filtry",
       activeFilters: "Aktywne filtry:",
       clearAll: "Wyczyść wszystkie",
+      comingSoon: "Wkrótce",
       articles: [
         {
           date: "15 GRUDZIEŃ 2025",
@@ -1293,6 +1294,7 @@ const translations = {
       clearFilters: "Clear filters",
       activeFilters: "Active filters:",
       clearAll: "Clear all",
+      comingSoon: "Coming soon",
       articles: [
         {
           date: "DECEMBER 15, 2025",

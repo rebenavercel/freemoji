@@ -45,15 +45,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [items]);
 
   const addItem = useCallback((item: CartItem) => {
-    setItems((prev) => {
-      // Check if item already exists
-      const exists = prev.find((i) => i.id === item.id);
-      if (exists) {
-        // Don't add duplicates, just return current items
-        return prev;
-      }
-      return [...prev, item];
-    });
+    // Replace all items with the new one (only one package at a time)
+    setItems([item]);
   }, []);
 
   const removeItem = useCallback((id: string) => {

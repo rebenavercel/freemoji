@@ -93,7 +93,7 @@ export default function CheckoutSuccessPage() {
   
   return (
     <main className="min-h-screen bg-gradient-to-b from-yellow/10 to-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       
       <Suspense fallback={
         <div className="max-w-3xl mx-auto px-6 py-24">

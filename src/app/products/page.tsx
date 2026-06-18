@@ -374,7 +374,7 @@ export default function ProductsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       <ProductsHero />
       <ProductsList />
       <ProductVariants />

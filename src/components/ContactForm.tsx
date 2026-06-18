@@ -13,11 +13,60 @@ export default function ContactForm() {
     email: "",
     consent: false,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Tutaj dodaj logikę wysyłania formularza
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "✅ Wiadomość wysłana! Odpowiemy wkrótce.",
+        });
+        // Reset form
+        setFormData({
+          name: "",
+          subject: "",
+          message: "",
+          email: "",
+          consent: false,
+        });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: data.error || "❌ Wystąpił błąd. Spróbuj ponownie.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "❌ Wystąpił błąd. Spróbuj ponownie.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -110,11 +159,27 @@ export default function ContactForm() {
             <div className="pt-4">
               <button
                 type="submit"
-                className="bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg hover:shadow-xl"
+                disabled={isSubmitting}
+                className={`bg-yellow hover:bg-yellow-dark text-gray-900 font-700 text-lg px-10 py-4 rounded-full transition-all hover:scale-105 shadow-lg hover:shadow-xl ${
+                  isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               >
-                {t("contact.formText.submit")}
+                {isSubmitting ? "Wysyłanie..." : t("contact.formText.submit")}
               </button>
             </div>
+
+            {/* Status Message */}
+            {submitStatus.type && (
+              <div
+                className={`mt-6 p-4 rounded-2xl border-2 ${
+                  submitStatus.type === "success"
+                    ? "bg-green-50 border-green-500 text-green-800"
+                    : "bg-red-50 border-red-500 text-red-800"
+                }`}
+              >
+                <p className="font-600">{submitStatus.message}</p>
+              </div>
+            )}
           </form>
         </div>
       </div>

@@ -58,7 +58,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       
       {/* Hero Section z tłem */}
       <section className="relative flex items-center overflow-hidden py-12 md:py-20">
@@ -183,6 +183,9 @@ export default function BlogPage() {
                         fill
                         className="object-cover"
                       />
+                      <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-yellow px-3 py-1 text-xs font-700 text-gray-900 shadow-lg">
+                        {t("blog.comingSoon")}
+                      </span>
                     </div>
                     
                     {/* Treść artykułu */}
@@ -252,6 +255,9 @@ export default function BlogPage() {
                           fill
                           className="object-cover group-hover:scale-105 transition-transform"
                         />
+                        <span className="absolute left-2 top-2 inline-flex items-center rounded-full bg-yellow px-2 py-1 text-[10px] font-700 text-gray-900 shadow-sm">
+                          {t("blog.comingSoon")}
+                        </span>
                       </div>
                       <div className="flex-1">
                         <div className="text-xs text-gray-500 mb-1">

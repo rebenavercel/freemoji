@@ -8,18 +8,26 @@ import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
+import { content, contentEn } from "@/data/content";
 
 /* ─── Hero Section ─── */
 function HeroSection() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
+  const { addItem, setIsCartOpen } = useCart();
   const [selectedVariant, setSelectedVariant] = useState<'starter' | 'professional' | 'team'>('professional');
   const [hoveredVariant, setHoveredVariant] = useState<string | null>(null);
 
-  // Get variant data from translations - force "normalne" variant
-  const variantData = {
-    starter: t("betterMessage.variants.starter", "normalne"),
-    professional: t("betterMessage.variants.professional", "normalne"),
-    team: t("betterMessage.variants.team", "normalne")
+  const betterMessage = language === "pl" ? content.normalne.betterMessage : contentEn.normalne.betterMessage;
+  const emptyVariant = {
+    name: "",
+    description: "",
+    features: [] as string[],
+    cta: ""
+  };
+  const variantData = betterMessage?.variants ?? {
+    starter: emptyVariant,
+    professional: emptyVariant,
+    team: emptyVariant
   };
 
   const variants = {
@@ -27,10 +35,12 @@ function HeroSection() {
       name: variantData.starter.name,
       price: 89,
       originalPrice: 178,
-      features: Array.isArray(variantData.starter.features) ? variantData.starter.features : [],
+      features: variantData.starter.features,
       description: variantData.starter.description,
+      recommended: false,
       billing: 'one-time',
-      cta: variantData.starter.cta
+      cta: variantData.starter.cta,
+      priceNote: undefined
     },
     professional: {
       name: variantData.professional.name,
@@ -40,7 +50,8 @@ function HeroSection() {
       description: variantData.professional.description,
       recommended: true,
       billing: 'monthly',
-      cta: variantData.professional.cta
+      cta: variantData.professional.cta,
+      priceNote: undefined
     },
     team: {
       name: variantData.team.name,
@@ -48,6 +59,7 @@ function HeroSection() {
       originalPrice: 1378,
       features: Array.isArray(variantData.team.features) ? variantData.team.features : [],
       description: variantData.team.description,
+      recommended: false,
       priceNote: 'per team (up to 5 people)',
       billing: 'monthly',
       cta: variantData.team.cta
@@ -56,6 +68,19 @@ function HeroSection() {
 
   const currentVariant = variants[selectedVariant];
   const discount = Math.round(((currentVariant.originalPrice - currentVariant.price) / currentVariant.originalPrice) * 100);
+  
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: `bettermessage-${selectedVariant}`,
+      name: `BetterMessage - ${currentVariant.name}`,
+      price: currentVariant.price,
+      variant: selectedVariant,
+      description: currentVariant.description
+    };
+    
+    addItem(cartItem);
+    setIsCartOpen(true);
+  };
   
   return (
     <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-6 bg-white relative overflow-hidden">
@@ -83,10 +108,10 @@ function HeroSection() {
             <div className="bg-white rounded-3xl border-2 border-gray-900 p-8 lg:p-10 shadow-2xl">
               {/* Product Title */}
               <h1 className="font-display text-3xl md:text-4xl font-900 text-gray-900 mb-2">
-                Better Message
+                {betterMessage.heroHeading}
               </h1>
               <p className="text-gray-600 mb-6">
-                Master digital communication skills
+                {betterMessage.heroSubtitle}
               </p>
 
               {/* Rating */}
@@ -103,7 +128,7 @@ function HeroSection() {
 
               {/* Variant Selection */}
               <div className="mb-6">
-                <label className="block text-sm font-700 text-gray-900 mb-3">Choose Package:</label>
+                <label className="block text-sm font-700 text-gray-900 mb-3">{betterMessage.choosePackage}</label>
                 <div className="flex gap-3">
                   {Object.entries(variants).map(([key, variant]) => (
                     <div key={key} className="flex-1 relative">
@@ -184,7 +209,10 @@ function HeroSection() {
               </ul>
 
               {/* CTA Button */}
-              <button className="w-full bg-gray-900 hover:bg-gray-800 text-white font-700 text-lg py-5 rounded-full transition-all hover:scale-105 shadow-xl hover:shadow-2xl mb-4">
+              <button 
+                onClick={handleAddToCart}
+                className="w-full bg-gray-900 hover:bg-gray-800 text-white font-700 text-lg py-5 rounded-full transition-all hover:scale-105 shadow-xl hover:shadow-2xl mb-4"
+              >
                 {currentVariant.cta} 🛒
               </button>
 
@@ -357,13 +385,19 @@ function BenefitsSection() {
 /* ─── Product Variants / Pricing Tiers ─── */
 function ProductVariants() {
   const { addItem, setIsCartOpen, items } = useCart();
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+  const betterMessage = language === "pl" ? content.normalne.betterMessage : contentEn.normalne.betterMessage;
   
-  // Get variant data from translations - force "normalne" variant
-  const variantData = {
-    starter: t("betterMessage.variants.starter", "normalne"),
-    professional: t("betterMessage.variants.professional", "normalne"),
-    team: t("betterMessage.variants.team", "normalne")
+  const emptyVariant = {
+    name: "",
+    description: "",
+    features: [] as string[],
+    cta: ""
+  };
+  const variantData = betterMessage?.variants ?? {
+    starter: emptyVariant,
+    professional: emptyVariant,
+    team: emptyVariant
   };
   
   const tiers = [
@@ -417,10 +451,10 @@ function ProductVariants() {
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-display text-3xl md:text-5xl font-900 text-gray-900 mb-4">
-            {t("betterMessage.pricingHeading", "normalne")}
+            {betterMessage.pricingHeading}
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-            {t("betterMessage.pricingSubtitle", "normalne")}
+            {betterMessage.pricingSubtitle}
           </p>
         </div>
 
@@ -479,7 +513,7 @@ function ProductVariants() {
                     : "bg-gray-900 hover:bg-gray-800 text-white hover:scale-105"
                 }`}
               >
-                {isInCart ? "Added to Cart ✓" : `${tier.cta} 🛒`}
+                {isInCart ? betterMessage.addedToCart : `${tier.cta} 🛒`}
               </button>
 
               {/* Features List */}
@@ -524,9 +558,7 @@ function ProductVariants() {
         {/* Bottom Note */}
         <div className="mt-12 text-center">
           <p className="text-sm text-gray-500">
-            All assessments are conducted by our AI-powered analysis system with human expert review. 
-            <br className="hidden md:block" />
-            Results delivered within 48 hours of submission.
+            {betterMessage.assessmentsNote}
           </p>
         </div>
       </div>
@@ -1095,7 +1127,7 @@ export default function BetterMessagePage() {
   
   return (
     <main className="min-h-screen bg-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       <HeroSection />
       <ProductVariants />
       <BenefitsSection />

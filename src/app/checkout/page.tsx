@@ -40,7 +40,7 @@ export default function CheckoutPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-yellow/10 to-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       
       <div className="max-w-7xl mx-auto px-6 py-24">
         <h1 className="font-display text-5xl md:text-6xl font-800 text-gray-900 mb-12 text-center">

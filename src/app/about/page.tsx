@@ -91,25 +91,23 @@ function TeamSection() {
           {/* CEO Images - Mirrored */}
           <div className="flex items-end justify-center mb-12">
             <div className="relative w-full max-w-4xl">
-              <div className="flex items-end justify-center">
-                {/* Left person - normal */}
-                <div className="flex-1 relative">
+              <div className="flex items-end justify-center gap-6">
+                {/* Left person */}
+                <div className="flex-1 relative h-[500px]">
                   <Image
-                    src="/jakub-left.png"
+                    src="/image2.webp"
                     alt="Jakub Szlosek CEO"
-                    width={400}
-                    height={500}
-                    className="w-full h-auto"
+                    fill
+                    className="object-cover rounded-xl"
                   />
                 </div>
-                {/* Right person - mirrored */}
-                <div className="flex-1 relative">
+                {/* Right person */}
+                <div className="flex-1 relative h-[500px]">
                   <Image
-                    src="/jakub-left.png"
+                    src="/IMG_3174.JPG"
                     alt="Jakub Szlosek CEO"
-                    width={400}
-                    height={500}
-                    className="w-full h-auto scale-x-[-1]"
+                    fill
+                    className="object-cover rounded-xl"
                   />
                 </div>
               </div>
@@ -126,26 +124,18 @@ function TeamSection() {
             </div>
           </div>
 
-          {/* Text boxes */}
+          {/* Name badges */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-            {/* Left box */}
             <div className="text-center">
-              <div className="inline-block bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-600 text-sm mb-4">
+              <div className="inline-block bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-600 text-sm">
                 Jakub Szlosek, {t("about.team.ceo")}
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Lorem ipsum dolor sit amet consectetur. Dis suspendisse nunc et. Dictum enim amet non justo eget vulputate ornare sollicitudin sed integer.
-              </p>
             </div>
 
-            {/* Right box */}
             <div className="text-center">
-              <div className="inline-block bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-600 text-sm mb-4">
+              <div className="inline-block bg-gray-100 text-gray-700 px-6 py-2 rounded-full font-600 text-sm">
                 Jakub Szlosek, {t("about.team.ceo")}
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Lorem ipsum dolor sit amet consectetur. Dis suspendisse nunc et. Dictum enim amet non justo eget vulputate ornare sollicitudin sed integer.
-              </p>
             </div>
           </div>
         </div>
@@ -534,7 +524,7 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       <AboutHero />
       <TeamSection />
       <PSSTSection />

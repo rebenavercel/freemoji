@@ -10,7 +10,7 @@ export default function CheckoutCancelPage() {
   
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navbar variant={variant} setVariant={setVariant} showLanguageSelector={true} />
+      <Navbar variant={variant} setVariant={setVariant} />
       
       <div className="max-w-3xl mx-auto px-6 py-24">
         <div className="bg-white rounded-3xl border-4 border-gray-200 p-10 md:p-16 shadow-xl text-center">

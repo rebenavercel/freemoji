@@ -75,7 +75,7 @@ function Hero() {
             <p className="text-sm text-gray-500">{t("home.hero.socialProof")} <strong className="text-gray-700">500+ {t("home.hero.professionals")}</strong></p>
           </div>
         </div>
-        <div className="relative flex justify-center animate-scale-in overflow-hidden">
+        <div className="relative flex justify-center animate-scale-in">
           <span className="absolute -top-6 right-8 text-3xl md:text-5xl animate-float hidden sm:inline">{"😀"}</span>
           <span className="absolute top-1/4 -right-4 text-2xl md:text-4xl animate-float-delayed hidden sm:inline">{"😍"}</span>
           <span className="absolute bottom-12 right-0 text-4xl md:text-6xl animate-float stagger-2">{"🤗"}</span>
@@ -126,14 +126,14 @@ function About() {
   const { t } = useLanguage();
   return (
     <section id="about" className="py-12 md:py-32">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-start">
-        <div>
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="flex justify-center items-center">
           <Image 
             src="/product.jpeg" 
             alt="freemoji product" 
             width={800} 
             height={1000} 
-            className="w-full h-auto"
+            className="w-full h-auto max-w-[520px]"
             priority
           />
         </div>
