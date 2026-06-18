@@ -199,6 +199,14 @@ export interface AboutPageContent {
   };
 }
 
+export interface CookieBannerContent {
+  title: string;
+  message: string;
+  learnMore: string;
+  accept: string;
+  decline: string;
+}
+
 export interface SectionContent {
   hero: HeroContent;
   about: AboutContent;
@@ -213,6 +221,7 @@ export interface SectionContent {
   emojiGame: EmojiGameContent;
   products: ProductsContent;
   aboutPage: AboutPageContent;
+  cookieBanner: CookieBannerContent;
 }
 
 export const content: Record<VariantKey, SectionContent> = {
@@ -525,6 +534,13 @@ export const content: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "🍪 Używamy plików cookie",
+      message: "Używamy plików cookie, aby poprawić Twoje doświadczenia na naszej stronie. Korzystając z naszej witryny, wyrażasz zgodę na wykorzystywanie przez nas plików cookie.",
+      learnMore: "Dowiedz się więcej",
+      accept: "Akceptuję",
+      decline: "Odrzuć"
+    }
   },
 
   genz: {
@@ -838,6 +854,13 @@ export const content: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "\uD83C\uDF6A U\u017cywamy cookies fr",
+      message: "Korzystamy z cookies \u017ceby strona dzia\u0142a\u0142a lepiej. No hate, po prostu standard.",
+      learnMore: "wi\u0119cej info",
+      accept: "git",
+      decline: "nah"
+    }
   },
 
   boomer: {
@@ -1149,6 +1172,13 @@ export const content: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "\uD83C\uDF6A Pliki Cookie",
+      message: "Niniejsza witryna wykorzystuje pliki cookie w celu poprawy jako\u015bci do\u015bwiadcze\u0144 u\u017cytkownika. Korzystanie z serwisu oznacza wyra\u017cenie zgody na ich u\u017cycie.",
+      learnMore: "Szczeg\u00f3\u0142owe informacje",
+      accept: "Wyra\u017cam zgod\u0119",
+      decline: "Odmawiam"
+    }
   },
 
   genalpha: {
@@ -1461,6 +1491,13 @@ export const content: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "\uD83C\uDF6A cookies na boardzie",
+      message: "u\u017cywamy cookies 2 improve experience. literally nothing sketchy, just standard stuff.",
+      learnMore: "czytaj wi\u0119cej",
+      accept: "okej bet",
+      decline: "pass"
+    }
   },
   millennials: {
     hero: {
@@ -1771,6 +1808,13 @@ export const content: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "🍪 Używamy cookies",
+      message: "Używamy plików cookie, żeby strona działała lepiej. Korzystając dalej, zgadzasz się na ich użycie.",
+      learnMore: "więcej info",
+      accept: "okej",
+      decline: "nie dzięki"
+    }
   },
 };
 
@@ -2106,6 +2150,13 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "🍪 We use cookies",
+      message: "We use cookies to improve your experience on our site. By using our website, you agree to our use of cookies.",
+      learnMore: "Learn more",
+      accept: "Accept",
+      decline: "Decline"
+    }
   },
   genz: {
     hero: {
@@ -2416,6 +2467,13 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "🍪 cookies tho",
+      message: "we use cookies to make the site better. no cap, just standard stuff fr.",
+      learnMore: "read more",
+      accept: "bet",
+      decline: "nah"
+    }
   },
   boomer: {
     hero: {
@@ -2726,6 +2784,13 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "🍪 Cookie Files",
+      message: "This website uses cookies to improve the quality of the user experience. Using the service means consenting to their use.",
+      learnMore: "Detailed information",
+      accept: "I consent",
+      decline: "I decline"
+    }
   },
   genalpha: {
     hero: {
@@ -3036,6 +3101,13 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "🍪 cookies r here",
+      message: "we use cookies 2 make ur experience better. literally nothing sus, just standard internet stuff fr fr.",
+      learnMore: "read more",
+      accept: "bet let's go",
+      decline: "nah skip"
+    }
   },
   millennials: {
     hero: {
@@ -3346,5 +3418,12 @@ export const contentEn: Record<VariantKey, SectionContent> = {
         ]
       }
     },
+    cookieBanner: {
+      title: "🍪 We use cookies",
+      message: "We use cookies to make your experience better. It's honestly just standard internet stuff.",
+      learnMore: "learn more",
+      accept: "sounds good",
+      decline: "no thanks"
+    }
   },
 };

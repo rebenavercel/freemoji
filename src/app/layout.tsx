@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Cart from "@/components/Cart";
+import CookieBanner from "@/components/CookieBanner";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -39,6 +40,7 @@ export default function RootLayout({
               {children}
             </div>
             <Cart />
+            <CookieBanner />
           </CartProvider>
         </LanguageProvider>
       </body>
