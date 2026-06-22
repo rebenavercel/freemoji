@@ -379,7 +379,7 @@ function WebinarPricing() {
               <p className="text-yellow font-600 text-sm uppercase tracking-widest mb-4">Product</p>
               <div className="bg-yellow rounded-2xl p-6 mb-6">
                 <p className="text-gray-900/60 text-xs mb-1">Starting from</p>
-                <p className="font-display font-800 text-4xl md:text-5xl text-gray-900">$29</p>
+                <p className="font-display font-800 text-4xl md:text-5xl text-gray-900">$89</p>
               </div>
               <ul className="text-left space-y-3 mb-8 text-sm">
                 {[0, 1, 2, 3].map((i) => (

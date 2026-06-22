@@ -524,7 +524,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "💰",
             question: "Ile kosztuje dostęp?",
-            answer: "Dostęp do platformy zaczyna się od 199 zł. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com."
+            answer: "Dostęp do platformy zaczyna się od $89. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com."
           },
           {
             emoji: "🎯",
@@ -844,7 +844,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83D\uDCB0",
             question: "Ile kosztuje dost\u0119p?",
-            answer: "Dost\u0119p do platformy zaczyna si\u0119 od 199 z\u0142. Szczeg\u00f3\u0142y cennika znajdziesz w sekcji kontakt lub pisz\u0105c do nas na kontakt@freemoji.com."
+            answer: "Dost\u0119p do platformy zaczyna si\u0119 od $89. Szczeg\u00f3\u0142y cennika znajdziesz w sekcji kontakt lub pisz\u0105c do nas na kontakt@freemoji.com."
           },
           {
             emoji: "\uD83C\uDFAF",
@@ -1162,7 +1162,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83D\uDCB0",
             question: "Jaki jest koszt dost\u0119pu?",
-            answer: "Dost\u0119p do platformy zaczyna si\u0119 od kwoty 199 z\u0142. Szczeg\u00f3\u0142y cennika dost\u0119pne s\u0105 w sekcji kontakt lub po napisaniu na adres kontakt@freemoji.com."
+            answer: "Dost\u0119p do platformy zaczyna si\u0119 od kwoty $89. Szczeg\u00f3\u0142y cennika dost\u0119pne s\u0105 w sekcji kontakt lub po napisaniu na adres kontakt@freemoji.com."
           },
           {
             emoji: "\uD83C\uDFAF",
@@ -1481,7 +1481,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "\uD83D\uDCB0",
             question: "Ile kosztuje access?",
-            answer: "Access do platformy starts od 199 z\u0142. Szczeg\u00f3\u0142y cennika znajdziesz w contact section lub pisz\u0105c do nas na kontakt@freemoji.com."
+            answer: "Access do platformy starts od $89. Szczeg\u00f3\u0142y cennika znajdziesz w contact section lub pisz\u0105c do nas na kontakt@freemoji.com."
           },
           {
             emoji: "\uD83C\uDFAF",
@@ -1798,7 +1798,7 @@ export const content: Record<VariantKey, SectionContent> = {
           {
             emoji: "💰",
             question: "Ile kosztuje dostęp?",
-            answer: "Dostęp do platformy zaczyna się od 199 zł. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com."
+            answer: "Dostęp do platformy zaczyna się od $89. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com."
           },
           {
             emoji: "🎯",
@@ -2140,7 +2140,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "💰",
             question: "How much does access cost?",
-            answer: "Platform access starts at $29. You can find pricing details in the contact section or by writing to us at contact@freemoji.com."
+            answer: "Platform access starts at $89. You can find pricing details in the contact section or by writing to us at contact@freemoji.com."
           },
           {
             emoji: "🎯",
@@ -2457,7 +2457,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "💰",
             question: "how much does access cost?",
-            answer: "platform access starts at $29. you can find pricing details in the contact section or by writing to us at contact@freemoji.com."
+            answer: "platform access starts at $89. you can find pricing details in the contact section or by writing to us at contact@freemoji.com."
           },
           {
             emoji: "🎯",
@@ -2774,7 +2774,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "💰",
             question: "What is the cost of access?",
-            answer: "Platform access begins at $29. Pricing details are available in the contact section or by writing to contact@freemoji.com."
+            answer: "Platform access begins at $89. Pricing details are available in the contact section or by writing to contact@freemoji.com."
           },
           {
             emoji: "🎯",
@@ -3091,7 +3091,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "💰",
             question: "how much does access cost?",
-            answer: "platform access starts at $29. u can find pricing details in contact section or by writing 2 us at contact@freemoji.com."
+            answer: "platform access starts at $89. u can find pricing details in contact section or by writing 2 us at contact@freemoji.com."
           },
           {
             emoji: "🎯",
@@ -3408,7 +3408,7 @@ export const contentEn: Record<VariantKey, SectionContent> = {
           {
             emoji: "💰",
             question: "How much does access cost?",
-            answer: "Platform access starts at $29. You can find pricing details in the contact section or by writing to us at contact@freemoji.com."
+            answer: "Platform access starts at $89. You can find pricing details in the contact section or by writing to us at contact@freemoji.com."
           },
           {
             emoji: "🎯",
