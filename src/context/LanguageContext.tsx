@@ -289,7 +289,7 @@ const translations = {
           },
           {
             question: "Ile kosztuje dostęp?",
-            answer: "Dostęp do platformy zaczyna się od $89. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com."
+            answer: "Dostęp do platformy zaczyna się od $89. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na hello@rebenagesta.com."
           },
           {
             question: "Czy mogę przetestować platformę?",
@@ -750,7 +750,7 @@ const translations = {
           {
             emoji: "💰",
             question: "Ile kosztuje dostęp?",
-            answer: "Dostęp do platformy zaczyna się od $89. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na kontakt@freemoji.com."
+            answer: "Dostęp do platformy zaczyna się od $89. Szczegóły cennika znajdziesz w sekcji kontakt lub pisząc do nas na hello@rebenagesta.com."
           },
           {
             emoji: "🎯",
@@ -963,7 +963,7 @@ const translations = {
           },
           {
             question: "How much does access cost?",
-            answer: "Platform access starts at $89. You can find pricing details in the contact section or by writing to us at kontakt@freemoji.com."
+            answer: "Platform access starts at $89. You can find pricing details in the contact section or by writing to us at hello@rebenagesta.com."
           },
           {
             question: "Can I test the platform?",
@@ -1424,7 +1424,7 @@ const translations = {
           {
             emoji: "💰",
             question: "How much does access cost?",
-            answer: "Platform access starts at $89. You can find pricing details in the contact section or by writing to us at kontakt@freemoji.com."
+            answer: "Platform access starts at $89. You can find pricing details in the contact section or by writing to us at hello@rebenagesta.com."
           },
           {
             emoji: "🎯",

@@ -90,13 +90,13 @@ function HeroSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           {/* Left: Image */}
-          <div className="flex-1 w-full">
-            <div className="relative w-full max-w-sm md:max-w-lg mx-auto">
+          <div className="flex-[6] w-full">
+            <div className="relative w-full max-w-2xl lg:max-w-none mx-auto">
               <Image
-                src="/productnobg.png"
+                src="/new_product.webp"
                 alt="BetterMessage Product"
-                width={600}
-                height={750}
+                width={900}
+                height={1125}
                 className="w-full h-auto drop-shadow-2xl relative z-20"
                 priority
               />
@@ -104,7 +104,7 @@ function HeroSection() {
           </div>
 
           {/* Right: E-commerce Content */}
-          <div className="flex-1 w-full">
+          <div className="flex-[5] w-full lg:min-w-[420px]">
             <div className="bg-white rounded-3xl border-2 border-gray-900 p-8 lg:p-10 shadow-2xl">
               {/* Product Title */}
               <h1 className="font-display text-3xl md:text-4xl font-900 text-gray-900 mb-2">
@@ -129,9 +129,9 @@ function HeroSection() {
               {/* Variant Selection */}
               <div className="mb-6">
                 <label className="block text-sm font-700 text-gray-900 mb-3">{betterMessage.choosePackage}</label>
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
                   {Object.entries(variants).map(([key, variant]) => (
-                    <div key={key} className="flex-1 relative">
+                    <div key={key} className="w-full sm:flex-1 relative">
                       {variant.recommended && (
                         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow px-3 py-1 rounded-full text-xs font-700 text-gray-900 whitespace-nowrap z-10">
                           RECOMMENDED
@@ -139,13 +139,13 @@ function HeroSection() {
                       )}
                       <button 
                         onClick={() => setSelectedVariant(key as 'starter' | 'professional' | 'team')}
-                        className={`w-full border-2 rounded-2xl p-4 text-center transition-all ${
-                          selectedVariant === key 
-                            ? 'border-yellow bg-yellow scale-105 shadow-lg' 
+                        className={`w-full border-2 rounded-2xl p-4 transition-all flex sm:flex-col items-center justify-between sm:justify-center text-left sm:text-center ${
+                          selectedVariant === key
+                            ? 'border-yellow bg-yellow scale-105 shadow-lg'
                             : 'border-gray-900 bg-white hover:bg-gray-50 hover:scale-105'
                         }`}
                       >
-                        <div className="flex items-center justify-center gap-1 mb-1">
+                        <div className="flex items-center gap-1 sm:justify-center sm:mb-1">
                           <div className={`font-700 ${selectedVariant === key ? 'text-gray-900' : 'text-gray-900'}`}>
                             {variant.name}
                           </div>
@@ -803,13 +803,13 @@ function PSSTSection() {
                 />
                 
                 {/* Emoji on head */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2">
+                <div className="absolute top-2 left-1/2 -translate-x-1/2">
                   <Image
                     src="/emoji-17.png"
                     alt="Emoji"
-                    width={360}
-                    height={360}
-                    className="object-contain animate-float"
+                    width={280}
+                    height={280}
+                    className="object-contain animate-float !max-w-none"
                   />
                 </div>
               </div>

@@ -23,7 +23,7 @@ export default function Footer() {
 
           {/* Links and Contact */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-gray-900 font-500">
-            <a href="#" className="hover:underline transition-all">
+            <a href="/privacy" className="hover:underline transition-all">
               {t("footer.privacy")}
             </a>
             <a href="/terms" className="hover:underline transition-all">
@@ -35,8 +35,8 @@ export default function Footer() {
             <a href="tel:+48654456546" className="hover:underline transition-all font-600">
               +48 654 456 546
             </a>
-            <a href="mailto:kontakt@freemoji.com" className="hover:underline transition-all">
-              kontakt@freemoji.com
+            <a href="mailto:hello@rebenagesta.com" className="hover:underline transition-all">
+              hello@rebenagesta.com
             </a>
           </div>
 
